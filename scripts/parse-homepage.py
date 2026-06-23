@@ -97,8 +97,21 @@ def parse_homepage(page, url: str, gender: str = "") -> list[Campaign]:
             const priceMatch = text.match(/[$¥][\\d,.]+/g) || [];
             const prices = priceMatch.map(p => p.trim());
 
-            // Detect badge
-            const badge = link.querySelector('[class*="badge"], [class*="Badge"], span[class*="new"], span[class*="sale"]')?.textContent?.trim();
+            // Detect badge — look for badge images, "NEW", "SALE", "LIMITED" labels
+            const badgeImg = link.querySelector('img[alt*="NEW"], img[alt*="SALE"], img[alt*="LIMITED"], img[alt*="Deals"]');
+            const badgeText = link.querySelector('[class*="badge"], [class*="Badge"], [class*="tag"], [class*="Tag"]');
+            let badge = null;
+            if (badgeImg) {
+                badge = badgeImg.alt.replace(/\\s*\\(.*?\\)\\s*/g, '').trim();
+            } else if (badgeText) {
+                badge = badgeText.textContent.trim();
+            } else {
+                // Check first few words for badge-like patterns
+                const firstWords = text.trim().split('\\n')[0].trim();
+                if (/^(NEW|SALE|LIMITED|JUST ARRIVED|NOW AVAILABLE|BACK IN STOCK)/i.test(firstWords)) {
+                    badge = firstWords.match(/^(NEW|SALE|LIMITED|JUST ARRIVED|NOW AVAILABLE|BACK IN STOCK)/i)[0].toUpperCase();
+                }
+            }
 
             results.push({
                 type: video ? 'video' : 'card',
