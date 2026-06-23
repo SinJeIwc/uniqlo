@@ -1,0 +1,81 @@
+{
+  "id": "E473250",
+  "productId": 482305,
+  "name": "MEN Linen Blend Relaxed Pants",
+  "nameRu": "Мужские свободные брюки из льняной смеси",
+  "category": "men-bottoms",
+  "gender": "men",
+  "price": 4990,
+  "rating": 4.6,
+  "reviewCount": 345,
+  "badges": [],
+  "tags": [
+    "Лён",
+    "Летняя коллекция"
+  ],
+  "features": [
+    "Смесь льна и хлопка",
+    "Свободный крой",
+    "Эластичный пояс"
+  ],
+  "colors": [
+    {
+      "code": "31",
+      "name": "БЕЖЕВЫЙ",
+      "hex": "#F5F5DC"
+    },
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    },
+    {
+      "code": "65",
+      "name": "ТЁМНО-СИНИЙ",
+      "hex": "#000080"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "images": [
+    {
+      "colorCode": "31",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482305/item/usgoods_31_482305_3x4.jpg",
+      "alt": "MEN Linen Blend Relaxed Pants - БЕЖЕВЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482305/item/usgoods_09_482305_3x4.jpg",
+      "alt": "MEN Linen Blend Relaxed Pants - ЧЁРНЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "65",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482305/item/usgoods_65_482305_3x4.jpg",
+      "alt": "MEN Linen Blend Relaxed Pants - ТЁМНО-СИНИЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "Смесь льна и хлопка",
+  "descriptionRu": "Смесь льна и хлопка",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}

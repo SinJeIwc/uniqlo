@@ -1,0 +1,81 @@
+{
+  "id": "E473450",
+  "productId": 482306,
+  "name": "MEN Wide Sweat Shorts",
+  "nameRu": "Мужские широкие спортивные шорты",
+  "category": "men-shorts",
+  "gender": "men",
+  "price": 2990,
+  "rating": 4.5,
+  "reviewCount": 234,
+  "badges": [],
+  "tags": [
+    "UNISEX",
+    "Спорт"
+  ],
+  "features": [
+    "Мягкий хлопок",
+    "Широкий крой",
+    "Эластичный пояс со шнурком"
+  ],
+  "colors": [
+    {
+      "code": "07",
+      "name": "СЕРЫЙ",
+      "hex": "#808080"
+    },
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    },
+    {
+      "code": "65",
+      "name": "ТЁМНО-СИНИЙ",
+      "hex": "#000080"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "images": [
+    {
+      "colorCode": "07",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482306/item/usgoods_07_482306_3x4.jpg",
+      "alt": "MEN Wide Sweat Shorts - СЕРЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482306/item/usgoods_09_482306_3x4.jpg",
+      "alt": "MEN Wide Sweat Shorts - ЧЁРНЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "65",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482306/item/usgoods_65_482306_3x4.jpg",
+      "alt": "MEN Wide Sweat Shorts - ТЁМНО-СИНИЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "Мягкий хлопок",
+  "descriptionRu": "Мягкий хлопок",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}

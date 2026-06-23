@@ -1,0 +1,93 @@
+{
+  "id": "E472105",
+  "productId": 482302,
+  "name": "Pleated Wide Pants",
+  "nameRu": "Широкие брюки со складками",
+  "category": "women-bottoms",
+  "gender": "women",
+  "price": 3490,
+  "rating": 4.5,
+  "reviewCount": 312,
+  "badges": [],
+  "tags": [
+    "Широкий крой",
+    "Офисный стиль"
+  ],
+  "features": [
+    "Струящаяся ткань",
+    "Высокая посадка",
+    "Элегантный силуэт"
+  ],
+  "colors": [
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    },
+    {
+      "code": "31",
+      "name": "БЕЖЕВЫЙ",
+      "hex": "#F5F5DC"
+    },
+    {
+      "code": "65",
+      "name": "ТЁМНО-СИНИЙ",
+      "hex": "#000080"
+    },
+    {
+      "code": "07",
+      "name": "СЕРЫЙ",
+      "hex": "#808080"
+    }
+  ],
+  "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482302/item/usgoods_09_482302_3x4.jpg",
+      "alt": "Pleated Wide Pants - ЧЁРНЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "31",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482302/item/usgoods_31_482302_3x4.jpg",
+      "alt": "Pleated Wide Pants - БЕЖЕВЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "65",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482302/item/usgoods_65_482302_3x4.jpg",
+      "alt": "Pleated Wide Pants - ТЁМНО-СИНИЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    },
+    {
+      "colorCode": "07",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482302/item/usgoods_07_482302_3x4.jpg",
+      "alt": "Pleated Wide Pants - СЕРЫЙ - вид спереди",
+      "order": 10,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "Струящаяся ткань",
+  "descriptionRu": "Струящаяся ткань",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}

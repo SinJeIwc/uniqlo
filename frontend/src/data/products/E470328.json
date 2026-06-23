@@ -1,0 +1,95 @@
+{
+  "id": "E470328",
+  "productId": 482300,
+  "name": "SUPIMA Cotton Crew Neck T-Shirt | Short Sleeve",
+  "nameRu": "Футболка SUPIMA хлопок круглый вырез | Короткий рукав",
+  "category": "women-tops-t-shirts",
+  "gender": "women",
+  "price": 1990,
+  "rating": 4.7,
+  "reviewCount": 856,
+  "badges": [],
+  "tags": [
+    "SUPIMA хлопок",
+    "Премиум качество"
+  ],
+  "features": [
+    "100% хлопок SUPIMA",
+    "Гладкая текстура",
+    "Классический крой"
+  ],
+  "colors": [
+    {
+      "code": "00",
+      "name": "БЕЛЫЙ",
+      "hex": "#FFFFFF"
+    },
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    },
+    {
+      "code": "31",
+      "name": "БЕЖЕВЫЙ",
+      "hex": "#F5F5DC"
+    },
+    {
+      "code": "65",
+      "name": "ТЁМНО-СИНИЙ",
+      "hex": "#000080"
+    }
+  ],
+  "sizes": [
+    "XXS",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "images": [
+    {
+      "colorCode": "00",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482300/item/usgoods_00_482300_3x4.jpg",
+      "alt": "SUPIMA Cotton Crew Neck T-Shirt | Short Sleeve - БЕЛЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482300/item/usgoods_09_482300_3x4.jpg",
+      "alt": "SUPIMA Cotton Crew Neck T-Shirt | Short Sleeve - ЧЁРНЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "31",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482300/item/usgoods_31_482300_3x4.jpg",
+      "alt": "SUPIMA Cotton Crew Neck T-Shirt | Short Sleeve - БЕЖЕВЫЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    },
+    {
+      "colorCode": "65",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482300/item/usgoods_65_482300_3x4.jpg",
+      "alt": "SUPIMA Cotton Crew Neck T-Shirt | Short Sleeve - ТЁМНО-СИНИЙ - вид спереди",
+      "order": 10,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "100% хлопок SUPIMA",
+  "descriptionRu": "100% хлопок SUPIMA",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}

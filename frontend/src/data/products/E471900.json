@@ -1,0 +1,81 @@
+{
+  "id": "E471900",
+  "productId": 482303,
+  "name": "Linen Blend Shorts",
+  "nameRu": "Шорты из льняной смеси",
+  "category": "women-shorts",
+  "gender": "women",
+  "price": 2490,
+  "rating": 4.4,
+  "reviewCount": 198,
+  "badges": [],
+  "tags": [
+    "Лён",
+    "Лето"
+  ],
+  "features": [
+    "Дышащая ткань",
+    "Эластичный пояс",
+    "Длина до середины бедра"
+  ],
+  "colors": [
+    {
+      "code": "00",
+      "name": "БЕЛЫЙ",
+      "hex": "#FFFFFF"
+    },
+    {
+      "code": "31",
+      "name": "БЕЖЕВЫЙ",
+      "hex": "#F5F5DC"
+    },
+    {
+      "code": "11",
+      "name": "РОЗОВЫЙ",
+      "hex": "#FFC0CB"
+    }
+  ],
+  "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    {
+      "colorCode": "00",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482303/item/usgoods_00_482303_3x4.jpg",
+      "alt": "Linen Blend Shorts - БЕЛЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "31",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482303/item/usgoods_31_482303_3x4.jpg",
+      "alt": "Linen Blend Shorts - БЕЖЕВЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "11",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482303/item/usgoods_11_482303_3x4.jpg",
+      "alt": "Linen Blend Shorts - РОЗОВЫЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "Дышащая ткань",
+  "descriptionRu": "Дышащая ткань",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}

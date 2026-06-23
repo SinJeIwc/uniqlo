@@ -1,0 +1,5 @@
+{
+  "home": {
+    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.uniqlo.com/us/en\", waiting until \"networkidle\"\n"
+  }
+}

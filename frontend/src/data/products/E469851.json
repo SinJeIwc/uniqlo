@@ -1,0 +1,96 @@
+{
+  "id": "E469851",
+  "productId": 482301,
+  "name": "Linen Blend Easy Pants",
+  "nameRu": "Лёгкие брюки из льняной смеси",
+  "category": "women-bottoms",
+  "gender": "women",
+  "price": 3990,
+  "originalPrice": 4990,
+  "rating": 4.6,
+  "reviewCount": 423,
+  "badges": [
+    "sale"
+  ],
+  "tags": [
+    "Лён",
+    "Летняя коллекция"
+  ],
+  "features": [
+    "Смесь льна и хлопка",
+    "Эластичный пояс",
+    "Свободный крой"
+  ],
+  "colors": [
+    {
+      "code": "00",
+      "name": "БЕЛЫЙ",
+      "hex": "#FFFFFF"
+    },
+    {
+      "code": "31",
+      "name": "БЕЖЕВЫЙ",
+      "hex": "#F5F5DC"
+    },
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    },
+    {
+      "code": "65",
+      "name": "ТЁМНО-СИНИЙ",
+      "hex": "#000080"
+    }
+  ],
+  "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "images": [
+    {
+      "colorCode": "00",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482301/item/usgoods_00_482301_3x4.jpg",
+      "alt": "Linen Blend Easy Pants - БЕЛЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "31",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482301/item/usgoods_31_482301_3x4.jpg",
+      "alt": "Linen Blend Easy Pants - БЕЖЕВЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482301/item/usgoods_09_482301_3x4.jpg",
+      "alt": "Linen Blend Easy Pants - ЧЁРНЫЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    },
+    {
+      "colorCode": "65",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482301/item/usgoods_65_482301_3x4.jpg",
+      "alt": "Linen Blend Easy Pants - ТЁМНО-СИНИЙ - вид спереди",
+      "order": 10,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "Смесь льна и хлопка",
+  "descriptionRu": "Смесь льна и хлопка",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру."
+}

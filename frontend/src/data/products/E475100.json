@@ -1,0 +1,94 @@
+{
+  "id": "E475100",
+  "productId": 482309,
+  "name": "KIDS SUPIMA Cotton T-Shirt | Short Sleeve",
+  "nameRu": "Детская футболка SUPIMA хлопок | Короткий рукав",
+  "category": "kids-tops",
+  "gender": "kids",
+  "price": 1490,
+  "rating": 4.8,
+  "reviewCount": 423,
+  "badges": [],
+  "tags": [
+    "SUPIMA хлопок",
+    "Дети"
+  ],
+  "features": [
+    "100% хлопок SUPIMA",
+    "Мягкая ткань",
+    "Бирка с именем"
+  ],
+  "colors": [
+    {
+      "code": "00",
+      "name": "БЕЛЫЙ",
+      "hex": "#FFFFFF"
+    },
+    {
+      "code": "11",
+      "name": "РОЗОВЫЙ",
+      "hex": "#FFC0CB"
+    },
+    {
+      "code": "58",
+      "name": "СИНИЙ",
+      "hex": "#4169E1"
+    },
+    {
+      "code": "09",
+      "name": "ЧЁРНЫЙ",
+      "hex": "#000000"
+    }
+  ],
+  "sizes": [
+    "110",
+    "120",
+    "130",
+    "140",
+    "150",
+    "160"
+  ],
+  "images": [
+    {
+      "colorCode": "00",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482309/item/usgoods_00_482309_3x4.jpg",
+      "alt": "KIDS SUPIMA Cotton T-Shirt | Short Sleeve - БЕЛЫЙ - вид спереди",
+      "order": 1,
+      "type": "front"
+    },
+    {
+      "colorCode": "11",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482309/item/usgoods_11_482309_3x4.jpg",
+      "alt": "KIDS SUPIMA Cotton T-Shirt | Short Sleeve - РОЗОВЫЙ - вид спереди",
+      "order": 4,
+      "type": "front"
+    },
+    {
+      "colorCode": "58",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482309/item/usgoods_58_482309_3x4.jpg",
+      "alt": "KIDS SUPIMA Cotton T-Shirt | Short Sleeve - СИНИЙ - вид спереди",
+      "order": 7,
+      "type": "front"
+    },
+    {
+      "colorCode": "09",
+      "url": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482309/item/usgoods_09_482309_3x4.jpg",
+      "alt": "KIDS SUPIMA Cotton T-Shirt | Short Sleeve - ЧЁРНЫЙ - вид спереди",
+      "order": 10,
+      "type": "front"
+    }
+  ],
+  "currency": "KGS",
+  "description": "100% хлопок SUPIMA",
+  "descriptionRu": "100% хлопок SUPIMA",
+  "materials": [
+    "Хлопок",
+    "Полиэстер"
+  ],
+  "careInstructions": [
+    "Машинная стирка при 40°C",
+    "Не отбеливать"
+  ],
+  "sizeFit": "Стандартный крой. Соответствует размеру.",
+  "originalPrice": null
+}
