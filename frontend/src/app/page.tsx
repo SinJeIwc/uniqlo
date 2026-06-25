@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Link from "next/link";
 import categoriesData from "@/data/categories.json";
+import homepageData from "@/data/homepage-campaigns.json";
 
 const womenCategories = categoriesData.categories.find((c) => c.id === "women")!;
 
@@ -18,60 +19,29 @@ const categoryIcons: Record<string, string> = {
   "women-accessories": "https://image.uniqlo.com/UQ/ST3/us/imagesother/home_category/women/accessories-icon-women.png",
 };
 
-const campaigns = [
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesother/Homepage/06-12-26/HP-large-W-mini-tshirt-core.jpg",
-    badge: "NEW",
-    title: "Now in New Colors: Mini T-Shirt",
-    description: "A top-rated tee designed with a 90s-inspired fit.",
-    href: "/products/E465185",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesother/Homepage/06-05-26/HP-large-bra-top-square-neck.jpg",
-    title: "Bra Tops",
-    description: "Built-in cups for all-day secure comfort.",
-    href: "/products/E465200",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesother/Homepage/06-19-26/HP-large-W-summer-giveaway-KV-26ss.jpg",
-    title: "Win Our Summer Essentials",
-    description: "Enter every day for a new chance to win prizes for the sun, beach, and everything in between.",
-    href: "/",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesother/Homepage/06-05-26/HP-large-WM-26s-FPJ-KV.jpg",
-    title: "UNIQLO F.RISSO",
-    description: "A summer capsule collection that weaves dreams into everyday clothing.",
-    href: "/products/E468900",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/469851/item/usgoods_31_469851_3x4.jpg",
-    title: "Linen Styles: Dresses and Skirts",
-    description: "Effortless elegance for tailored style or flowy fits.",
-    href: "/products/E469851",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/472105/item/usgoods_09_472105_3x4.jpg",
-    title: "Cotton Volume Easy Pants",
-    description: "Made from soft and lightweight 100% cotton and an adjustable elastic waistband.",
-    href: "/products/E472105",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465250/item/usgoods_00_465250_3x4.jpg",
-    title: "Get Ready for Summer",
-    description: "Don't miss our weekly update with early summer picks, new arrivals, and special limited-time deals.",
-    href: "/products/E465250",
-  },
-  {
-    image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/470328/item/usgoods_00_470328_3x4.jpg",
-    title: "SUPIMA хлопок",
-    description: "Премиум футболки из 100% хлопка SUPIMA.",
-    price: "от 1 990 KGS",
-    href: "/products/E470328",
-  },
-];
+function formatPrice(price: string | null): string {
+  if (!price) return "";
+  return price.replace("¥", "").replace(/,/g, "").trim() + " KGS";
+}
 
 export default function HomePage() {
+  const campaigns = (homepageData as Record<string, unknown[]>).home as Array<{
+    type: string;
+    image: string | null;
+    video: string | null;
+    badge: string | null;
+    title: string | null;
+    description: string | null;
+    price: string | null;
+    originalPrice: string | null;
+    saleText: string | null;
+    link: string | null;
+    alt: string | null;
+    fullWidth: boolean;
+    titleRu: string | null;
+    descriptionRu: string | null;
+  }>;
+
   return (
     <>
       <Header />
@@ -88,15 +58,12 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-12 bg-gradient-to-t from-black/60 via-black/15 to-transparent">
             <div className="max-w-[1440px] mx-auto">
               <div className="max-w-md text-white">
-                {/* Title — 22px */}
                 <p className="text-[22px] font-bold leading-tight">
                   Linen Blend Easy Pants
                 </p>
-                {/* Description — 16px, gap 8px/16px */}
                 <p className="text-base opacity-80 mt-2 lg:mt-4">
                   A soft-blend fabric that pairs perfectly with any top and dresses up or down easily.
                 </p>
-                {/* Price block — 36px red, gap 8px/16px */}
                 <div className="flex items-baseline gap-0 mt-2 lg:mt-4">
                   <span className="text-[36px] font-bold text-[#EC1C24] leading-none">2 990 KGS</span>
                   <span className="text-base text-white/70 line-through ml-2">3 990 KGS</span>
@@ -130,28 +97,50 @@ export default function HomePage() {
 
         {/* ====== CAMPAIGN CARDS — full-width, 16px gap, full image height ====== */}
         <div className="flex flex-col gap-4">
-        {campaigns.map((campaign, i) => (
-          <Link key={i} href={campaign.href} className="group relative block w-full overflow-hidden bg-zinc-50">
-            <div className="relative w-full">
-              <img
-                src={campaign.image}
-                alt={campaign.title}
-                className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10 bg-gradient-to-t from-black/60 via-black/15 to-transparent">
-                <div className="max-w-[1440px] mx-auto">
-                  {campaign.badge && (
-                    <span className="inline-block bg-white text-black text-[10px] font-bold px-2 py-0.5 uppercase mb-2 lg:mb-4">{campaign.badge}</span>
-                  )}
-                  <p className="text-white text-[22px] font-bold leading-tight">{campaign.title}</p>
-                  <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{campaign.description}</p>
-                  {campaign.price && <p className="text-white text-sm font-bold mt-2 lg:mt-4">{campaign.price}</p>}
+        {campaigns.filter(c => c.image).map((campaign, i) => {
+          const title = campaign.titleRu || campaign.title;
+          const desc = campaign.descriptionRu || campaign.description;
+          const href = campaign.link || "#";
+          const media = campaign.video || campaign.image;
+
+          if (!media) return null;
+
+          return (
+            <Link key={i} href={href} className="group relative block w-full overflow-hidden bg-zinc-50">
+              <div className="relative w-full">
+                {campaign.video ? (
+                  <video
+                    src={campaign.video}
+                    className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={campaign.image!}
+                    alt={title || ""}
+                    className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10 bg-gradient-to-t from-black/60 via-black/15 to-transparent">
+                  <div className="max-w-[1440px] mx-auto">
+                    {campaign.badge && (
+                      <span className="inline-block bg-white text-black text-[10px] font-bold px-2 py-0.5 uppercase mb-2 lg:mb-4">{campaign.badge}</span>
+                    )}
+                    {title && <p className="text-white text-[22px] font-bold leading-tight">{title}</p>}
+                    {desc && <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{desc}</p>}
+                    {campaign.price && (
+                      <p className="text-white text-sm font-bold mt-2 lg:mt-4">{formatPrice(campaign.price)}</p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
         </div>
       </main>
 

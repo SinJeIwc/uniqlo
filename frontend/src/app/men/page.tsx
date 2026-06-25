@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import categoriesData from "@/data/categories.json";
 import productsIndex from "@/data/products-index.json";
+import homepageData from "@/data/homepage-campaigns.json";
 
 const GENDER_HEROS: Record<string, {
   image: string; brand?: string; tagline?: string; title: string; description: string; price?: string; originalPrice?: string; saleText?: string; href: string;
@@ -36,6 +37,25 @@ const GENDER_LABELS: Record<string, string> = {
   women: "Женщины", men: "Мужчины", kids: "Дети", baby: "Младенцы",
 };
 
+type Campaign = {
+  type: string;
+  image: string | null;
+  video: string | null;
+  badge: string | null;
+  title: string | null;
+  description: string | null;
+  price: string | null;
+  originalPrice: string | null;
+  link: string | null;
+  titleRu: string | null;
+  descriptionRu: string | null;
+};
+
+function formatPrice(price: string | null): string {
+  if (!price) return "";
+  return price.replace("¥", "").replace(/,/g, "").trim() + " KGS";
+}
+
 export default function MenPage() {
   return <GenderPageContent gender="men" />;
 }
@@ -53,6 +73,8 @@ export function GenderPageContent({ gender }: { gender: string }) {
     if (gender === "women") return p.gender === "women" || p.gender === "unisex";
     return p.gender === gender;
   });
+
+  const campaigns: Campaign[] = (homepageData as Record<string, Campaign[]>)[gender] || [];
 
   return (
     <>
@@ -92,6 +114,50 @@ export function GenderPageContent({ gender }: { gender: string }) {
             </div>
           </div>
         </Link>
+
+        {/* Campaign blocks from parser */}
+        {campaigns.filter(c => c.image || c.video).length > 0 && (
+          <div className="flex flex-col gap-4">
+            {campaigns.filter(c => c.image || c.video).map((campaign, i) => {
+              const title = campaign.titleRu || campaign.title;
+              const desc = campaign.descriptionRu || campaign.description;
+              const href = campaign.link || "#";
+
+              return (
+                <Link key={i} href={href} className="group relative block w-full overflow-hidden bg-zinc-50">
+                  <div className="relative w-full">
+                    {campaign.video ? (
+                      <video
+                        src={campaign.video}
+                        className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                        autoPlay muted loop playsInline
+                      />
+                    ) : (
+                      <img
+                        src={campaign.image!}
+                        alt={title || ""}
+                        className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10 bg-gradient-to-t from-black/60 via-black/15 to-transparent">
+                      <div className="max-w-[1440px] mx-auto">
+                        {campaign.badge && (
+                          <span className="inline-block bg-white text-black text-[10px] font-bold px-2 py-0.5 uppercase mb-2 lg:mb-4">{campaign.badge}</span>
+                        )}
+                        {title && <p className="text-white text-[22px] font-bold leading-tight">{title}</p>}
+                        {desc && <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{desc}</p>}
+                        {campaign.price && (
+                          <p className="text-white text-sm font-bold mt-2 lg:mt-4">{formatPrice(campaign.price)}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
 
         {/* Search by category */}
         <section className="max-w-[1440px] mx-auto px-4 lg:px-6 py-10">
@@ -135,7 +201,7 @@ export function GenderPageContent({ gender }: { gender: string }) {
                       alt={product.nameRu}
                       className="w-full h-full object-cover"
                       loading="lazy"
-                      style={{ animation: "image-reveal 0.4s ease-out both" }}
+                      style={{ animation: "image-reveal 0.4s ease-out both" } as React.CSSProperties}
                     />
                     {product.badges.length > 0 && (
                       <span className="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase">

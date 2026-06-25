@@ -19,8 +19,11 @@ uv run python parse-homepage.py
 # US, все страницы (home + men + kids + baby)
 uv run python parse-homepage.py --all
 
-# Япония (когда сеть пустит)
+# Япония 
 uv run python parse-homepage.py --region jp --all
+
+# Япония с переводом 
+uv run python parse-homepage.py --region jp --all --translate
 ```
 
 ## Вывод

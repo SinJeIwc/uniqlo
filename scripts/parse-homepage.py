@@ -5,14 +5,15 @@ UNIQLO Homepage Parser
 (hero-блоки, карточки с фото/видео, тексты, цены, бейджи).
 
 Usage:
-  python3 scripts/parse-homepage.py                    # US version (default)
-  python3 scripts/parse-homepage.py --region jp        # Japan version
-  python3 scripts/parse-homepage.py --all              # All 4 gender pages + homepage
+  uv run python parse-homepage.py                    # US version (default)
+  uv run python parse-homepage.py --region jp        # Japan version
+  uv run python parse-homepage.py --all              # All 4 gender pages
+  uv run python parse-homepage.py --region jp --all --translate  # JP + auto-translate to RU
 
-Output: data/homepage-campaigns.json
+Output: ../frontend/src/data/homepage-campaigns.json
 """
 
-import json, time, os, sys, argparse
+import json, time, os, sys, argparse, subprocess, re
 from playwright.sync_api import sync_playwright
 from dataclasses import dataclass, field, asdict
 from typing import Optional
@@ -89,13 +90,22 @@ def parse_homepage(page, url: str, gender: str = "") -> list[Campaign]:
             if (key && seen.has(key)) continue;
             if (key) seen.add(key);
 
-            // Extract text content
-            const text = link.textContent || '';
-            const paragraphs = Array.from(link.querySelectorAll('p, h2, h3, span')).map(e => e.textContent.trim()).filter(Boolean);
+            // Extract text content — find ALL <p> elements inside the link
+            const ps = Array.from(link.querySelectorAll('p'))
+                .map(p => p.textContent.replace(/\\s+/g, ' ').trim())
+                .filter(t => t.length > 0);
 
-            // Try to find price patterns
-            const priceMatch = text.match(/[$¥][\\d,.]+/g) || [];
-            const prices = priceMatch.map(p => p.trim());
+            // Also get raw text for badge/context
+            const rawText = (link.textContent || '').replace(/\\s+/g, ' ').trim();
+
+            // Separate prices from text
+            const textPs = ps.filter(t => !/^[¥$]/.test(t));
+            const pricePs = ps.filter(t => /^[¥$]/.test(t));
+
+            // Title = first text <p>, description = second text <p>, etc
+            const title = textPs[0] || null;
+            const desc = textPs.length > 1 ? textPs.slice(1).join(' ') : null;
+            const prices = pricePs;
 
             // Detect badge — look for badge images, "NEW", "SALE", "LIMITED" labels
             const badgeImg = link.querySelector('img[alt*="NEW"], img[alt*="SALE"], img[alt*="LIMITED"], img[alt*="Deals"]');
@@ -107,7 +117,7 @@ def parse_homepage(page, url: str, gender: str = "") -> list[Campaign]:
                 badge = badgeText.textContent.trim();
             } else {
                 // Check first few words for badge-like patterns
-                const firstWords = text.trim().split('\\n')[0].trim();
+                const firstWords = rawText.trim().split('\\n')[0].trim();
                 if (/^(NEW|SALE|LIMITED|JUST ARRIVED|NOW AVAILABLE|BACK IN STOCK)/i.test(firstWords)) {
                     badge = firstWords.match(/^(NEW|SALE|LIMITED|JUST ARRIVED|NOW AVAILABLE|BACK IN STOCK)/i)[0].toUpperCase();
                 }
@@ -118,11 +128,11 @@ def parse_homepage(page, url: str, gender: str = "") -> list[Campaign]:
                 image: src || null,
                 video: vidSrc || null,
                 badge: badge || null,
-                title: paragraphs[0] || null,
-                description: paragraphs[1] || null,
+                title: title,
+                description: desc,
                 price: prices[0] || null,
                 originalPrice: prices[1] || null,
-                saleText: paragraphs.find(p => p.includes('Offer') || p.includes('until') || p.includes('Online') || p.includes('App')) || null,
+                saleText: null,
                 link: link.getAttribute('href') || null,
                 alt: img ? img.alt : (video ? 'Video' : ''),
                 fullWidth: img ? img.width > 1000 : false,
@@ -152,10 +162,36 @@ def parse_homepage(page, url: str, gender: str = "") -> list[Campaign]:
     return result
 
 
+def translate_text(text: str, src: str = "ja", dest: str = "ru") -> str:
+    """Translate text using translate-shell (Bing engine, free)."""
+    if not text or not any('\u3040' <= c <= '\u30ff' or '\u4e00' <= c <= '\u9fff' or '\u3000' <= c <= '\u303f' for c in text):
+        return text  # No Japanese characters, skip
+    try:
+        result = subprocess.run(
+            ["trans", "-b", "-e", "bing", "-s", src, "-t", dest, text],
+            capture_output=True, text=True, timeout=10
+        )
+        translated = result.stdout.strip()
+        if translated and "ERROR" not in translated:
+            return translated
+    except Exception:
+        pass
+    return text  # Fallback: return original
+
+
+def translate_campaign(campaign: dict) -> dict:
+    """Translate title and description fields from Japanese to Russian."""
+    for field in ["title", "description", "saleText"]:
+        if campaign.get(field):
+            campaign[f"{field}Ru"] = translate_text(campaign[field])
+    return campaign
+
+
 def main():
     parser = argparse.ArgumentParser(description="Parse UNIQLO homepage campaigns")
     parser.add_argument("--region", default="us", choices=["us", "jp"], help="Region to parse")
     parser.add_argument("--all", action="store_true", help="Parse all gender pages")
+    parser.add_argument("--translate", action="store_true", help="Auto-translate Japanese text to Russian")
     parser.add_argument("--output", default=None, help="Output JSON file path")
     args = parser.parse_args()
 
@@ -178,7 +214,15 @@ def main():
             print(f"\n=== Parsing: {gender_label} ===")
             try:
                 campaigns = parse_homepage(page, base, gender_path)
-                all_data[gender_label] = [asdict(c) for c in campaigns]
+                data = [asdict(c) for c in campaigns]
+
+                # Auto-translate if requested
+                if args.translate:
+                    print(f"  Translating {len(data)} items...")
+                    for item in data:
+                        translate_campaign(item)
+
+                all_data[gender_label] = data
                 print(f"  Found {len(campaigns)} campaign blocks")
                 for c in campaigns:
                     print(f"    [{c.type}] {c.title[:60] if c.title else '(no title)'}")
