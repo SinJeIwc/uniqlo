@@ -1,10 +1,9 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import categoriesData from "@/data/categories.json";
 import productsIndex from "@/data/products-index.json";
-import homepageData from "@/data/homepage-campaigns.json";
+import homepageData from "@/data/home/men.json";
 
 const GENDER_HEROS: Record<string, {
   image: string; brand?: string; tagline?: string; title: string; description: string; price?: string; originalPrice?: string; saleText?: string; href: string;
@@ -38,17 +37,14 @@ const GENDER_LABELS: Record<string, string> = {
 };
 
 type Campaign = {
-  type: string;
   image: string | null;
   video: string | null;
   badge: string | null;
   title: string | null;
   description: string | null;
   price: string | null;
-  originalPrice: string | null;
+  saleText: string | null;
   link: string | null;
-  titleRu: string | null;
-  descriptionRu: string | null;
 };
 
 function formatPrice(price: string | null): string {
@@ -57,10 +53,10 @@ function formatPrice(price: string | null): string {
 }
 
 export default function MenPage() {
-  return <GenderPageContent gender="men" />;
+  return <GenderPageContent gender="men" campaigns={homepageData} />;
 }
 
-export function GenderPageContent({ gender }: { gender: string }) {
+export function GenderPageContent({ gender, campaigns }: { gender: string; campaigns: Campaign[] }) {
   const category = categoriesData.categories.find((c) => c.id === gender)!;
   const hero = GENDER_HEROS[gender] || {
     image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465185/item/usgoods_00_465185_3x4.jpg",
@@ -74,8 +70,6 @@ export function GenderPageContent({ gender }: { gender: string }) {
     return p.gender === gender;
   });
 
-  const campaigns: Campaign[] = (homepageData as Record<string, Campaign[]>)[gender] || [];
-
   return (
     <>
       <Header />
@@ -83,7 +77,6 @@ export function GenderPageContent({ gender }: { gender: string }) {
         {/* Hero */}
         <Link href={hero.href} className="block relative w-full">
           <div className="relative w-full aspect-[21/9] max-h-[70vh] bg-zinc-100 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={hero.image}
               alt={hero.title}
@@ -92,25 +85,17 @@ export function GenderPageContent({ gender }: { gender: string }) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-6 lg:left-12 text-white max-w-md">
-              {hero.tagline && (
-                <p className="text-xs tracking-wider uppercase mb-1 opacity-70">{hero.tagline}</p>
-              )}
-              {hero.brand && (
-                <p className="text-[11px] font-bold tracking-[0.15em] uppercase mb-1 opacity-80">{hero.brand}</p>
-              )}
+              {hero.tagline && <p className="text-xs tracking-wider uppercase mb-1 opacity-70">{hero.tagline}</p>}
+              {hero.brand && <p className="text-[11px] font-bold tracking-[0.15em] uppercase mb-1 opacity-80">{hero.brand}</p>}
               <p className="text-lg lg:text-xl font-bold leading-tight mb-0.5">{hero.title}</p>
               <p className="text-sm opacity-80 mb-0.5">{hero.description}</p>
               {hero.price && (
                 <div className="flex items-baseline gap-2">
                   <p className="text-sm font-bold">{hero.price}</p>
-                  {hero.originalPrice && (
-                    <p className="text-xs line-through opacity-60">{hero.originalPrice}</p>
-                  )}
+                  {hero.originalPrice && <p className="text-xs line-through opacity-60">{hero.originalPrice}</p>}
                 </div>
               )}
-              {hero.saleText && (
-                <p className="text-[11px] opacity-70 mt-0.5">{hero.saleText}</p>
-              )}
+              {hero.saleText && <p className="text-[11px] opacity-70 mt-0.5">{hero.saleText}</p>}
             </div>
           </div>
         </Link>
@@ -119,23 +104,21 @@ export function GenderPageContent({ gender }: { gender: string }) {
         {campaigns.filter(c => c.image || c.video).length > 0 && (
           <div className="flex flex-col gap-4">
             {campaigns.filter(c => c.image || c.video).map((campaign, i) => {
-              const title = campaign.titleRu || campaign.title;
-              const desc = campaign.descriptionRu || campaign.description;
               const href = campaign.link || "#";
-
               return (
                 <Link key={i} href={href} className="group relative block w-full overflow-hidden bg-zinc-50">
                   <div className="relative w-full">
                     {campaign.video ? (
                       <video
                         src={campaign.video}
+                        poster={campaign.image || undefined}
                         className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
                         autoPlay muted loop playsInline
                       />
                     ) : (
                       <img
                         src={campaign.image!}
-                        alt={title || ""}
+                        alt={campaign.title || ""}
                         className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
                         loading="lazy"
                       />
@@ -145,11 +128,10 @@ export function GenderPageContent({ gender }: { gender: string }) {
                         {campaign.badge && (
                           <span className="inline-block bg-white text-black text-[10px] font-bold px-2 py-0.5 uppercase mb-2 lg:mb-4">{campaign.badge}</span>
                         )}
-                        {title && <p className="text-white text-[22px] font-bold leading-tight">{title}</p>}
-                        {desc && <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{desc}</p>}
-                        {campaign.price && (
-                          <p className="text-white text-sm font-bold mt-2 lg:mt-4">{formatPrice(campaign.price)}</p>
-                        )}
+                        {campaign.title && <p className="text-white text-[22px] font-bold leading-tight">{campaign.title}</p>}
+                        {campaign.description && <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{campaign.description}</p>}
+                        {campaign.price && <p className="text-white text-sm font-bold mt-2 lg:mt-4">{formatPrice(campaign.price)}</p>}
+                        {campaign.saleText && <p className="text-white/60 text-[11px] mt-2 lg:mt-4">{campaign.saleText}</p>}
                       </div>
                     </div>
                   </div>
@@ -166,18 +148,13 @@ export function GenderPageContent({ gender }: { gender: string }) {
           </h2>
           <nav className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1.5">
             {category.children.map((child) => (
-              <Link
-                key={child.id}
-                href={`/categories/${child.id}`}
-                className="text-[13px] text-zinc-600 hover:text-black transition-colors py-[2px]"
-              >
+              <Link key={child.id} href={`/categories/${child.id}`}
+                className="text-[13px] text-zinc-600 hover:text-black transition-colors py-[2px]">
                 {child.nameRu}
               </Link>
             ))}
-            <Link
-              href={`/categories/${category.id}`}
-              className="text-[13px] font-semibold text-black hover:underline mt-2 col-span-full"
-            >
+            <Link href={`/categories/${category.id}`}
+              className="text-[13px] font-semibold text-black hover:underline mt-2 col-span-full">
               ВСЕ КАТЕГОРИИ →
             </Link>
           </nav>
@@ -189,13 +166,8 @@ export function GenderPageContent({ gender }: { gender: string }) {
             <h2 className="text-xl font-bold text-zinc-900 mb-6">Популярное</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {genderProducts.slice(0, 8).map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/products/${product.id}`}
-                  className="group"
-                >
+                <Link key={product.id} href={`/products/${product.id}`} className="group">
                   <div className="aspect-[3/4] bg-zinc-100 overflow-hidden mb-3 relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://image.uniqlo.com/UQ/ST3/us/imagesgoods/${product.productId}/item/usgoods_00_${product.productId}_3x4.jpg`}
                       alt={product.nameRu}

@@ -19,10 +19,14 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getActiveTab = () => {
-    if (pathname === "/" || pathname.startsWith("/categories/women")) return "women";
-    if (pathname.startsWith("/men") || pathname.startsWith("/categories/men")) return "men";
-    if (pathname.startsWith("/kids") || pathname.startsWith("/categories/kids")) return "kids";
-    if (pathname.startsWith("/baby") || pathname.startsWith("/categories/baby")) return "baby";
+    if (pathname === "/" || pathname.startsWith("/categories/women"))
+      return "women";
+    if (pathname.startsWith("/men") || pathname.startsWith("/categories/men"))
+      return "men";
+    if (pathname.startsWith("/kids") || pathname.startsWith("/categories/kids"))
+      return "kids";
+    if (pathname.startsWith("/baby") || pathname.startsWith("/categories/baby"))
+      return "baby";
     return null;
   };
 
@@ -32,11 +36,13 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-40 w-full">
       {/* Main bar — 64px desktop, 56px mobile — transparent, no background space */}
-      <div className={cn(
-        "max-w-[1200px] mx-auto px-4 lg:px-6",
-        "h-14 lg:h-16",
-        "flex items-center gap-0",
-      )}>
+      <div
+        className={cn(
+          "max-w-[1200px] mx-auto px-4 lg:px-6",
+          "h-14 lg:h-16",
+          "flex items-center gap-0",
+        )}
+      >
         {/* Logo — SVG */}
         <Link href="/" className="flex-shrink-0 mr-6 lg:mr-8">
           <Image
@@ -62,11 +68,17 @@ export function Header() {
                   "text-[17px]",
                   "font-[UniqloPro]",
                   isActive
-                    ? cn(isHome ? "text-white border-white" : "text-black border-black")
+                    ? cn(
+                        isHome
+                          ? "text-white border-white"
+                          : "text-black border-black",
+                      )
                     : cn(
                         "border-transparent",
-                        isHome ? "text-white/70 hover:text-white" : "text-zinc-400 hover:text-black"
-                      )
+                        isHome
+                          ? "text-white/70 hover:text-white"
+                          : "text-zinc-400 hover:text-black",
+                      ),
                 )}
               >
                 {tab.label}
@@ -90,7 +102,9 @@ export function Header() {
               href={href}
               className={cn(
                 "p-2.5 transition-colors",
-                isHome ? "text-white/70 hover:text-white" : "text-zinc-400 hover:text-black"
+                isHome
+                  ? "text-white/70 hover:text-white"
+                  : "text-zinc-400 hover:text-black",
               )}
               aria-label={label}
             >
@@ -101,7 +115,9 @@ export function Header() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={cn(
               "lg:hidden p-2.5 transition-colors",
-              isHome ? "text-white/70 hover:text-white" : "text-zinc-400 hover:text-black"
+              isHome
+                ? "text-white/70 hover:text-white"
+                : "text-zinc-400 hover:text-black",
             )}
             aria-label="Меню"
           >
@@ -111,12 +127,14 @@ export function Header() {
       </div>
 
       {/* Mobile tabs row — 44px */}
-      <div className={cn(
-        "lg:hidden",
-        "max-w-[1200px] mx-auto px-4",
-        "h-11",
-        "flex items-center gap-0 overflow-x-auto",
-      )}>
+      <div
+        className={cn(
+          "lg:hidden",
+          "max-w-[1200px] mx-auto px-4",
+          "h-11",
+          "flex items-center gap-0 overflow-x-auto",
+        )}
+      >
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -127,8 +145,15 @@ export function Header() {
                 "flex-shrink-0 px-3 text-[17px] font-bold tracking-wide border-b-2 transition-colors whitespace-nowrap",
                 "font-[UniqloPro]",
                 isActive
-                  ? cn(isHome ? "text-white border-white" : "text-black border-black")
-                  : cn("border-transparent", isHome ? "text-white/70" : "text-zinc-400")
+                  ? cn(
+                      isHome
+                        ? "text-white border-white"
+                        : "text-black border-black",
+                    )
+                  : cn(
+                      "border-transparent",
+                      isHome ? "text-white/70" : "text-zinc-400",
+                    ),
               )}
             >
               {tab.label}
@@ -140,15 +165,31 @@ export function Header() {
       {/* Mobile overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileMenuOpen(false)} />
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setMobileMenuOpen(false)}
+          />
           <div className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white shadow-xl">
             <div className="p-6 space-y-6">
-              <button onClick={() => setMobileMenuOpen(false)} className="text-zinc-500">✕ Закрыть</button>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-zinc-500"
+              >
+                ✕ Закрыть
+              </button>
               <div className="space-y-3">
-                <Link href="/search" className="block text-sm text-zinc-600">Поиск</Link>
-                <Link href="/wishlist" className="block text-sm text-zinc-600">Избранное</Link>
-                <Link href="/account" className="block text-sm text-zinc-600">Аккаунт</Link>
-                <Link href="/cart" className="block text-sm text-zinc-600">Корзина</Link>
+                <Link href="/search" className="block text-sm text-zinc-600">
+                  Поиск
+                </Link>
+                <Link href="/wishlist" className="block text-sm text-zinc-600">
+                  Избранное
+                </Link>
+                <Link href="/account" className="block text-sm text-zinc-600">
+                  Аккаунт
+                </Link>
+                <Link href="/cart" className="block text-sm text-zinc-600">
+                  Корзина
+                </Link>
               </div>
             </div>
           </div>

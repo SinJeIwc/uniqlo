@@ -1,0 +1,102 @@
+[
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resfa8b46648635c14d2e96a59aac7c6f3efr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/GL_Aseets/UT/zo-friends/zo-friends-wmk-movie01-pc-5-2.mp4",
+    "badge": "UT",
+    "title": "ジョアンフレンズ UT",
+    "description": "不器用だからこそ完璧な仲間たち ZO&FRIENDSがUTになって登場",
+    "price": "¥1,990",
+    "saleText": null,
+    "link": "/jp/ja/spl/ut-graphic-tees/zo-friends/women"
+  },
+  {
+    "image": "./home/women/saleweek.png",
+    "video": null,
+    "badge": null,
+    "title": null,
+    "description": null,
+    "price": null,
+    "saleText": null,
+    "link": "https://www.uniqlo.com/jp/ja/special-feature/flyer/digital-flyer"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res452917a11375b835815a1f3d0ca56e14fr.jpg",
+    "video": null,
+    "badge": "SNSで大バズリ",
+    "title": "ミニT",
+    "description": "コンパクトで今っぽい人気のTシャツ",
+    "price": "¥990",
+    "saleText": null,
+    "link": "/jp/ja/women/tops/t-shirts"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resf8d6a6170c136899baacc7058059d877fr.jpg",
+    "video": null,
+    "badge": "BRATOP",
+    "title": "リブブラトップ アメリカンスリーブ",
+    "description": "着回ししやすく一枚で決まる ブラトップがお得に",
+    "price": "¥1,490",
+    "saleText": null,
+    "link": "/jp/ja/women/innerwear/bratop"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res538940c87bee68fefc59947e6a8cd962fr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/0313/26ss-women_UV_1364x682.mp4",
+    "badge": "UV",
+    "title": "UVカット",
+    "description": "パーカは気温差のある日に 羽織としても活躍",
+    "price": null,
+    "saleText": null,
+    "link": "/jp/ja/women/uv-protection"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res1c9751ffc73e89fb2726a43b89266c9cfr.jpg",
+    "video": null,
+    "badge": "UNIQLO:C",
+    "title": "サテンオーバーサイズ ショートブラウス",
+    "description": "Tシャツのようなシルエット",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/women/shirts-and-blouses/shirts-and-blouses"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res77ad2a264a162a617563bd21de1f5d00fr.jpg",
+    "video": null,
+    "badge": null,
+    "title": "イージーパンツ",
+    "description": "日常にもアクティブにも快適な着心地",
+    "price": null,
+    "saleText": null,
+    "link": "/jp/ja/women/bottoms/casual-pants"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resa639ead0f00514c93e9a891524d58903fr.jpg",
+    "video": null,
+    "badge": "UV",
+    "title": "感動パンツ",
+    "description": "感動ジャケットも¥5,990とお得に",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/women/bottoms/kando-pants"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resa651ad6e8e889e98c131b7a4de4ff847fr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2025/HOME/0307/women_airism_pc_1366x682.mp4",
+    "badge": "AIRism",
+    "title": "エアリズムインナー",
+    "description": "キャミソールや タンクトップなどが特別価格",
+    "price": "¥990",
+    "saleText": null,
+    "link": "/jp/ja/women/innerwear/airism"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res38e312496da305c8e287795bc49ac90afr.jpg",
+    "video": null,
+    "badge": "AIRism",
+    "title": "エアリズムコットンパジャマ",
+    "description": "梅雨や暑い日も快適なパジャマがお得に",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/women/loungewear-and-homeware"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res323f0d4c5f9be9c5ed2a0ac8d5c1c078fr.jpg",
+    "video": null,
+    "badge": "CPJ",
+    "title": "UNIQLO：C",
+    "description": "英国の著名デザイナー クレア・ワイト・ケラーによる 特別コレクション",
+    "price": null,
+    "saleText": null,
+    "link": "https://www.uniqlo.com/jp/ja/men/special-collaboration/uniqlo-c"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resb232e11abc0599464c3df1a639752cb3fr.jpg",
+    "video": null,
+    "badge": "LW Collection",
+    "title": "LifeWear Collection 2026夏コレクション",
+    "description": "カラーとシルエットで装いをリフレッシュ 夏の最新コレクション",
+    "price": null,
+    "saleText": null,
+    "link": "https://www.uniqlo.com/jp/ja/special-feature/lifewear-collection/men"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res61c8dc80f1472f8f09ec5b98bc436a3ffr.jpg",
+    "video": null,
+    "badge": null,
+    "title": null,
+    "description": null,
+    "price": null,
+    "saleText": null,
+    "link": "/jp/ja/men/tops/t-shirts"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resfa4f40594da4ca3d2ddd390e2c730876fr.jpg",
+    "video": null,
+    "badge": "UniqloU",
+    "title": "エアリズムコットン クルーネックTシャツ",
+    "description": "あの理想の肌ざわりを、長袖に",
+    "price": "¥1,290",
+    "saleText": "4月16日まで期間限定価格",
+    "link": "/jp/ja/feature/limited-offers/men"
+  }
+]

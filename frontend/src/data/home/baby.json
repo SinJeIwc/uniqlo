@@ -1,0 +1,32 @@
+[
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res103a7ca32697437b8ffdacf310f1361efr.jpg",
+    "video": null,
+    "badge": "gift",
+    "title": "ユニクロのギフト",
+    "description": "出産祝いや感謝の気持ちを 上質な服に込めて",
+    "price": null,
+    "saleText": null,
+    "link": "/jp/ja/baby/newborn2/childbirth"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resd5fdb7d04d4df8307cc20bb6e0b1f73efr.jpg",
+    "video": null,
+    "badge": "UT",
+    "title": "サンリオキャラクターズ ドライ パジャマ",
+    "description": "フルーツモチーフのコレクション",
+    "price": "¥1,990",
+    "saleText": null,
+    "link": "https://www.uniqlo.com/jp/ja/spl/ut-graphic-tees/sanrio-fruits/baby"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res51bdce6bea260a9af14402dc06e1b2b7fr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/GL_Aseets/KIDS_BABY/Core/Summer_b_toddler_pc_2-1-movie.mp4",
+    "badge": "LW Collection",
+    "title": "LifeWear Collection 2026夏コレクション",
+    "description": "カラーとシルエットで装いをリフレッシュ",
+    "price": null,
+    "saleText": null,
+    "link": "https://www.uniqlo.com/jp/ja/special-feature/lifewear-collection/baby"
+  }
+]
