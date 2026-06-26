@@ -81,41 +81,61 @@ def main():
             url = f"{base_url}{path}"
             print(f"=== Parsing: {cat} ===")
 
+            # --- Desktop viewport (1440px) ---
             browser = p.chromium.launch(headless=True)
             page = browser.new_page(viewport={"width": 1440, "height": 900})
-
             try:
-                campaigns = extract(page, url)
-                # Filter: skip non-campaign blocks + only keep matching gender
-                data = [asdict(c) for c in campaigns
-                        if not should_skip(c.link or "")
-                        and classify_gender(c.link or "") == cat]
-                skipped = len(campaigns) - len(data)
-                if skipped:
-                    print(f"  Filtered out {skipped} blocks (other genders / banners)")
-
-                if do_translate:
-                    print(f"  Translating {len(data)} items...")
-                    for item in data:
-                        for field in ["title", "description", "saleText", "badge"]:
-                            if item.get(field):
-                                item[field] = tr(item[field])
-
-                all_data[cat] = data
-                print(f"  Found {len(data)} blocks (filtered from {len(campaigns)} total)")
-                for c in campaigns:
-                    if should_skip(c.link or "") or classify_gender(c.link or "") != cat:
-                        continue
-                    badge_str = f" [{c.badge}]" if c.badge else ""
-                    title_str = c.title[:60] if c.title else "(no title)"
-                    print(f"    {title_str}{badge_str}")
-                    if c.price:
-                        print(f"           {c.price}")
-            except Exception as e:
-                print(f"  ERROR: {e}")
-                all_data[cat] = []
+                desktop_campaigns = extract(page, url)
+                desktop_data = [asdict(c) for c in desktop_campaigns
+                                if not should_skip(c.link or "")
+                                and classify_gender(c.link or "") == cat]
             finally:
                 browser.close()
+
+            # --- Mobile viewport (375px) ---
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(viewport={"width": 375, "height": 812})
+            try:
+                mobile_campaigns = extract(page, url)
+                mobile_data = [asdict(c) for c in mobile_campaigns
+                               if not should_skip(c.link or "")
+                               and classify_gender(c.link or "") == cat]
+            finally:
+                browser.close()
+
+            # Merge: match by link, copy mobile image/video to desktop
+            mobile_by_link = {c["link"]: c for c in mobile_data if c.get("link")}
+            for item in desktop_data:
+                link = item.get("link")
+                if link and link in mobile_by_link:
+                    m = mobile_by_link[link]
+                    if m.get("image") and m["image"] != item.get("image"):
+                        item["imageMobile"] = m["image"]
+                    if m.get("video") and m["video"] != item.get("video"):
+                        item["videoMobile"] = m["video"]
+
+            data = desktop_data
+            skipped = len(desktop_campaigns) - len(data)
+            if skipped:
+                print(f"  Filtered out {skipped} blocks (other genders / banners)")
+
+            if do_translate:
+                print(f"  Translating {len(data)} items...")
+                for item in data:
+                    for field in ["title", "description", "saleText", "badge"]:
+                        if item.get(field):
+                            item[field] = tr(item[field])
+
+            all_data[cat] = data
+            print(f"  Found {len(data)} blocks (filtered from {len(desktop_campaigns)} total)")
+            for c in desktop_campaigns:
+                if should_skip(c.link or "") or classify_gender(c.link or "") != cat:
+                    continue
+                badge_str = f" [{c.badge}]" if c.badge else ""
+                title_str = c.title[:60] if c.title else "(no title)"
+                print(f"    {title_str}{badge_str}")
+                if c.price:
+                    print(f"           {c.price}")
 
     # Save
     os.makedirs(_OUT_DIR, exist_ok=True)

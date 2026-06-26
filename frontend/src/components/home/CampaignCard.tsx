@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Campaign } from "./types";
 import { formatPrice } from "./types";
@@ -6,46 +7,76 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const href = campaign.link || "#";
 
   return (
-    <Link href={href} className="group relative block w-full overflow-hidden bg-zinc-50">
-      <div className="relative w-full h-[90vh]">
-        {campaign.video ? (
-          <video
-            src={campaign.video}
-            poster={campaign.image || undefined}
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        ) : (
-          <img
-            src={campaign.image!}
+    <Link href={href} className="group relative w-full h-[70vh] sm:h-[95vh]">
+      {campaign.video ? (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          poster={campaign.image || undefined}
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          {campaign.videoMobile && (
+            <source src={campaign.videoMobile} media="(max-width: 767px)" />
+          )}
+          <source src={campaign.video} />
+        </video>
+      ) : campaign.image ? (
+        <picture>
+          {campaign.imageMobile && (
+            <source srcSet={campaign.imageMobile} media="(max-width: 767px)" />
+          )}
+          <Image
+            src={campaign.image}
             alt={campaign.title || ""}
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            loading="lazy"
+            fill
+            unoptimized
+            className="object-cover"
           />
-        )}
-        <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10 bg-gradient-to-t from-black/60 via-black/15 to-transparent">
-          <div className="max-w-[1440px] mx-auto">
-            {campaign.badge && (
-              <span className="inline-block bg-white text-black text-[10px] font-bold px-2 py-0.5 uppercase mb-2 lg:mb-4">
-                {campaign.badge}
-              </span>
-            )}
-            {campaign.title && (
-              <p className="text-white text-[22px] font-bold leading-tight">{campaign.title}</p>
-            )}
-            {campaign.description && (
-              <p className="text-white/80 text-base mt-2 lg:mt-4 max-w-lg">{campaign.description}</p>
-            )}
-            {campaign.price && (
-              <p className="text-white text-sm font-bold mt-2 lg:mt-4">{formatPrice(campaign.price)}</p>
-            )}
-            {campaign.saleText && (
-              <p className="text-white/60 text-[11px] mt-2 lg:mt-4">{campaign.saleText}</p>
-            )}
-          </div>
+        </picture>
+      ) : null}
+
+      {/* Overlay */}
+      <div className="absolute bottom-0 left-0 right-0 ">
+        <div className="mx-[8%] mb-[16%] md:mb-[8%]">
+          {campaign.badgeImage && (
+            <Image
+              src={campaign.badgeImage}
+              alt={campaign.badge || ""}
+              width={90}
+              height={30}
+              unoptimized
+              className="h-7.5 w-22.5 mb-4 sm:mb-6 lg:mb-8"
+            />
+          )}
+          {campaign.title && (
+            <p className="text-white text-[22px] sm:text-[28px] lg:text-[32px] mb-2 sm:mb-4 leading-tight md:max-w-1/4 lg:max-w-[50%]">
+              {campaign.title}
+            </p>
+          )}
+          {campaign.description && (
+            <p className="text-white text-base mb-4 max-w-[75%] md:max-w-1/5 lg:max-w-[40%]">
+              {campaign.description}
+            </p>
+          )}
+          {campaign.price && (
+            <p
+              className={`text-4xl font-bold mb-2 ${
+                campaign.saleText ? "text-[#e00]" : "text-white"
+              }`}
+            >
+              {formatPrice(campaign.price)}
+            </p>
+          )}
+          {campaign.saleText && (
+            <p className="text-[#e00] text-[13px] font-bold mb-4">
+              {campaign.saleText}
+            </p>
+          )}
+          {campaign.note && (
+            <p className="text-white text-[8px]">{campaign.note}</p>
+          )}
         </div>
       </div>
     </Link>
@@ -57,8 +88,8 @@ export function CampaignGrid({ campaigns }: { campaigns: Campaign[] }) {
     <div className="flex flex-col gap-4">
       {campaigns
         .filter((c) => c.image || c.video)
-        .map((c, i) => (
-          <CampaignCard key={i} campaign={c} />
+        .map((c) => (
+          <CampaignCard key={c.link} campaign={c} />
         ))}
     </div>
   );

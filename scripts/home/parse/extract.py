@@ -10,10 +10,12 @@ class Campaign:
     image: Optional[str] = None
     video: Optional[str] = None
     badge: Optional[str] = None
+    badgeImage: Optional[str] = None
     title: Optional[str] = None
     description: Optional[str] = None
     price: Optional[str] = None
     saleText: Optional[str] = None
+    note: Optional[str] = None
     link: Optional[str] = None
 
 
@@ -122,16 +124,32 @@ def extract(page: Page, url: str) -> list[Campaign]:
             if (!key || seen.has(key)) continue;
             seen.add(key);
             let badge = null;
-            if (badgeImg) badge = (badgeImg.alt || '').trim() || null;
+            let badgeImage = null;
+            if (badgeImg) {
+                badge = (badgeImg.alt || '').trim() || null;
+                badgeImage = normUrl(badgeImg.getAttribute('data-src') || badgeImg.src);
+            }
             const ps = Array.from(link.querySelectorAll('p'))
                 .map(p => p.textContent.replace(/\\s+/g, ' ').trim())
                 .filter(t => t.length > 0);
             const textPs = ps.filter(t => !/^[¥$]/.test(t));
             const pricePs = ps.filter(t => /^[¥$]/.test(t));
+
+            // Find saleText (date/limited offer) and note (※ disclaimer)
+            let saleText = null;
+            let note = null;
+            for (const t of textPs) {
+                if (/[0-9]+月|[0-9]+日|期限|期間|まで|限定|OFFER|SALE/i.test(t)) {
+                    saleText = t;
+                } else if (t.startsWith('※') || t.startsWith('*') || t.startsWith('＊')) {
+                    note = t;
+                }
+            }
+
             results.push({
-                image: imageUrl, video: videoUrl, badge,
+                image: imageUrl, video: videoUrl, badge, badgeImage,
                 title: textPs[0] || null, description: textPs[1] || null,
-                price: pricePs[0] || null,
+                price: pricePs[0] || null, saleText, note,
                 link: link.getAttribute('href') || null
             });
         }
@@ -140,6 +158,8 @@ def extract(page: Page, url: str) -> list[Campaign]:
 
     return [Campaign(
         image=c.get("image"), video=c.get("video"), badge=c.get("badge"),
+        badgeImage=c.get("badgeImage"),
         title=c.get("title"), description=c.get("description"),
-        price=c.get("price"), link=c.get("link"),
+        price=c.get("price"), saleText=c.get("saleText"), note=c.get("note"),
+        link=c.get("link"),
     ) for c in campaigns_raw]
