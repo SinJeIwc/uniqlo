@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import type { CategoryTree } from "./categories";
 
 type IconCategory = {
   id: number;
@@ -17,10 +16,8 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
   const hasMore = parents.length > VISIBLE_COUNT;
 
   return (
-    <section className="px-4 lg:px-6 py-10">
-      <h2 className="text-[11px] font-semibold tracking-widest uppercase text-zinc-400 mb-4">
-        Поиск по категориям
-      </h2>
+    <section className="container mx-auto px-3 py-18">
+      <h2 className="text-[20px] mb-4">Поиск по категориям</h2>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-2">
         {visible.map((cat) => (
           <Link
@@ -35,10 +32,10 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
                 width={96}
                 height={96}
                 unoptimized
-                className="size-[68px] sm:size-[84px] lg:size-[96px] object-contain"
+                className="size-17 sm:size-21 lg:size-24 object-contain"
               />
             ) : (
-              <div className="size-[68px] sm:size-[84px] lg:size-[96px] flex items-center justify-center bg-muted">
+              <div className="size-17 sm:size-21 lg:size-24 flex items-center justify-center bg-muted">
                 <span className="text-[10px] text-muted-foreground text-center leading-tight px-0.5">
                   {cat.name}
                 </span>
@@ -52,39 +49,14 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
       </div>
       {hasMore && (
         <div className="mt-6 text-center">
-          <Button variant="outline" size="sm" render={<Link href="/categories" />}>
+          <Button
+            variant="outline"
+            render={<Link href="/categories" className="w-1/3" />}
+          >
             Посмотреть все категории
           </Button>
         </div>
       )}
-    </section>
-  );
-}
-
-export function CategoryLinkList({ tree }: { tree: CategoryTree[] }) {
-  return (
-    <section className="px-4 lg:px-6 py-10">
-      <h2 className="text-[11px] font-semibold tracking-widest uppercase text-zinc-400 mb-4">
-        Поиск по категориям
-      </h2>
-      {tree.map(({ parent, children }) => (
-        <div key={parent.id} className="mb-6">
-          <h3 className="text-[13px] font-semibold text-zinc-900 mb-2">
-            {parent.name}
-          </h3>
-          <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-0.5">
-            {children.map((child) => (
-              <Link
-                key={child.id}
-                href={`/categories/${child.slug}`}
-                className="text-[13px] text-zinc-600 hover:text-zinc-900 transition-colors py-[2px]"
-              >
-                {child.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      ))}
     </section>
   );
 }
