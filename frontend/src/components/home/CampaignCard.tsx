@@ -7,7 +7,10 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
   const href = campaign.link || "#";
 
   return (
-    <Link href={href} className="group relative w-full h-[70vh] sm:h-[95vh]">
+    <Link
+      href={href}
+      className="group relative block w-full h-[70vh] sm:h-[95vh]"
+    >
       {campaign.video ? (
         <video
           className="absolute inset-0 w-full h-full object-cover"

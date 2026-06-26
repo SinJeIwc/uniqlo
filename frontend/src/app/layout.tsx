@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "UNIQLO KG — Одежда для женщин, мужчин и детей | Кыргызстан",
+  title: "UNIQLO | Кыргызстан",
   description: "Стильная и комфортная одежда от UNIQLO Кыргызстан.",
 };
 
@@ -18,8 +18,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="ru" className={`${inter.variable}`}>
+      <body className="min-h-full">
         <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
