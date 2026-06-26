@@ -12,14 +12,14 @@ export default function BabyPage() {
   const campaigns: Campaign[] = homepageData;
   const hero = campaigns[0];
   const rest = campaigns.slice(1);
-  const categories = getNavCategories("baby");
+  const parents = getNavCategories("baby");
 
   return (
     <>
       <Header />
       <main>
         <CampaignCard campaign={hero} />
-        <CategoryIconGrid categories={categories} />
+        <CategoryIconGrid parents={parents} />
         <CampaignGrid campaigns={rest} />
       </main>
       <Footer />

@@ -12,14 +12,14 @@ export default function KidsPage() {
   const campaigns: Campaign[] = homepageData;
   const hero = campaigns[0];
   const rest = campaigns.slice(1);
-  const categories = getNavCategories("kids");
+  const parents = getNavCategories("kids");
 
   return (
     <>
       <Header />
       <main>
         <CampaignCard campaign={hero} />
-        <CategoryIconGrid categories={categories} />
+        <CategoryIconGrid parents={parents} />
         <CampaignGrid campaigns={rest} />
       </main>
       <Footer />

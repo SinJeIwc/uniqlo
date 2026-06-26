@@ -91,8 +91,8 @@ export function CampaignGrid({ campaigns }: { campaigns: Campaign[] }) {
     <div className="flex flex-col gap-4">
       {campaigns
         .filter((c) => c.image || c.video)
-        .map((c) => (
-          <CampaignCard key={c.link} campaign={c} />
+        .map((c, i) => (
+          <CampaignCard key={i} campaign={c} />
         ))}
     </div>
   );

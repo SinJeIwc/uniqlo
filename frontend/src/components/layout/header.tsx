@@ -34,7 +34,7 @@ export function Header() {
   const isHome = pathname === "/";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 w-full">
+    <header className="fixed top-0 left-0 right-0 z-40 w-full container mx-auto">
       {/* Main bar — 64px desktop, 56px mobile — transparent, no background space */}
       <div
         className={cn(
