@@ -1,42 +1,92 @@
 [
   {
-    "image": "https://im.uniqlo.com/global-cms/spa/res323f0d4c5f9be9c5ed2a0ac8d5c1c078fr.jpg",
-    "video": null,
-    "badge": "CPJ",
-    "title": "UNIQLO：C",
-    "description": "英国の著名デザイナー クレア・ワイト・ケラーによる 特別コレクション",
-    "price": null,
+    "image": "https://im.uniqlo.com/global-cms/spa/res19a1c4dea22263fd26ab24746295b078fr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/GL_Aseets/UT/musical-icons/musical-icons-w-movie01-sp-2-1.mp4",
+    "badge": "UT",
+    "title": "Мюзикл Айконс UT",
+    "description": "Шедевр мюзикла открылся как UT",
+    "price": "¥1,990",
     "saleText": null,
-    "link": "https://www.uniqlo.com/jp/ja/men/special-collaboration/uniqlo-c"
+    "link": "/jp/ja/spl/ut-graphic-tees/musical-icons/men"
   },
   {
-    "image": "https://im.uniqlo.com/global-cms/spa/resb232e11abc0599464c3df1a639752cb3fr.jpg",
-    "video": null,
-    "badge": "LW Collection",
-    "title": "LifeWear Collection 2026夏コレクション",
-    "description": "カラーとシルエットで装いをリフレッシュ 夏の最新コレクション",
-    "price": null,
+    "image": "https://im.uniqlo.com/global-cms/spa/res2b71ff89e5acb791a148612be58c373afr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/GL_Aseets/UT/manga-ut-2/manga-ut-2_wmk_pc_2-1-movie.mp4",
+    "badge": "UT",
+    "title": "Манга UT 100-летие основания Shueisha, том 2",
+    "description": "Появились 6 новых узоров, включая Кодзикодзи",
+    "price": "¥1,990",
     "saleText": null,
-    "link": "https://www.uniqlo.com/jp/ja/special-feature/lifewear-collection/men"
+    "link": "/jp/ja/spl/ut-graphic-tees/shueisha-100th-2/men"
   },
   {
-    "image": "https://im.uniqlo.com/global-cms/spa/res61c8dc80f1472f8f09ec5b98bc436a3ffr.jpg",
+    "image": "https://im.uniqlo.com/global-cms/spa/rese8073474c45eb76a7b7de2f472e31cbafr.jpg",
     "video": null,
-    "badge": null,
-    "title": null,
-    "description": null,
-    "price": null,
+    "badge": "Большой вирусный успех в соцсетях",
+    "title": "Боксерская укороченная футболка",
+    "description": "Короткая модная популярная футболка",
+    "price": "¥990",
     "saleText": null,
     "link": "/jp/ja/men/tops/t-shirts"
   },
   {
-    "image": "https://im.uniqlo.com/global-cms/spa/resfa4f40594da4ca3d2ddd390e2c730876fr.jpg",
+    "image": "https://im.uniqlo.com/global-cms/spa/res101e6a22241a7df5b73ce9c99df234bdfr.jpg",
     "video": null,
-    "badge": "UniqloU",
-    "title": "エアリズムコットン クルーネックTシャツ",
-    "description": "あの理想の肌ざわりを、長袖に",
-    "price": "¥1,290",
-    "saleText": "4月16日まで期間限定価格",
-    "link": "/jp/ja/feature/limited-offers/men"
+    "badge": null,
+    "title": "поло",
+    "description": "Более 50 цветов и узоров, богатый выбор поло",
+    "price": null,
+    "saleText": null,
+    "link": "/jp/ja/men/shirts-and-polo-shirts/polo-shirts"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resbe8342c78d9bc072d6b0150647bc7c15fr.jpg",
+    "video": null,
+    "badge": "UV",
+    "title": "Драй EX UV-защитная толстовка на молнии с капюшоном",
+    "description": "Парка также пригодится в качестве накидки в дни с перепадом температуры",
+    "price": "¥1,990",
+    "saleText": null,
+    "link": "/jp/ja/men/uv-protection"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res2e326911ce8a1f4dc068357b65bf8f8cfr.jpg",
+    "video": "https://image.uniqlo.com/UQ/CMS/video/jp/2026/HOME/0529/26ss_kandoCM_1920x960.mp4",
+    "badge": null,
+    "title": "впечатляющие трусы",
+    "description": "Потрясающий жакет также по выгодной цене ¥5,990",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/men/bottoms/kando-pants"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res58d090848d6f2237a3b60eac989900aafr.jpg",
+    "video": null,
+    "badge": null,
+    "title": "Супер не гладильная узкая рубашка",
+    "description": "時短・仕事も支える本格ビジネスシャツ",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/men/shirts-and-polo-shirts/dress-shirts"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/resa651ad6e8e889e98c131b7a4de4ff847fr.jpg",
+    "video": null,
+    "badge": "AIRism",
+    "title": "エアリズムインナー",
+    "description": "Самый популярный флагманский продукт среди Airism*",
+    "price": "¥990",
+    "saleText": null,
+    "link": "/jp/ja/men/innerwear/airism"
+  },
+  {
+    "image": "https://im.uniqlo.com/global-cms/spa/res75626ae4961e29397d70661079ae4427fr.jpg",
+    "video": null,
+    "badge": "AIRism",
+    "title": "Набор из сетки и хлопка Airism",
+    "description": "Пижамы, комфортные даже в сезон дождей и в жаркие дни, по выгодной цене",
+    "price": "¥2,990",
+    "saleText": null,
+    "link": "/jp/ja/men/loungewear-and-homeware"
   }
 ]
