@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "UNIQLO KG — Одежда для женщин, мужчин и детей | Кыргызстан",
-  description: "Стильная и комфортная одежда от UNIQLO Кыргызстан. LifeWear — качественная одежда на каждый день.",
+  description: "Стильная и комфортная одежда от UNIQLO Кыргызстан.",
 };
 
 export default function RootLayout({

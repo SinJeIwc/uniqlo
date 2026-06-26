@@ -6,7 +6,9 @@ import { CampaignCard, CampaignGrid } from "@/components/home/CampaignCard";
 import { CategoryIconGrid } from "@/components/home/CategoryNav";
 import type { Campaign } from "@/components/home/types";
 
-const womenCategories = categoriesData.categories.find((c) => c.id === "women")!;
+const womenCategories = categoriesData.categories.find(
+  (c) => c.id === "women",
+)!;
 
 export default function HomePage() {
   const campaigns: Campaign[] = homepageData;
@@ -17,7 +19,6 @@ export default function HomePage() {
     <>
       <Header />
 
-      {/* HERO — first campaign block, 90vh */}
       {hero && (hero.image || hero.video) && <CampaignCard campaign={hero} />}
 
       <main>
