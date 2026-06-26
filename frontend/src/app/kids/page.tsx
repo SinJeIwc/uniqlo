@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import homepageData from "@/data/home/kids.json";
 import { CampaignCard, CampaignGrid } from "@/components/home/CampaignCard";
@@ -16,7 +15,6 @@ export default function KidsPage() {
 
   return (
     <>
-      <Header />
       <main>
         <CampaignCard campaign={hero} />
         <CategoryIconGrid parents={parents} />

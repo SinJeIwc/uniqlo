@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -29,7 +28,6 @@ export default async function ProductPage({
 
   return (
     <>
-      <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-8 py-8">
         {/* Breadcrumbs */}
         <nav className="text-sm text-zinc-500 mb-6">

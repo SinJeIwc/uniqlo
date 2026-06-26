@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -59,7 +58,6 @@ export default async function CategoryPage({
 
   return (
     <>
-      <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <h1 className="text-3xl font-bold text-zinc-900 mb-2">
           {subcategory?.nameRu || slug}
@@ -153,7 +151,6 @@ function GenderPage({
 
   return (
     <>
-      <Header />
       <main>
         {/* Hero */}
         <Link href={hero.href} className="block relative w-full">

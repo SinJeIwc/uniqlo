@@ -232,7 +232,7 @@ def main():
             else:
                 candidates = leaf_by_name.get((gender, name), [])
                 if candidates:
-                    best = next((c for c in candidates if c["parent_name"] and any(md.startswith(c["parent_name"]) for md in md_names_by_gender.get(gender, set()))), candidates[0])
+                    best = next((c for c in reversed(candidates) if c["parent_name"] in md_names_by_gender.get(gender, set())), candidates[-1])
                     matched[gender].append((name, best["key"], best["id"], best["parent_id"], best["parent_key"], best["parent_name"], False))
                 else:
                     # Try reversing name parts (レギンス・パンツ ↔ パンツ・レギンス)
@@ -245,7 +245,7 @@ def main():
                             continue
                         candidates2 = leaf_by_name.get((gender, reversed_name), [])
                         if candidates2:
-                            best = next((c for c in candidates2 if c["parent_name"] in md_names_by_gender.get(gender, set())), candidates2[0])
+                            best = next((c for c in reversed(candidates2) if c["parent_name"] in md_names_by_gender.get(gender, set())), candidates2[-1])
                             matched[gender].append((name, best["key"], best["id"], best["parent_id"], best["parent_key"], best["parent_name"], False))
                             continue
                     print(f"  ⚠ {gender}/{name} — не найден")

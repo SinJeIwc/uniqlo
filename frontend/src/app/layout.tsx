@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ClientProviders } from "@/components/layout/ClientProviders";
+import { HeaderShell } from "@/components/layout/header-shell";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,7 +23,10 @@ export default function RootLayout({
     <html lang="ru" className={`${inter.variable}`}>
       <body className="min-h-full">
         <ClientProviders>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <HeaderShell />
+            {children}
+          </TooltipProvider>
         </ClientProviders>
       </body>
     </html>
