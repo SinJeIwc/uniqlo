@@ -58,7 +58,8 @@ def main():
         db_path = sys.argv[sys.argv.index("--db") + 1]
 
     # ---- Step 1: Images from burger menu ----
-    print("Extracting burger menu images ...")
+    print("▸ Извлечение иконок из бургер-меню ...", end=" ", flush=True)
+    t0 = time.time()
     slug_to_image = {}
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -86,10 +87,11 @@ def main():
         browser.close()
 
     for p in pairs:
-        slug_to_image.setdefault(p["slug"], p["src"])  # keep first image per slug
-    print(f"  {len(slug_to_image)} slug→image mappings")
+        slug_to_image.setdefault(p["slug"], p["src"])
+    print(f"OK ({len(slug_to_image)} иконок, {time.time()-t0:.0f}с)")
 
     # ---- Step 2: Build per-gender ----
+    print("▸ Сборка Level-2 категорий ...")
     conn = sqlite3.connect(db_path)
     conn.execute("DROP TABLE IF EXISTS nav_categories")
     conn.execute("""CREATE TABLE nav_categories (

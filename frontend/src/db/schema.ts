@@ -8,6 +8,7 @@ export const categories = sqliteTable("categories", {
   parentId: integer("parent_id"),
   order: integer("order").default(0),
   image: text("image"),
+  visible: integer("visible").default(1),
 });
 
 export const navCategories = sqliteTable("nav_categories", {
@@ -36,4 +37,16 @@ export const products = sqliteTable("products", {
   rating: real("rating").default(0),
   reviewCount: integer("review_count").default(0),
   inStock: integer("in_stock").default(1),
+});
+
+export const users = sqliteTable("users", {
+  id: integer("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email"),
+  avatar: text("avatar"),
+  provider: text("provider").notNull(),
+  providerId: text("provider_id").notNull(),
+  role: text("role").notNull().default("user"),
+  passwordHash: text("password_hash"),
+  createdAt: text("created_at").notNull(),
 });
