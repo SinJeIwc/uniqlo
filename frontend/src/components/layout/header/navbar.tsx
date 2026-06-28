@@ -16,8 +16,8 @@ interface NavbarProps {
 
 function tabLinkClass(isActive: boolean) {
   return cn(
-    "flex items-center justify-center text-[17px] font-normal tracking-[0.022em] border-b-2 transition-colors whitespace-nowrap",
-    "font-[UniqloPro]",
+    "flex items-center justify-center text-[15px] lg:text-[17px] tracking-[0.022em] border-b-1 transition-colors whitespace-nowrap",
+    "font-[UniqloProRegular,sans-serif]",
     isActive ? cn("border-white") : cn("border-transparent"),
   );
 }
@@ -25,12 +25,12 @@ function tabLinkClass(isActive: boolean) {
 /** Desktop: inline tabs in the main header row */
 export function NavbarDesktop({ activeTab }: NavbarProps) {
   return (
-    <nav className="hidden lg:flex items-center h-full ml-6">
+    <nav className="hidden lg:flex items-center h-full ml-12 py-3 gap-6">
       {TABS.map((tab) => (
         <Link
           key={tab.id}
           href={tab.href}
-          className={cn(tabLinkClass(activeTab === tab.id), "h-full px-3")}
+          className={cn(tabLinkClass(activeTab === tab.id), "h-full")}
         >
           {tab.label}
         </Link>
@@ -42,7 +42,7 @@ export function NavbarDesktop({ activeTab }: NavbarProps) {
 /** Mobile: 4-column grid below the main row, 44px height */
 export function NavbarMobile({ activeTab }: NavbarProps) {
   return (
-    <div className="lg:hidden max-w-[1200px] mx-auto px-4 h-11 grid grid-cols-4">
+    <div className="lg:hidden max-w-300 mx-auto px-4 h-11 flex justify-between font-normal">
       {TABS.map((tab) => (
         <Link
           key={tab.id}

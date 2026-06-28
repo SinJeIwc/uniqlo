@@ -14,8 +14,5 @@ function getActiveTab(pathname: string): TabId | null {
 
 export function HeaderShell() {
   const pathname = usePathname();
-  const activeTab = getActiveTab(pathname);
-  const isHome = pathname === "/";
-
-  return <Header activeTab={activeTab} isHome={isHome} />;
+  return <Header activeTab={getActiveTab(pathname)} />;
 }
