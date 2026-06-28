@@ -18,9 +18,7 @@ function tabLinkClass(isActive: boolean) {
   return cn(
     "flex items-center justify-center text-[15px] lg:text-[17px] tracking-[0.022em] border-b-1 transition-colors whitespace-nowrap",
     "font-[UniqloProRegular,sans-serif]",
-    isActive
-      ? cn("border-white shadow-[0_1px_3px_rgba(255,255,255,0.3)]")
-      : cn("border-transparent"),
+    isActive ? cn("border-white") : cn("border-transparent"),
   );
 }
 
