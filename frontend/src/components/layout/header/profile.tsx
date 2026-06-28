@@ -21,7 +21,7 @@ export function ProfileButtons() {
       <Button
         variant="ghost"
         size="icon-lg"
-        render={<Link href="/account" />}
+        render={<Link href="/member" />}
         nativeButton={false}
         aria-label="Аккаунт"
       >
