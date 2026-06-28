@@ -1,53 +1,47 @@
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 const footerSections = [
   {
     title: "Помощь",
     links: [
-      { label: "Мой аккаунт", href: "/account" },
-      { label: "Магазины", href: "/stores" },
+      { label: "Мой аккаунт", href: "/member" },
+      { label: "Магазины", href: "/" },
       { label: "Обмен и возврат", href: "/returns" },
-      { label: "Подарочная карта", href: "/gift-card" },
-      { label: "Контакты и FAQ", href: "/contact" },
+      { label: "Контакты", href: "/contact" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {
     title: "О нас",
-    links: [
-      { label: "Компания", href: "/about" },
-      { label: "Устойчивое развитие", href: "/sustainability" },
-      { label: "Карьера", href: "/careers" },
-      { label: "Приложение UNIQLO", href: "/app" },
-    ],
+    links: [{ label: "Компания", href: "/information" }],
   },
   {
     title: "Группа компаний",
+    links: [{ label: "BishWay", href: "https://bishway.com/" }],
+  },
+  {
     links: [
-      { label: "GU", href: "#" },
-      { label: "Theory", href: "#" },
+      { label: "Политика конфиденциальности", href: "/privacy" },
+      { label: "Условия использования", href: "/terms" },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-zinc-200 mt-auto">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 py-12">
-        {/* Promo bar */}
-        <div className="text-center text-sm text-zinc-600 mb-10 pb-8 border-b border-zinc-100">
-          <p>Бесплатная доставка от 5 000 KGS | Бесплатный самовывоз из магазина</p>
-        </div>
-
+    <footer className="bg-gray-100 mt-4 pt-6">
+      <div className="container mx-auto px-4 sm:px-10">
         {/* Link sections */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-10">
+        <div className="flex flex-col pb-4">
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="text-sm font-semibold text-zinc-900 mb-3">
+              <h3 className="text-[13px] text-gray-500 my-3">
                 {section.title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="flex flex-col sm:flex-row sm:divide-x divide-foreground font-medium">
                 {section.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.label} className="sm:first:pl-0 sm:px-3">
                     <Link
                       href={link.href}
                       className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
@@ -61,24 +55,14 @@ export function Footer() {
           ))}
         </div>
 
+        <Separator />
+
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <div className="flex gap-4">
-            <Link href="/terms" className="hover:text-zinc-900 transition-colors">
-              Условия использования
-            </Link>
-            <Link href="/privacy" className="hover:text-zinc-900 transition-colors">
-              Конфиденциальность
-            </Link>
-            <Link href="/accessibility" className="hover:text-zinc-900 transition-colors">
-              Доступность
-            </Link>
-          </div>
-          <p>© 2026 UNIQLO KG. Все права защищены.</p>
-          <div className="flex gap-3 text-zinc-400">
-            <span>🇰🇬 Кыргызстан</span>
-            <span className="font-medium text-zinc-600">Русский</span>
-          </div>
+        <div className="flex justify-between items-center">
+          <p className="py-4 text-gray-500 text-[13px]">
+            © 2026 UNIQLO KG. Все права защищены.
+          </p>
+          <div className="flex text-xs">Тут будут соцсети</div>
         </div>
       </div>
     </footer>
