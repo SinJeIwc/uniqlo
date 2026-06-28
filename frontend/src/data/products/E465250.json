@@ -9,15 +9,8 @@
   "rating": 4.7,
   "reviewCount": 389,
   "badges": [],
-  "tags": [
-    "AIRism",
-    "UV защита"
-  ],
-  "features": [
-    "UV защита UPF50",
-    "Быстрое высыхание",
-    "Антибактериальная обработка"
-  ],
+  "tags": ["AIRism", "UV защита"],
+  "features": ["UV защита UPF50", "Быстрое высыхание", "Антибактериальная обработка"],
   "colors": [
     {
       "code": "00",
@@ -40,14 +33,7 @@
       "hex": "#808080"
     }
   ],
-  "sizes": [
-    "XS",
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL"
-  ],
+  "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
   "images": [
     {
       "colorCode": "00",
@@ -81,14 +67,8 @@
   "currency": "KGS",
   "description": "UV защита UPF50",
   "descriptionRu": "UV защита UPF50",
-  "materials": [
-    "Хлопок",
-    "Полиэстер"
-  ],
-  "careInstructions": [
-    "Машинная стирка при 40°C",
-    "Не отбеливать"
-  ],
+  "materials": ["Хлопок", "Полиэстер"],
+  "careInstructions": ["Машинная стирка при 40°C", "Не отбеливать"],
   "sizeFit": "Стандартный крой. Соответствует размеру.",
   "originalPrice": null
 }

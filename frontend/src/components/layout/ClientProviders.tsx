@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { AuthProvider } from "@/components/auth/AuthProvider";
+import { AuthProvider } from "@/components/auth/AuthProvider"
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
-  return <AuthProvider>{children}</AuthProvider>;
+  return <AuthProvider>{children}</AuthProvider>
 }

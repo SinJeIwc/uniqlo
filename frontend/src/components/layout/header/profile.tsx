@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { Heart, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Heart, User } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function ProfileButtons() {
   return (
@@ -28,5 +28,5 @@ export function ProfileButtons() {
         <User className="size-5" strokeWidth={1.5} />
       </Button>
     </>
-  );
+  )
 }

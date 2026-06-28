@@ -1,28 +1,28 @@
-import { NextResponse } from "next/server";
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq, and } from "drizzle-orm";
-import { getSession } from "@/lib/session";
-import { verifyTelegramHash, extractTelegramUser } from "@/lib/telegram";
+import { and, eq } from "drizzle-orm"
+import { NextResponse } from "next/server"
+import { db } from "@/db"
+import { users } from "@/db/schema"
+import { getSession } from "@/lib/session"
+import { extractTelegramUser, verifyTelegramHash } from "@/lib/telegram"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const data = await request.json()
 
     if (!verifyTelegramHash(data)) {
-      return NextResponse.json({ error: "Invalid Telegram hash" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid Telegram hash" }, { status: 401 })
     }
 
-    const tg = extractTelegramUser(data);
+    const tg = extractTelegramUser(data)
 
     // Upsert: find existing or create
     let user = db
       .select()
       .from(users)
       .where(and(eq(users.provider, "telegram"), eq(users.providerId, tg.providerId)))
-      .get();
+      .get()
 
     if (!user) {
       db.insert(users)
@@ -34,17 +34,17 @@ export async function POST(request: Request) {
           role: "user",
           createdAt: new Date().toISOString(),
         })
-        .run();
+        .run()
 
       user = db
         .select()
         .from(users)
         .where(and(eq(users.provider, "telegram"), eq(users.providerId, tg.providerId)))
-        .get();
+        .get()
     }
 
     // Set session
-    const session = await getSession();
+    const session = await getSession()
     session.user = {
       id: user!.id,
       name: user!.name,
@@ -52,12 +52,12 @@ export async function POST(request: Request) {
       avatar: user!.avatar,
       role: user!.role,
       provider: user!.provider,
-    };
-    await session.save();
+    }
+    await session.save()
 
-    return NextResponse.json({ ok: true, user: session.user });
+    return NextResponse.json({ ok: true, user: session.user })
   } catch (err) {
-    console.error("Telegram auth error:", err);
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+    console.error("Telegram auth error:", err)
+    return NextResponse.json({ error: "Internal error" }, { status: 500 })
   }
 }

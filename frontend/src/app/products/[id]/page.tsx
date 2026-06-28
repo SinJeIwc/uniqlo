@@ -1,33 +1,31 @@
-import { Footer } from "@/components/layout/footer";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Heart, Share2, Minus, Plus } from "lucide-react";
+import { Heart, Minus, Plus, Share2 } from "lucide-react"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { Footer } from "@/components/layout/footer"
+import { Header } from "@/components/layout/header"
 
 // Dynamic product loading
 async function getProduct(id: string) {
   try {
-    const product = await import(`@/data/products/${id}.json`);
-    return product.default || product;
+    const product = await import(`@/data/products/${id}.json`)
+    return product.default || product
   } catch {
-    return null;
+    return null
   }
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  const product = await getProduct(id);
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const product = await getProduct(id)
 
-  if (!product) notFound();
+  if (!product) notFound()
 
-  const mainColor = product.colors[0];
-  const imageUrl = `https://image.uniqlo.com/UQ/ST3/us/imagesgoods/${product.productId}/item/usgoods_${mainColor.code}_${product.productId}_3x4.jpg`;
+  const mainColor = product.colors[0]
+  const imageUrl = `https://image.uniqlo.com/UQ/ST3/us/imagesgoods/${product.productId}/item/usgoods_${mainColor.code}_${product.productId}_3x4.jpg`
 
   return (
     <>
+      <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-8 py-8">
         {/* Breadcrumbs */}
         <nav className="text-sm text-zinc-500 mb-6">
@@ -35,19 +33,16 @@ export default async function ProductPage({
             Главная
           </Link>
           <span className="mx-2">/</span>
-          <Link
-            href={`/categories/${product.category}`}
-            className="hover:text-zinc-900"
-          >
+          <Link href={`/categories/${product.category}`} className="hover:text-zinc-900">
             {product.gender === "women"
               ? "Женщины"
               : product.gender === "men"
-              ? "Мужчины"
-              : product.gender === "kids"
-              ? "Дети"
-              : product.gender === "baby"
-              ? "Младенцы"
-              : "Унисекс"}
+                ? "Мужчины"
+                : product.gender === "kids"
+                  ? "Дети"
+                  : product.gender === "baby"
+                    ? "Младенцы"
+                    : "Унисекс"}
           </Link>
           <span className="mx-2">/</span>
           <span className="text-zinc-900">{product.nameRu}</span>
@@ -83,9 +78,7 @@ export default async function ProductPage({
                   ))}
                 </div>
               )}
-              <h1 className="text-2xl lg:text-3xl font-bold text-zinc-900">
-                {product.nameRu}
-              </h1>
+              <h1 className="text-2xl lg:text-3xl font-bold text-zinc-900">{product.nameRu}</h1>
             </div>
 
             {/* Price */}
@@ -104,10 +97,7 @@ export default async function ProductPage({
             <div className="flex items-center gap-2">
               <span className="text-yellow-500">★</span>
               <span className="text-sm font-medium">{product.rating}</span>
-              <Link
-                href="#reviews"
-                className="text-sm text-zinc-500 underline hover:text-zinc-900"
-              >
+              <Link href="#reviews" className="text-sm text-zinc-500 underline hover:text-zinc-900">
                 ({product.reviewCount} отзывов)
               </Link>
             </div>
@@ -128,9 +118,7 @@ export default async function ProductPage({
 
             {/* Color Selector */}
             <div>
-              <p className="text-sm text-zinc-500 mb-2">
-                Цвет: {mainColor.name}
-              </p>
+              <p className="text-sm text-zinc-500 mb-2">Цвет: {mainColor.name}</p>
               <div className="flex gap-2 flex-wrap">
                 {product.colors.map((c: { code: string; name: string; hex: string }) => (
                   <button
@@ -184,8 +172,7 @@ export default async function ProductPage({
             {/* Wishlist + Share */}
             <div className="flex gap-4">
               <button className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900">
-                <Heart className="size-4" />
-                В избранное
+                <Heart className="size-4" />В избранное
               </button>
               <button className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900">
                 <Share2 className="size-4" />
@@ -204,9 +191,7 @@ export default async function ProductPage({
         {/* Description */}
         <section className="mt-16 max-w-2xl">
           <h2 className="text-xl font-bold text-zinc-900 mb-4">Описание</h2>
-          <p className="text-sm text-zinc-600 mb-1">
-            Код товара: {product.productId}
-          </p>
+          <p className="text-sm text-zinc-600 mb-1">Код товара: {product.productId}</p>
           <ul className="space-y-2 mt-4">
             {product.features.map((f: string, i: number) => (
               <li key={i} className="text-sm text-zinc-600 flex gap-2">
@@ -221,7 +206,9 @@ export default async function ProductPage({
               <h3 className="text-sm font-semibold text-zinc-900">Материалы</h3>
               <ul className="mt-1 space-y-1">
                 {product.materials.map((m: string, i: number) => (
-                  <li key={i} className="text-sm text-zinc-600">{m}</li>
+                  <li key={i} className="text-sm text-zinc-600">
+                    {m}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -229,14 +216,14 @@ export default async function ProductPage({
               <h3 className="text-sm font-semibold text-zinc-900">Уход</h3>
               <ul className="mt-1 space-y-1">
                 {product.careInstructions.map((c: string, i: number) => (
-                  <li key={i} className="text-sm text-zinc-600">{c}</li>
+                  <li key={i} className="text-sm text-zinc-600">
+                    {c}
+                  </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-zinc-900">
-                Размер и посадка
-              </h3>
+              <h3 className="text-sm font-semibold text-zinc-900">Размер и посадка</h3>
               <p className="text-sm text-zinc-600 mt-1">{product.sizeFit}</p>
             </div>
           </div>
@@ -244,5 +231,5 @@ export default async function ProductPage({
       </main>
       <Footer />
     </>
-  );
+  )
 }

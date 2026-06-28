@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+import Link from "next/link"
+import { Separator } from "@/components/ui/separator"
 
 const footerSections = [
   {
@@ -30,7 +30,7 @@ const footerSections = [
       { label: "Условия использования", href: "/terms" },
     ],
   },
-];
+]
 
 export function Footer() {
   return (
@@ -40,9 +40,7 @@ export function Footer() {
         <div className="flex flex-col pb-4">
           {footerSections.map((section) => (
             <div key={section.id}>
-              <h3 className="text-[13px] text-gray-500 my-3">
-                {section.title}
-              </h3>
+              <h3 className="text-[13px] text-gray-500 my-3">{section.title}</h3>
               <ul className="flex flex-col sm:flex-row sm:divide-x divide-foreground font-medium">
                 {section.links.map((link) => (
                   <li key={link.label} className="sm:first:pl-0 sm:px-3">
@@ -63,12 +61,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="flex justify-between items-center">
-          <p className="py-4 text-gray-500 text-[13px]">
-            © 2026 UNIQLO KG. Все права защищены.
-          </p>
+          <p className="py-4 text-gray-500 text-[13px]">© 2026 UNIQLO KG. Все права защищены.</p>
           <div className="flex text-xs">Тут будут соцсети</div>
         </div>
       </div>
     </footer>
-  );
+  )
 }

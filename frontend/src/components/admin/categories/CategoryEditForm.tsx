@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Field, FieldLabel, FieldDescription, FieldGroup } from "@/components/ui/field";
-import { Spinner } from "@/components/ui/spinner";
-import { SaveIcon, Trash2Icon } from "lucide-react";
-import type { CategoryNode } from "./types";
+import { SaveIcon, Trash2Icon } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
+import { Spinner } from "@/components/ui/spinner"
+import { Switch } from "@/components/ui/switch"
+import type { CategoryNode } from "./types"
 
 interface CategoryEditFormProps {
-  category: CategoryNode | null;
-  onSave: () => void;
+  category: CategoryNode | null
+  onSave: () => void
 }
 
 export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
-  const [name, setName] = useState("");
-  const [slug, setSlug] = useState("");
-  const [image, setImage] = useState("");
-  const [visible, setVisible] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
+  const [name, setName] = useState("")
+  const [slug, setSlug] = useState("")
+  const [image, setImage] = useState("")
+  const [visible, setVisible] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState("")
 
   useEffect(() => {
     if (category) {
-      setName(category.name);
-      setSlug(category.slug);
-      setImage(category.image || "");
-      setVisible(category.visible === 1);
+      setName(category.name)
+      setSlug(category.slug)
+      setImage(category.image || "")
+      setVisible(category.visible === 1)
     }
-  }, [category]);
+  }, [category])
 
   if (!category) {
     return (
@@ -40,38 +40,44 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
           Выберите категорию слева
         </CardContent>
       </Card>
-    );
+    )
   }
 
   async function handleSave() {
-    setSaving(true);
-    setError("");
+    setSaving(true)
+    setError("")
     try {
       const res = await fetch("/api/admin/categories", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: category!.id, name, slug, image: image || null, visible: visible ? 1 : 0 }),
-      });
-      if (!res.ok) throw new Error("Save failed");
-      onSave();
+        body: JSON.stringify({
+          id: category!.id,
+          name,
+          slug,
+          image: image || null,
+          visible: visible ? 1 : 0,
+        }),
+      })
+      if (!res.ok) throw new Error("Save failed")
+      onSave()
     } catch {
-      setError("Ошибка сохранения");
+      setError("Ошибка сохранения")
     } finally {
-      setSaving(false);
+      setSaving(false)
     }
   }
 
   async function handleDelete() {
-    if (!confirm(`Удалить «${category!.name}»? Это нельзя отменить.`)) return;
-    setSaving(true);
+    if (!confirm(`Удалить «${category!.name}»? Это нельзя отменить.`)) return
+    setSaving(true)
     try {
-      const res = await fetch(`/api/admin/categories?id=${category!.id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Delete failed");
-      onSave();
+      const res = await fetch(`/api/admin/categories?id=${category!.id}`, { method: "DELETE" })
+      if (!res.ok) throw new Error("Delete failed")
+      onSave()
     } catch {
-      setError("Ошибка удаления");
+      setError("Ошибка удаления")
     } finally {
-      setSaving(false);
+      setSaving(false)
     }
   }
 
@@ -97,7 +103,12 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
           </Field>
           <Field>
             <FieldLabel htmlFor="cat-image">URL картинки</FieldLabel>
-            <Input id="cat-image" value={image} onChange={(e) => setImage(e.target.value)} placeholder="https://..." />
+            <Input
+              id="cat-image"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="https://..."
+            />
           </Field>
           <Field orientation="horizontal">
             <FieldLabel htmlFor="cat-visible">Видима</FieldLabel>
@@ -107,10 +118,20 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
           <Separator />
           <div className="flex gap-2">
             <Button onClick={handleSave} disabled={saving} size="sm">
-              {saving ? <Spinner data-icon="inline-start" /> : <SaveIcon data-icon="inline-start" />}
+              {saving ? (
+                <Spinner data-icon="inline-start" />
+              ) : (
+                <SaveIcon data-icon="inline-start" />
+              )}
               Сохранить
             </Button>
-            <Button variant="outline" size="sm" onClick={handleDelete} disabled={saving} className="text-destructive hover:text-destructive">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDelete}
+              disabled={saving}
+              className="text-destructive hover:text-destructive"
+            >
               <Trash2Icon data-icon="inline-start" />
               Удалить
             </Button>
@@ -118,5 +139,5 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
         </FieldGroup>
       </CardContent>
     </Card>
-  );
+  )
 }

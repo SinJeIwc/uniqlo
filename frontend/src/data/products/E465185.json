@@ -8,18 +8,9 @@
   "price": 2490,
   "rating": 4.8,
   "reviewCount": 999,
-  "badges": [
-    "bestseller"
-  ],
-  "tags": [
-    "UNISEX",
-    "Переработанные материалы"
-  ],
-  "features": [
-    "Ткань AIRism с текстурой хлопка",
-    "Сохраняет свежесть",
-    "Мгновенная прохлада"
-  ],
+  "badges": ["bestseller"],
+  "tags": ["UNISEX", "Переработанные материалы"],
+  "features": ["Ткань AIRism с текстурой хлопка", "Сохраняет свежесть", "Мгновенная прохлада"],
   "colors": [
     {
       "code": "00",
@@ -42,16 +33,7 @@
       "hex": "#000080"
     }
   ],
-  "sizes": [
-    "XXS",
-    "XS",
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL",
-    "3XL"
-  ],
+  "sizes": ["XXS", "XS", "S", "M", "L", "XL", "XXL", "3XL"],
   "images": [
     {
       "colorCode": "00",
@@ -85,14 +67,8 @@
   "currency": "KGS",
   "description": "Ткань AIRism с текстурой хлопка",
   "descriptionRu": "Ткань AIRism с текстурой хлопка",
-  "materials": [
-    "Хлопок",
-    "Полиэстер"
-  ],
-  "careInstructions": [
-    "Машинная стирка при 40°C",
-    "Не отбеливать"
-  ],
+  "materials": ["Хлопок", "Полиэстер"],
+  "careInstructions": ["Машинная стирка при 40°C", "Не отбеливать"],
   "sizeFit": "Стандартный крой. Соответствует размеру.",
   "originalPrice": null
 }

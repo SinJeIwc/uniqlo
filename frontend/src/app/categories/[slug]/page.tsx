@@ -1,13 +1,23 @@
-import { Footer } from "@/components/layout/footer";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import categoriesData from "@/data/categories.json";
-import productsIndex from "@/data/products-index.json";
+import Link from "next/link"
+import { Footer } from "@/components/layout/footer"
+import { Header } from "@/components/layout/header"
+import categoriesData from "@/data/categories.json"
+import productsIndex from "@/data/products-index.json"
+import { cn } from "@/lib/utils"
 
 // Hero/campaign data for gender pages
-const GENDER_HEROS: Record<string, {
-  image: string; brand?: string; title: string; description: string; price?: string; saleText?: string; href: string;
-}> = {
+const GENDER_HEROS: Record<
+  string,
+  {
+    image: string
+    brand?: string
+    title: string
+    description: string
+    price?: string
+    saleText?: string
+    href: string
+  }
+> = {
   men: {
     image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473200/item/usgoods_00_473200_3x4.jpg",
     brand: "SUPIMA",
@@ -31,46 +41,40 @@ const GENDER_HEROS: Record<string, {
     price: "1 490 KGS",
     href: "/products/E476500",
   },
-};
+}
 
 const GENDER_LABELS: Record<string, string> = {
-  women: "WOMEN", men: "MEN", kids: "KIDS", baby: "BABY",
-};
+  women: "WOMEN",
+  men: "MEN",
+  kids: "KIDS",
+  baby: "BABY",
+}
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
 
   // Check if it's a gender page
-  const genderCategory = categoriesData.categories.find((c) => c.id === slug);
-  const isGender = !!genderCategory;
+  const genderCategory = categoriesData.categories.find((c) => c.id === slug)
+  const isGender = !!genderCategory
 
   if (isGender) {
-    return <GenderPage gender={slug} category={genderCategory} />;
+    return <GenderPage gender={slug} category={genderCategory} />
   }
 
   // Subcategory page: show products
-  const products = productsIndex.filter((p) => p.category === slug);
-  const subcategory = findSubcategory(slug);
+  const products = productsIndex.filter((p) => p.category === slug)
+  const subcategory = findSubcategory(slug)
 
   return (
     <>
+      <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
-        <h1 className="text-3xl font-bold text-zinc-900 mb-2">
-          {subcategory?.nameRu || slug}
-        </h1>
+        <h1 className="text-3xl font-bold text-zinc-900 mb-2">{subcategory?.nameRu || slug}</h1>
         <p className="text-zinc-500 mb-8">{products.length} товаров</p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {products.map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.id}`}
-              className="group"
-            >
+            <Link key={product.id} href={`/products/${product.id}`} className="group">
               <div className="aspect-[3/4] bg-zinc-100 overflow-hidden mb-3 relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -85,8 +89,8 @@ export default async function CategoryPage({
                     {product.badges[0] === "bestseller"
                       ? "Хит"
                       : product.badges[0] === "new"
-                      ? "Новинка"
-                      : product.badges[0]}
+                        ? "Новинка"
+                        : product.badges[0]}
                   </span>
                 )}
               </div>
@@ -94,12 +98,12 @@ export default async function CategoryPage({
                 {product.gender === "women"
                   ? "Женщины"
                   : product.gender === "men"
-                  ? "Мужчины"
-                  : product.gender === "kids"
-                  ? "Дети"
-                  : product.gender === "baby"
-                  ? "Младенцы"
-                  : "Унисекс"}
+                    ? "Мужчины"
+                    : product.gender === "kids"
+                      ? "Дети"
+                      : product.gender === "baby"
+                        ? "Младенцы"
+                        : "Унисекс"}
               </p>
               <h3 className="text-sm font-medium text-zinc-900 line-clamp-2 group-hover:underline">
                 {product.nameRu}
@@ -118,14 +122,12 @@ export default async function CategoryPage({
         </div>
 
         {products.length === 0 && (
-          <p className="text-zinc-500 text-center py-20">
-            Товары не найдены в этой категории.
-          </p>
+          <p className="text-zinc-500 text-center py-20">Товары не найдены в этой категории.</p>
         )}
       </main>
       <Footer />
     </>
-  );
+  )
 }
 
 // Gender page component
@@ -133,24 +135,25 @@ function GenderPage({
   gender,
   category,
 }: {
-  gender: string;
-  category: (typeof categoriesData.categories)[0];
+  gender: string
+  category: (typeof categoriesData.categories)[0]
 }) {
   const hero = GENDER_HEROS[gender] || {
     image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465185/item/usgoods_00_465185_3x4.jpg",
     title: category.nameRu,
     description: "Одежда на каждый день. LifeWear.",
     href: `/categories/${gender}`,
-  };
+  }
 
   // Products for this gender
   const genderProducts = productsIndex.filter((p) => {
-    if (gender === "women") return p.gender === "women" || p.gender === "unisex";
-    return p.gender === gender;
-  });
+    if (gender === "women") return p.gender === "women" || p.gender === "unisex"
+    return p.gender === gender
+  })
 
   return (
     <>
+      <Header />
       <main>
         {/* Hero */}
         <Link href={hero.href} className="block relative w-full">
@@ -169,13 +172,9 @@ function GenderPage({
                   {hero.brand}
                 </p>
               )}
-              <p className="text-lg lg:text-xl font-bold leading-tight mb-0.5">
-                {hero.title}
-              </p>
+              <p className="text-lg lg:text-xl font-bold leading-tight mb-0.5">{hero.title}</p>
               <p className="text-sm opacity-80 mb-0.5">{hero.description}</p>
-              {hero.price && (
-                <p className="text-sm font-bold">{hero.price}</p>
-              )}
+              {hero.price && <p className="text-sm font-bold">{hero.price}</p>}
             </div>
           </div>
         </Link>
@@ -210,11 +209,7 @@ function GenderPage({
             <h2 className="text-xl font-bold text-zinc-900 mb-6">Популярное</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {genderProducts.slice(0, 8).map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/products/${product.id}`}
-                  className="group"
-                >
+                <Link key={product.id} href={`/products/${product.id}`} className="group">
                   <div className="aspect-[3/4] bg-zinc-100 overflow-hidden mb-3 relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -253,14 +248,14 @@ function GenderPage({
       </main>
       <Footer />
     </>
-  );
+  )
 }
 
 function findSubcategory(slug: string) {
   for (const cat of categoriesData.categories) {
     for (const child of cat.children) {
-      if (child.id === slug) return child;
+      if (child.id === slug) return child
     }
   }
-  return null;
+  return null
 }

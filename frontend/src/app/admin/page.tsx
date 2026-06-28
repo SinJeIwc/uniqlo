@@ -1,13 +1,13 @@
-import { db } from "@/db";
-import { categories, users } from "@/db/schema";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { db } from "@/db"
+import { categories, users } from "@/db/schema"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
 export default function AdminDashboard() {
-  const catCount = db.select().from(categories).all().length;
-  const userCount = db.select().from(users).all().length;
+  const catCount = db.select().from(categories).all().length
+  const userCount = db.select().from(users).all().length
 
   return (
     <div className="space-y-6">
@@ -27,7 +27,9 @@ export default function AdminDashboard() {
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Пользователей</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Пользователей
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">{userCount}</p>
@@ -35,5 +37,5 @@ export default function AdminDashboard() {
         </Card>
       </div>
     </div>
-  );
+  )
 }

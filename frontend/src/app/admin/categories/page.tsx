@@ -1,49 +1,49 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useCallback } from "react";
-import { CategoryTree } from "@/components/admin/categories/CategoryTree";
-import { CategoryEditForm } from "@/components/admin/categories/CategoryEditForm";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { CategoryNode } from "@/components/admin/categories/types";
+import { useCallback, useEffect, useState } from "react"
+import { CategoryEditForm } from "@/components/admin/categories/CategoryEditForm"
+import { CategoryTree } from "@/components/admin/categories/CategoryTree"
+import type { CategoryNode } from "@/components/admin/categories/types"
+import { Separator } from "@/components/ui/separator"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const GENDERS = ["women", "men", "kids", "baby"] as const;
+const GENDERS = ["women", "men", "kids", "baby"] as const
 
 export default function AdminCategoriesPage() {
-  const [gender, setGender] = useState<string>("women");
-  const [tree, setTree] = useState<CategoryNode[]>([]);
-  const [selected, setSelected] = useState<CategoryNode | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [gender, setGender] = useState<string>("women")
+  const [tree, setTree] = useState<CategoryNode[]>([])
+  const [selected, setSelected] = useState<CategoryNode | null>(null)
+  const [loading, setLoading] = useState(true)
 
   const fetchTree = useCallback(async () => {
-    setLoading(true);
+    setLoading(true)
     try {
-      const res = await fetch(`/api/admin/categories?gender=${gender}`);
-      const data = await res.json();
-      setTree(data);
+      const res = await fetch(`/api/admin/categories?gender=${gender}`)
+      const data = await res.json()
+      setTree(data)
       // Keep selection if still in new tree
       if (selected) {
-        const found = findById(data, selected.id);
-        setSelected(found || null);
+        const found = findById(data, selected.id)
+        setSelected(found || null)
       }
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [gender, selected?.id]);
+  }, [gender, selected?.id])
 
   useEffect(() => {
-    fetchTree();
-  }, [fetchTree]);
+    fetchTree()
+  }, [fetchTree])
 
   function findById(nodes: CategoryNode[], id: number): CategoryNode | null {
     for (const n of nodes) {
-      if (n.id === id) return n;
+      if (n.id === id) return n
       if (n.children) {
-        const found = findById(n.children, id);
-        if (found) return found;
+        const found = findById(n.children, id)
+        if (found) return found
       }
     }
-    return null;
+    return null
   }
 
   return (
@@ -75,5 +75,5 @@ export default function AdminCategoriesPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

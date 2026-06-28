@@ -1,34 +1,12 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { MenuIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sidebar } from "./sidebar";
-import type { TabId } from "./navbar";
+import { MenuIcon } from "lucide-react"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 
-interface MenuProps {
-  activeTab: TabId | null;
-}
-
-export function Menu({ activeTab }: MenuProps) {
-  const [open, setOpen] = useState(false);
-
+export function Menu() {
   return (
-    <>
-      <Button
-        variant="ghost"
-        size="icon-lg"
-        onClick={() => setOpen(!open)}
-        aria-label="Меню"
-      >
-        <MenuIcon className="size-5" strokeWidth={1.5} />
-      </Button>
-
-      <Sidebar
-        open={open}
-        onClose={() => setOpen(false)}
-        activeTab={activeTab}
-      />
-    </>
-  );
+    <SidebarTrigger size="icon-lg" aria-label="Меню">
+      <MenuIcon className="size-5" strokeWidth={1.5} />
+    </SidebarTrigger>
+  )
 }

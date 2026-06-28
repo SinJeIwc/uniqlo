@@ -9,15 +9,8 @@
   "rating": 4.7,
   "reviewCount": 756,
   "badges": [],
-  "tags": [
-    "SUPIMA хлопок",
-    "Базовый"
-  ],
-  "features": [
-    "100% хлопок SUPIMA",
-    "Гладкая текстура",
-    "Классический крой"
-  ],
+  "tags": ["SUPIMA хлопок", "Базовый"],
+  "features": ["100% хлопок SUPIMA", "Гладкая текстура", "Классический крой"],
   "colors": [
     {
       "code": "00",
@@ -40,15 +33,7 @@
       "hex": "#808080"
     }
   ],
-  "sizes": [
-    "XS",
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL",
-    "3XL"
-  ],
+  "sizes": ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
   "images": [
     {
       "colorCode": "00",
@@ -82,14 +67,8 @@
   "currency": "KGS",
   "description": "100% хлопок SUPIMA",
   "descriptionRu": "100% хлопок SUPIMA",
-  "materials": [
-    "Хлопок",
-    "Полиэстер"
-  ],
-  "careInstructions": [
-    "Машинная стирка при 40°C",
-    "Не отбеливать"
-  ],
+  "materials": ["Хлопок", "Полиэстер"],
+  "careInstructions": ["Машинная стирка при 40°C", "Не отбеливать"],
   "sizeFit": "Стандартный крой. Соответствует размеру.",
   "originalPrice": null
 }

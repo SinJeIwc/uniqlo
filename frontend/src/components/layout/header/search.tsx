@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export function SearchButton() {
   return (
@@ -13,5 +13,5 @@ export function SearchButton() {
       <span className="lg:hidden">Поиск</span>
       <span className="hidden lg:inline">Что вы ищете?</span>
     </Button>
-  );
+  )
 }

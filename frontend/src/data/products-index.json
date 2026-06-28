@@ -9,9 +9,7 @@
     "price": 2490,
     "rating": 4.8,
     "reviewCount": 999,
-    "badges": [
-      "bestseller"
-    ]
+    "badges": ["bestseller"]
   },
   {
     "id": "E470328",
@@ -35,9 +33,7 @@
     "price": 3990,
     "rating": 4.6,
     "reviewCount": 423,
-    "badges": [
-      "sale"
-    ]
+    "badges": ["sale"]
   },
   {
     "id": "E472105",
@@ -157,9 +153,7 @@
     "price": 5990,
     "rating": 4.5,
     "reviewCount": 156,
-    "badges": [
-      "new"
-    ]
+    "badges": ["new"]
   },
   {
     "id": "E465200",

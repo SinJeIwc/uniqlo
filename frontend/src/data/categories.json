@@ -1,31 +1,137 @@
 {
   "categories": [
-    {"id": "women", "name": "Женщины", "nameRu": "Женщины", "gender": "women", "order": 1, "children": [
-      {"id": "women-tops-t-shirts", "name": "Футболки и топы", "nameRu": "Футболки и топы", "slug": "tops-t-shirts", "order": 1},
-      {"id": "women-shirts-blouses", "name": "Рубашки и блузы", "nameRu": "Рубашки и блузы", "slug": "shirts-blouses", "order": 2},
-      {"id": "women-sweaters", "name": "Свитеры и кардиганы", "nameRu": "Свитеры и кардиганы", "slug": "sweaters", "order": 3},
-      {"id": "women-bottoms", "name": "Брюки", "nameRu": "Брюки", "slug": "bottoms", "order": 4},
-      {"id": "women-shorts", "name": "Шорты", "nameRu": "Шорты", "slug": "shorts", "order": 5},
-      {"id": "women-jeans", "name": "Джинсы", "nameRu": "Джинсы", "slug": "jeans", "order": 6},
-      {"id": "women-outerwear", "name": "Верхняя одежда", "nameRu": "Верхняя одежда", "slug": "outerwear", "order": 7},
-      {"id": "women-dresses", "name": "Платья и юбки", "nameRu": "Платья и юбки", "slug": "dresses", "order": 8},
-      {"id": "women-innerwear", "name": "Бельё", "nameRu": "Бельё", "slug": "innerwear", "order": 9},
-      {"id": "women-accessories", "name": "Аксессуары", "nameRu": "Аксессуары", "slug": "accessories", "order": 10}
-    ]},
-    {"id": "men", "name": "Мужчины", "nameRu": "Мужчины", "gender": "men", "order": 2, "children": [
-      {"id": "men-tops-t-shirts", "name": "Футболки", "nameRu": "Футболки", "slug": "tops-t-shirts", "order": 1},
-      {"id": "men-shirts", "name": "Рубашки", "nameRu": "Рубашки", "slug": "shirts", "order": 2},
-      {"id": "men-sweaters", "name": "Свитеры", "nameRu": "Свитеры", "slug": "sweaters", "order": 3},
-      {"id": "men-bottoms", "name": "Брюки", "nameRu": "Брюки", "slug": "bottoms", "order": 4},
-      {"id": "men-shorts", "name": "Шорты", "nameRu": "Шорты", "slug": "shorts", "order": 5},
-      {"id": "men-outerwear", "name": "Верхняя одежда", "nameRu": "Верхняя одежда", "slug": "outerwear", "order": 6}
-    ]},
-    {"id": "kids", "name": "Дети", "nameRu": "Дети", "gender": "kids", "order": 3, "children": [
-      {"id": "kids-tops", "name": "Футболки", "nameRu": "Футболки", "slug": "tops", "order": 1},
-      {"id": "kids-bottoms", "name": "Брюки", "nameRu": "Брюки", "slug": "bottoms", "order": 2}
-    ]},
-    {"id": "baby", "name": "Младенцы", "nameRu": "Младенцы", "gender": "baby", "order": 4, "children": [
-      {"id": "baby-bodysuits", "name": "Боди", "nameRu": "Боди", "slug": "bodysuits", "order": 1}
-    ]}
+    {
+      "id": "women",
+      "name": "Женщины",
+      "nameRu": "Женщины",
+      "gender": "women",
+      "order": 1,
+      "children": [
+        {
+          "id": "women-tops-t-shirts",
+          "name": "Футболки и топы",
+          "nameRu": "Футболки и топы",
+          "slug": "tops-t-shirts",
+          "order": 1
+        },
+        {
+          "id": "women-shirts-blouses",
+          "name": "Рубашки и блузы",
+          "nameRu": "Рубашки и блузы",
+          "slug": "shirts-blouses",
+          "order": 2
+        },
+        {
+          "id": "women-sweaters",
+          "name": "Свитеры и кардиганы",
+          "nameRu": "Свитеры и кардиганы",
+          "slug": "sweaters",
+          "order": 3
+        },
+        {
+          "id": "women-bottoms",
+          "name": "Брюки",
+          "nameRu": "Брюки",
+          "slug": "bottoms",
+          "order": 4
+        },
+        { "id": "women-shorts", "name": "Шорты", "nameRu": "Шорты", "slug": "shorts", "order": 5 },
+        { "id": "women-jeans", "name": "Джинсы", "nameRu": "Джинсы", "slug": "jeans", "order": 6 },
+        {
+          "id": "women-outerwear",
+          "name": "Верхняя одежда",
+          "nameRu": "Верхняя одежда",
+          "slug": "outerwear",
+          "order": 7
+        },
+        {
+          "id": "women-dresses",
+          "name": "Платья и юбки",
+          "nameRu": "Платья и юбки",
+          "slug": "dresses",
+          "order": 8
+        },
+        {
+          "id": "women-innerwear",
+          "name": "Бельё",
+          "nameRu": "Бельё",
+          "slug": "innerwear",
+          "order": 9
+        },
+        {
+          "id": "women-accessories",
+          "name": "Аксессуары",
+          "nameRu": "Аксессуары",
+          "slug": "accessories",
+          "order": 10
+        }
+      ]
+    },
+    {
+      "id": "men",
+      "name": "Мужчины",
+      "nameRu": "Мужчины",
+      "gender": "men",
+      "order": 2,
+      "children": [
+        {
+          "id": "men-tops-t-shirts",
+          "name": "Футболки",
+          "nameRu": "Футболки",
+          "slug": "tops-t-shirts",
+          "order": 1
+        },
+        {
+          "id": "men-shirts",
+          "name": "Рубашки",
+          "nameRu": "Рубашки",
+          "slug": "shirts",
+          "order": 2
+        },
+        {
+          "id": "men-sweaters",
+          "name": "Свитеры",
+          "nameRu": "Свитеры",
+          "slug": "sweaters",
+          "order": 3
+        },
+        { "id": "men-bottoms", "name": "Брюки", "nameRu": "Брюки", "slug": "bottoms", "order": 4 },
+        { "id": "men-shorts", "name": "Шорты", "nameRu": "Шорты", "slug": "shorts", "order": 5 },
+        {
+          "id": "men-outerwear",
+          "name": "Верхняя одежда",
+          "nameRu": "Верхняя одежда",
+          "slug": "outerwear",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "name": "Дети",
+      "nameRu": "Дети",
+      "gender": "kids",
+      "order": 3,
+      "children": [
+        { "id": "kids-tops", "name": "Футболки", "nameRu": "Футболки", "slug": "tops", "order": 1 },
+        { "id": "kids-bottoms", "name": "Брюки", "nameRu": "Брюки", "slug": "bottoms", "order": 2 }
+      ]
+    },
+    {
+      "id": "baby",
+      "name": "Младенцы",
+      "nameRu": "Младенцы",
+      "gender": "baby",
+      "order": 4,
+      "children": [
+        {
+          "id": "baby-bodysuits",
+          "name": "Боди",
+          "nameRu": "Боди",
+          "slug": "bodysuits",
+          "order": 1
+        }
+      ]
+    }
   ]
 }

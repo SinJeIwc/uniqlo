@@ -1,19 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 type IconCategory = {
-  id: number;
-  name: string;
-  slug: string;
-  image: string | null;
-};
+  id: number
+  name: string
+  slug: string
+  image: string | null
+}
 
-const VISIBLE_COUNT = 18;
+const VISIBLE_COUNT = 18
 
 export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
-  const visible = parents.slice(0, VISIBLE_COUNT);
-  const hasMore = parents.length > VISIBLE_COUNT;
+  const visible = parents.slice(0, VISIBLE_COUNT)
+  const hasMore = parents.length > VISIBLE_COUNT
 
   return (
     <section className="container mx-auto px-4 sm:px-3 py-4 lg:py-6">
@@ -59,5 +59,5 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
         </div>
       )}
     </section>
-  );
+  )
 }

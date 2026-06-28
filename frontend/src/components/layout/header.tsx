@@ -1,31 +1,18 @@
-import { HeaderLogo } from "./header/logo";
-import { NavbarDesktop, NavbarMobile, type TabId } from "./header/navbar";
-import { SearchButton } from "./header/search";
-import { ProfileButtons } from "./header/profile";
-import { CartButton } from "./header/cart";
-import { Menu } from "./header/menu";
+import { getAllNavCategories, type NavItem } from "@/lib/api/categories"
+import { HeaderClient } from "./header-client"
 
-interface HeaderProps {
-  activeTab: TabId | null;
-}
+export async function Header() {
+  const all = await getAllNavCategories()
 
-export function Header({ activeTab }: HeaderProps) {
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full text-white bg-linear-to-b from-black/40 to-transparent drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
-      {/* Main row */}
-      <div className="container mx-auto px-1 lg:px-4.5 xl:px-9 h-14 lg:h-16 flex items-center text-shadow-current">
-        <HeaderLogo />
-        <NavbarDesktop activeTab={activeTab} />
+  const navItems = {
+    women: [] as NavItem[],
+    men: [] as NavItem[],
+    kids: [] as NavItem[],
+    baby: [] as NavItem[],
+  }
+  for (const item of all) {
+    if (item.gender in navItems) navItems[item.gender as keyof typeof navItems].push(item)
+  }
 
-        <SearchButton />
-
-        <ProfileButtons />
-        <CartButton />
-        <Menu activeTab={activeTab} />
-      </div>
-
-      {/* Mobile navbar — 44px */}
-      <NavbarMobile activeTab={activeTab} />
-    </header>
-  );
+  return <HeaderClient navItems={navItems} />
 }

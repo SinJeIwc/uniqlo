@@ -9,15 +9,8 @@
   "rating": 4.4,
   "reviewCount": 167,
   "badges": [],
-  "tags": [
-    "UV защита",
-    "Складная"
-  ],
-  "features": [
-    "UV защита UPF40",
-    "Водоотталкивающая",
-    "Складывается в карман"
-  ],
+  "tags": ["UV защита", "Складная"],
+  "features": ["UV защита UPF40", "Водоотталкивающая", "Складывается в карман"],
   "colors": [
     {
       "code": "09",
@@ -40,13 +33,7 @@
       "hex": "#F5F5DC"
     }
   ],
-  "sizes": [
-    "S",
-    "M",
-    "L",
-    "XL",
-    "XXL"
-  ],
+  "sizes": ["S", "M", "L", "XL", "XXL"],
   "images": [
     {
       "colorCode": "09",
@@ -80,14 +67,8 @@
   "currency": "KGS",
   "description": "UV защита UPF40",
   "descriptionRu": "UV защита UPF40",
-  "materials": [
-    "Хлопок",
-    "Полиэстер"
-  ],
-  "careInstructions": [
-    "Машинная стирка при 40°C",
-    "Не отбеливать"
-  ],
+  "materials": ["Хлопок", "Полиэстер"],
+  "careInstructions": ["Машинная стирка при 40°C", "Не отбеливать"],
   "sizeFit": "Стандартный крой. Соответствует размеру.",
   "originalPrice": null
 }

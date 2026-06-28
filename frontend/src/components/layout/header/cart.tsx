@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { ShoppingCartIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ShoppingCartIcon } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function CartButton() {
   return (
@@ -15,5 +15,5 @@ export function CartButton() {
     >
       <ShoppingCartIcon className="size-5" strokeWidth={1.5} />
     </Button>
-  );
+  )
 }
