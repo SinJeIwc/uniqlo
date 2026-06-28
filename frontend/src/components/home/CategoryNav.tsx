@@ -16,9 +16,9 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
   const hasMore = parents.length > VISIBLE_COUNT;
 
   return (
-    <section className="container mx-auto px-3 py-18">
-      <h2 className="text-[20px] mb-4">Поиск по категориям</h2>
-      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-2">
+    <section className="container mx-auto px-4 sm:px-3 py-4 lg:py-6">
+      <h2 className="text-[20px] mb-4">Категории</h2>
+      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-y-4 sm:gap-y-6 gap-x-2">
         {visible.map((cat) => (
           <Link
             key={cat.id}
@@ -48,10 +48,11 @@ export function CategoryIconGrid({ parents }: { parents: IconCategory[] }) {
         ))}
       </div>
       {hasMore && (
-        <div className="mt-6 text-center">
+        <div className="flex justify-center">
           <Button
             variant="outline"
-            render={<Link href="/categories" className="w-1/3" />}
+            className="h-full w-full sm:w-1/2 my-6 text-base font-normal rounded-full border-foreground py-4"
+            render={<Link href="/categories" />}
           >
             Посмотреть все категории
           </Button>

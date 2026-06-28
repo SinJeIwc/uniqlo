@@ -67,7 +67,7 @@ class Campaign:
 
 
 _GENDER_PATTERNS = [
-    ("baby",  ["/baby/", "/baby", "/newborn/", "/kids-baby-monthlynews"]),
+    ("baby",  ["/baby/", "/baby", "/newborn/"]),
     ("kids",  ["/kids/", "/kids", "/kids-baby-monthlynews"]),
     ("men",   ["/men/", "/men"]),
     ("women", ["/women/", "/women"]),
