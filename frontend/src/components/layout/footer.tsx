@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 
 const footerSections = [
   {
+    id: "help",
     title: "Помощь",
     links: [
       { label: "Мой аккаунт", href: "/member" },
@@ -13,14 +14,17 @@ const footerSections = [
     ],
   },
   {
+    id: "about",
     title: "О нас",
     links: [{ label: "Компания", href: "/information" }],
   },
   {
+    id: "company",
     title: "Группа компаний",
     links: [{ label: "BishWay", href: "https://bishway.com/" }],
   },
   {
+    id: "legal",
     links: [
       { label: "Политика конфиденциальности", href: "/privacy" },
       { label: "Условия использования", href: "/terms" },
@@ -35,7 +39,7 @@ export function Footer() {
         {/* Link sections */}
         <div className="flex flex-col pb-4">
           {footerSections.map((section) => (
-            <div key={section.title}>
+            <div key={section.id}>
               <h3 className="text-[13px] text-gray-500 my-3">
                 {section.title}
               </h3>
