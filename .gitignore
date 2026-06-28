@@ -1,1 +1,7 @@
 .DS_Store
+
+# python venv
+scripts/.venv/
+
+# sqlite database (contains admin passwords)
+frontend/data/uniqlo.db
