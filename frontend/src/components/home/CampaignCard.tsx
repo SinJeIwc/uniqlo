@@ -1,13 +1,16 @@
-import Image from "next/image"
-import Link from "next/link"
-import type { Campaign } from "./types"
-import { formatPrice } from "./types"
+import Image from "next/image";
+import Link from "next/link";
+import type { Campaign } from "./types";
+import { formatPrice } from "./types";
 
 export function CampaignCard({ campaign }: { campaign: Campaign }) {
-  const href = campaign.link || "#"
+  const href = campaign.link || "#";
 
   return (
-    <Link href={href} className="group relative block w-full h-[70vh] sm:h-[95vh]">
+    <Link
+      href={href}
+      className="group relative block w-full h-[70vh] sm:h-[95vh]"
+    >
       {campaign.video ? (
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -17,7 +20,9 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
           loop
           playsInline
         >
-          {campaign.videoMobile && <source src={campaign.videoMobile} media="(max-width: 767px)" />}
+          {campaign.videoMobile && (
+            <source src={campaign.videoMobile} media="(max-width: 767px)" />
+          )}
           <source src={campaign.video} />
         </video>
       ) : campaign.image ? (
@@ -36,7 +41,7 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
       ) : null}
 
       {/* Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 ">
+      <div className="absolute bottom-0 left-0 right-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
         <div className="mx-[8%] mb-[16%] md:mb-[8%]">
           {campaign.badgeImage && (
             <Image
@@ -68,13 +73,17 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
             </p>
           )}
           {campaign.saleText && (
-            <p className="text-[#e00] text-[13px] font-bold mb-4">{campaign.saleText}</p>
+            <p className="text-[#e00] text-[13px] font-bold mb-4">
+              {campaign.saleText}
+            </p>
           )}
-          {campaign.note && <p className="text-white text-[8px]">{campaign.note}</p>}
+          {campaign.note && (
+            <p className="text-white text-[8px]">{campaign.note}</p>
+          )}
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 export function CampaignGrid({ campaigns }: { campaigns: Campaign[] }) {
@@ -86,5 +95,5 @@ export function CampaignGrid({ campaigns }: { campaigns: Campaign[] }) {
           <CampaignCard key={i} campaign={c} />
         ))}
     </div>
-  )
+  );
 }
