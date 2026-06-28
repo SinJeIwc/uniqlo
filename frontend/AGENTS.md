@@ -19,3 +19,10 @@ When working with shadcn/ui components, styling, or patterns:
 3. Button icon sizes: use `size="icon-lg"` (size-11) for header icons, `size="icon"` (size-9) for standard.
 4. Variants: `pill` adds `rounded-full`; `ghost` is for icon buttons.
 <!-- END:shadcn-skill-rule -->
+
+<!-- BEGIN:zustand-skill-rule -->
+# Zustand — always use zustand-patterns skill
+
+When creating or editing Zustand stores (files matching `**/store/**`, `**/stores/**`, `*.store.*`, `*.zustand.*`):
+1. Load `zustand-patterns` skill — covers Zustand 5.x slices, middleware, Immer, persistence, selectors, devtools, and anti-patterns.
+<!-- END:zustand-skill-rule -->
