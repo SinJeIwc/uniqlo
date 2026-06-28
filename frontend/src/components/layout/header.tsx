@@ -11,19 +11,17 @@ interface HeaderProps {
 
 export function Header({ activeTab }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full text-white bg-linear-to-b from-black/30 to-transparent text-shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full text-white bg-linear-to-b from-black/40 to-transparent text-shadow-md">
       {/* Main row */}
-      <div className="container mx-auto px-1 h-14 lg:h-16 flex items-center gap-2 text-shadow-current">
+      <div className="container mx-auto lg:px-4.5 xl:px-9 h-14 lg:h-16 flex items-center text-shadow-current">
         <HeaderLogo />
         <NavbarDesktop activeTab={activeTab} />
 
-        <nav className="flex items-center ml-auto">
-          <SearchButton />
+        <SearchButton />
 
-          <ProfileButtons />
-          <CartButton />
-          <MobileMenu activeTab={activeTab} />
-        </nav>
+        <ProfileButtons />
+        <CartButton />
+        <MobileMenu activeTab={activeTab} />
       </div>
 
       {/* Mobile navbar — 44px */}

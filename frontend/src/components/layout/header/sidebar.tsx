@@ -35,7 +35,7 @@ export function Sidebar({ open, onClose, activeTab }: SidebarProps) {
         <div className="p-6 space-y-6">
           <Button
             variant="ghost"
-            size="icon"
+            size="icon-lg"
             onClick={onClose}
             aria-label="Закрыть"
             className="text-zinc-500"

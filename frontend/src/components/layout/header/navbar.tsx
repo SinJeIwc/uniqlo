@@ -18,14 +18,14 @@ function tabLinkClass(isActive: boolean) {
   return cn(
     "flex items-center justify-center text-[15px] lg:text-[17px] tracking-[0.022em] border-b-1 transition-colors whitespace-nowrap",
     "font-[UniqloProRegular,sans-serif]",
-    isActive ? cn("border-white") : cn("border-transparent"),
+    isActive ? cn("border-white shadow-[0_1px_3px_rgba(255,255,255,0.3)]") : cn("border-transparent"),
   );
 }
 
 /** Desktop: inline tabs in the main header row */
 export function NavbarDesktop({ activeTab }: NavbarProps) {
   return (
-    <nav className="hidden lg:flex items-center h-full ml-12 py-3 gap-6">
+    <nav className="container mx-auto hidden lg:flex items-center h-full pl-13 py-3 gap-8">
       {TABS.map((tab) => (
         <Link
           key={tab.id}
@@ -42,7 +42,7 @@ export function NavbarDesktop({ activeTab }: NavbarProps) {
 /** Mobile: 4-column grid below the main row, 44px height */
 export function NavbarMobile({ activeTab }: NavbarProps) {
   return (
-    <div className="lg:hidden max-w-300 mx-auto px-4 h-11 flex justify-between font-normal">
+    <div className="container lg:hidden mx-auto px-4 h-11 flex justify-between font-normal">
       {TABS.map((tab) => (
         <Link
           key={tab.id}

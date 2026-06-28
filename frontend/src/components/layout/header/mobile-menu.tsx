@@ -17,8 +17,7 @@ export function MobileMenu({ activeTab }: MobileMenuProps) {
     <>
       <Button
         variant="ghost"
-        size="icon"
-        className="size-11"
+        size="icon-lg"
         onClick={() => setOpen(!open)}
         aria-label="Меню"
       >
