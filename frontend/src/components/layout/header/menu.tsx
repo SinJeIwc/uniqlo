@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sidebar } from "./sidebar";
 import type { TabId } from "./navbar";
 
-interface MobileMenuProps {
+interface MenuProps {
   activeTab: TabId | null;
 }
 
-export function MobileMenu({ activeTab }: MobileMenuProps) {
+export function Menu({ activeTab }: MenuProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ export function MobileMenu({ activeTab }: MobileMenuProps) {
         onClick={() => setOpen(!open)}
         aria-label="Меню"
       >
-        <Menu className="size-5" strokeWidth={1.5} />
+        <MenuIcon className="size-5" strokeWidth={1.5} />
       </Button>
 
       <Sidebar

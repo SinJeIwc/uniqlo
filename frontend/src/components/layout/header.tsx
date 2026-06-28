@@ -3,7 +3,7 @@ import { NavbarDesktop, NavbarMobile, type TabId } from "./header/navbar";
 import { SearchButton } from "./header/search";
 import { ProfileButtons } from "./header/profile";
 import { CartButton } from "./header/cart";
-import { MobileMenu } from "./header/mobile-menu";
+import { Menu } from "./header/menu";
 
 interface HeaderProps {
   activeTab: TabId | null;
@@ -21,7 +21,7 @@ export function Header({ activeTab }: HeaderProps) {
 
         <ProfileButtons />
         <CartButton />
-        <MobileMenu activeTab={activeTab} />
+        <Menu activeTab={activeTab} />
       </div>
 
       {/* Mobile navbar — 44px */}
