@@ -1,11 +1,13 @@
 """Flyout menu — exact DOM path, no clicks, always in DOM."""
-import time
 
 GENDERS = ["women", "men", "kids", "baby"]
 
+
 def parse_flyout(page) -> dict[str, list[dict]]:
-    page.goto("https://www.uniqlo.com/jp/ja/", timeout=30000, wait_until="domcontentloaded")
-    time.sleep(4)
+    page.goto(
+        "https://www.uniqlo.com/jp/ja/", timeout=30000, wait_until="domcontentloaded"
+    )
+    page.wait_for_selector("nav", timeout=10000)
 
     result = {}
     for idx, gender in enumerate(GENDERS):
@@ -16,26 +18,29 @@ def parse_flyout(page) -> dict[str, list[dict]]:
             const container = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             if (!container) return [];
 
-            const links = container.querySelectorAll('a[data-category="navi"]');
+            const links = container.querySelectorAll('a');
             const results = [];
             const seen = new Set();
             for (const a of links) {{
                 let href = a.getAttribute('href') || '';
+                // Normalize: full URL → path
+                if (href.startsWith('https://www.uniqlo.com')) href = href.replace('https://www.uniqlo.com', '');
                 if (!href.startsWith('/jp/ja/')) continue;
-                href = href.replace('/jp/ja', '');
+                href = href.replace(/^\/jp\/ja/, '');
                 if (seen.has(href)) continue;
                 seen.add(href);
 
                 const slug = href.split('/').filter(Boolean).pop() || '';
 
+                // Name from typography first, img alt fallback
                 let text = '';
-                for (const img of a.querySelectorAll('img')) {{
-                    const alt = (img.getAttribute('alt') || '').trim();
-                    if (alt) {{ text = alt; break; }}
-                }}
+                const typo = a.querySelector('[data-testid="ITOTypography"]');
+                if (typo) text = (typo.textContent || '').replace(/\\s+/g, ' ').trim();
                 if (!text) {{
-                    const typo = a.querySelector('[data-testid="ITOTypography"]');
-                    if (typo) text = (typo.textContent || '').replace(/\\\\s+/g, ' ').trim();
+                    for (const img of a.querySelectorAll('img')) {{
+                        const alt = (img.getAttribute('alt') || '').trim();
+                        if (alt) {{ text = alt; break; }}
+                    }}
                 }}
 
                 let image = null;
