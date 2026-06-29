@@ -40,7 +40,7 @@
 
 ```bash
 cd scripts
-uv run python categories/parse_flyout.py
+uv run python categories/parse.py
 uv run python categories/parse_lineup.py --gender women --slug tops
 uv run python categories/parse_plp.py --url https://www.uniqlo.com/jp/ja/women/tops
 uv run python categories/parse_product.py --url https://www.uniqlo.com/jp/ja/products/E482148-000
