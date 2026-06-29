@@ -15,7 +15,7 @@ def parse_subcategories(page, gender: str, parent_slug: str) -> list[dict]:
             const href = a.getAttribute('href') || '';
             if (!href.startsWith('/jp/ja/')) continue;
             const text = (a.textContent || '').replace(/\\s+/g, ' ').trim();
-            if (!text || text.length > 30) continue;
+            if (!text) continue;
             const slug = href.split('/').filter(Boolean).pop() || '';
             if (seen.has(slug)) continue;
             seen.add(slug);
