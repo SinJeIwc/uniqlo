@@ -8,3 +8,5 @@ __pycache__/
 
 # sqlite database (contains admin passwords)
 frontend/data/uniqlo.db
+frontend/data/uniqlo.db-shm
+frontend/data/uniqlo.db-wal
