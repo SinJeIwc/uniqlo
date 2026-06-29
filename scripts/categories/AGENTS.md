@@ -8,7 +8,7 @@
 Порядок:
 
 ```
-1. flyout          → parse_flyout.py    → JSON: [{text, href, slug, image, gender}]
+1. flyout          → parse.py            → JSON: [{text, href, slug, image, gender}] (фильтр: a[data-category="navi"])
 2. lineup/L3       → parse_lineup.py    → JSON: [{text, href, slug, image, parent_slug}]
 3. PLP (terminal)  → parse_plp.py       → JSON: {hero, subcategories: [{name, products: [id]}]}
 4. product page    → parse_product.py   → JSON: {id, name, price, colors, sizes, images, ...}
