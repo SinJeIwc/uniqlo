@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { SidebarProvider, useSidebar } from "@/components/ui/sidebar"
 import type { NavItem } from "@/lib/api/categories"
@@ -21,7 +22,14 @@ function getActiveTab(pathname: string): TabId | null {
 }
 
 function SidebarPanel({ activeTab, items }: { activeTab: TabId | null; items: NavItem[] }) {
-  const { isMobile } = useSidebar()
+  const { isMobile, toggleSidebar } = useSidebar()
+
+  useEffect(() => {
+    const handler = () => toggleSidebar()
+    window.addEventListener("uniqlo:open-sidebar", handler)
+    return () => window.removeEventListener("uniqlo:open-sidebar", handler)
+  }, [toggleSidebar])
+
   return isMobile ? (
     <SidebarMobile activeTab={activeTab} items={items} />
   ) : (

@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/shared/category/CategoryGrid";
 import type { CategoryNavItem } from "./types";
@@ -9,6 +10,10 @@ export function CategoryNav({ categories }: { categories: CategoryNavItem[] }) {
   const visible = categories.slice(0, VISIBLE_COUNT);
   const hasMore = categories.length > VISIBLE_COUNT;
 
+  const openSidebar = () => {
+    window.dispatchEvent(new CustomEvent("uniqlo:open-sidebar"));
+  };
+
   return (
     <section className="container mx-auto px-4 sm:px-3 py-4 lg:py-6">
       <h2 className="text-[20px] mb-4">Категории</h2>
@@ -18,7 +23,7 @@ export function CategoryNav({ categories }: { categories: CategoryNavItem[] }) {
           <Button
             variant="outline"
             className="h-full w-full sm:w-1/2 my-6 text-base font-normal rounded-full border-foreground py-4"
-            render={<Link href="/categories" />}
+            onClick={openSidebar}
           >
             Посмотреть все категории
           </Button>

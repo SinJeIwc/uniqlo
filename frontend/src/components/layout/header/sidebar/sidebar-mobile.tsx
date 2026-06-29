@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
-import { Heart, X } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Sidebar, SidebarContent, SidebarHeader, useSidebar } from "@/components/ui/sidebar"
-import type { NavItem } from "@/lib/api/categories"
-import { cn } from "@/lib/utils"
-import { TABS, type TabId } from "../navbar"
-import { SearchButton } from "../search"
-import { SidebarCategories } from "./sidebar-categories"
+import { Heart, X } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
+import { TABS, type TabId } from "../navbar";
+import { SearchButton } from "../search";
+import { SidebarCategories } from "./sidebar-categories";
+import { CategoryNavItem } from "@/components/home/types";
 
 interface SidebarMobileProps {
-  activeTab: TabId | null
-  items: NavItem[]
+  activeTab: TabId | null;
+  items: CategoryNavItem[];
 }
 
 export function SidebarMobile({ activeTab, items }: SidebarMobileProps) {
-  const { setOpenMobile } = useSidebar()
-  const close = () => setOpenMobile(false)
+  const { setOpenMobile } = useSidebar();
+  const close = () => setOpenMobile(false);
 
   return (
     <Sidebar side="right" className="bg-white">
@@ -34,7 +39,12 @@ export function SidebarMobile({ activeTab, items }: SidebarMobileProps) {
           >
             <Heart className="size-5" strokeWidth={1.5} />
           </Button>
-          <Button variant="ghost" size="icon-lg" onClick={close} aria-label="Закрыть">
+          <Button
+            variant="ghost"
+            size="icon-lg"
+            onClick={close}
+            aria-label="Закрыть"
+          >
             <X className="size-5" />
           </Button>
         </div>
@@ -60,5 +70,5 @@ export function SidebarMobile({ activeTab, items }: SidebarMobileProps) {
         <SidebarCategories items={items} onClose={close} />
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
