@@ -1,8 +1,15 @@
-"use client"
+"use client";
 
-import { CategoryGrid } from "@/components/home/CategoryGrid"
-import type { NavItem } from "@/lib/api/categories"
+import { CategoryGrid } from "@/components/home/CategoryGrid";
+import type { CategoryNavItem } from "@/components/home/types";
 
-export function SidebarCategories({ items, onClose }: { items: NavItem[]; onClose: () => void }) {
-  return <CategoryGrid items={items} onClose={onClose} />
+export function SidebarCategories({
+  items,
+  onClose,
+}: {
+  items: CategoryNavItem[];
+  onClose: () => void;
+}) {
+  console.log(items);
+  return <CategoryGrid items={items} onClose={onClose} />;
 }

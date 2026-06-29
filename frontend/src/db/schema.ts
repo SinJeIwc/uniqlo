@@ -9,6 +9,7 @@ export const categories = sqliteTable("categories", {
   order: integer().default(0),
   image: text(),
   visible: integer().default(1),
+  nav: integer().default(0),
 })
 
 export const products = sqliteTable("products", {

@@ -1,0 +1,80 @@
+[
+  {
+    "text": "新生児服・乳児服(0歳～2歳)",
+    "href": "/baby/newborn2",
+    "slug": "newborn2",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/483021_68.png"
+  },
+  {
+    "text": "乳幼児服(6ヶ月～5歳)",
+    "href": "/baby/toddler",
+    "slug": "toddler",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/481795_01.png"
+  },
+  {
+    "text": "レギンス・パンツ",
+    "href": "/baby/toddler/bottoms",
+    "slug": "bottoms",
+    "image": "https://image.uniqlo.com/UQ/CMS/navi/image/NAVI_481779_63.jpg"
+  },
+  {
+    "text": "出産準備／出産祝い（ギフト）",
+    "href": "/baby/newborn2/childbirth",
+    "slug": "childbirth",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/481833_10.png"
+  },
+  {
+    "text": "花",
+    "href": "/women/flower",
+    "slug": "flower",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/flower.png"
+  },
+  {
+    "text": "UT",
+    "href": "/baby/toddler/ut-graphic-tees?path=%2C%2C2068%2C",
+    "slug": "ut-graphic-tees?path=%2C%2C2068%2C",
+    "image": "https://im.uniqlo.com/global-cms/spa/res233fbd4e5003871497178aa12ad0ec5dfr.png"
+  },
+  {
+    "text": "期間限定価格商品",
+    "href": "/feature/limited-offers/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/resdc4a99db8097ff711f99bfd3ef4fd5d0fr.png"
+  },
+  {
+    "text": "値下げ商品",
+    "href": "/feature/sale/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res6761782363b084e886764644cba24d6afr.png"
+  },
+  {
+    "text": "一部店舗商品",
+    "href": "/feature/select-stores/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res658d6264a178c6e31cfa6c7afd009cc0fr.png"
+  },
+  {
+    "text": "オンライン特別商品",
+    "href": "/feature/online-exclusive/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res794372c8e6c2a0064e08d46e030f7379fr.png"
+  },
+  {
+    "text": "今週の新作",
+    "href": "/feature/new/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res648fb31723381d4f16337f266c1b18b8fr.png"
+  },
+  {
+    "text": "近日販売予定の商品",
+    "href": "/feature/coming-soon/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res56ccc846d1c945c9e83abed3fa3f20e5fr.png"
+  },
+  {
+    "text": "ランキング",
+    "href": "/spl/ranking/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/resa9cc0253340861c744c9fe5d6d27cb42fr.png"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "text": "Tシャツ・スウェット",
+    "href": "/men/tops",
+    "slug": "tops",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/482295_11.png"
+  },
+  {
+    "text": "ポロシャツ",
+    "href": "/men/shirts-and-polo-shirts/polo-shirts",
+    "slug": "polo-shirts",
+    "image": "https://image.uniqlo.com/UQ/CMS/navi/image/NAVI_482302_53.jpg"
+  },
+  {
+    "text": "セーター・カーディガン",
+    "href": "/men/sweaters",
+    "slug": "sweaters",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/491726_01.png"
+  },
+  {
+    "text": "シャツ・ポロシャツ",
+    "href": "/men/shirts-and-polo-shirts",
+    "slug": "shirts-and-polo-shirts",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/478006_64-3.png"
+  },
+  {
+    "text": "パンツ・ズボン",
+    "href": "/men/bottoms",
+    "slug": "bottoms",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/484331_65.png"
+  },
+  {
+    "text": "ショートパンツ",
+    "href": "/men/bottoms/shorts",
+    "slug": "shorts",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/488371_57.png"
+  },
+  {
+    "text": "アウター",
+    "href": "/men/outerwear",
+    "slug": "outerwear",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/482210_65.png"
+  },
+  {
+    "text": "インナー・下着",
+    "href": "/men/innerwear",
+    "slug": "innerwear",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/482616_68-2.png"
+  },
+  {
+    "text": "ルームウェア",
+    "href": "/men/loungewear-and-homeware",
+    "slug": "loungewear-and-homeware",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/484711_03.png"
+  },
+  {
+    "text": "グッズ",
+    "href": "/men/accessories",
+    "slug": "accessories",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/481636_09.png"
+  },
+  {
+    "text": "花",
+    "href": "/women/flower",
+    "slug": "flower",
+    "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/flower.png"
+  },
+  {
+    "text": "エアリズム",
+    "href": "/men/airism",
+    "slug": "airism",
+    "image": "https://im.uniqlo.com/global-cms/spa/res044ce5df29a0f0105bdce606a471ab72fr.png"
+  },
+  {
+    "text": "ヒートテック",
+    "href": "/men/heattech",
+    "slug": "heattech",
+    "image": "https://im.uniqlo.com/global-cms/spa/res7f65a305019b4001c40a645bb82d36ecfr.png"
+  },
+  {
+    "text": "スポーツユーティリティウェア",
+    "href": "/men/sport-utility-wear",
+    "slug": "sport-utility-wear",
+    "image": "https://im.uniqlo.com/global-cms/spa/res359a4c94ddd94f2e26a26b2e3e3eaa3efr.png"
+  },
+  {
+    "text": "UVカット",
+    "href": "/men/uv-protection",
+    "slug": "uv-protection",
+    "image": "https://im.uniqlo.com/global-cms/spa/res7dffedf37b091bc87aeafb4a617c272afr.png"
+  },
+  {
+    "text": "リネン",
+    "href": "/men/linen",
+    "slug": "linen",
+    "image": "https://im.uniqlo.com/global-cms/spa/res0f81a58db982ecb78c095c661a0ecfadfr.png"
+  },
+  {
+    "text": "特別コレクション",
+    "href": "/men/special-collaboration",
+    "slug": "special-collaboration",
+    "image": "https://im.uniqlo.com/global-cms/spa/res1b731a16d238ca37b7e31198c12b0071fr.png"
+  },
+  {
+    "text": "期間限定価格商品",
+    "href": "/feature/limited-offers/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/resdc4a99db8097ff711f99bfd3ef4fd5d0fr.png"
+  },
+  {
+    "text": "値下げ商品",
+    "href": "/feature/sale/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/res6761782363b084e886764644cba24d6afr.png"
+  },
+  {
+    "text": "まとめ買い",
+    "href": "/feature/multi-buy",
+    "slug": "multi-buy",
+    "image": "https://im.uniqlo.com/global-cms/spa/res48abe0d958a170385e880ee48ab4403ffr.png"
+  },
+  {
+    "text": "一部店舗商品",
+    "href": "/feature/select-stores/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/res658d6264a178c6e31cfa6c7afd009cc0fr.png"
+  },
+  {
+    "text": "オンラインストア特別商品",
+    "href": "/feature/online-exclusive/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/res794372c8e6c2a0064e08d46e030f7379fr.png"
+  },
+  {
+    "text": "今週の新作",
+    "href": "/feature/new/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/res648fb31723381d4f16337f266c1b18b8fr.png"
+  },
+  {
+    "text": "近日販売予定の商品",
+    "href": "/feature/coming-soon/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/res56ccc846d1c945c9e83abed3fa3f20e5fr.png"
+  },
+  {
+    "text": "ランキング",
+    "href": "/spl/ranking/men",
+    "slug": "men",
+    "image": "https://im.uniqlo.com/global-cms/spa/resa9cc0253340861c744c9fe5d6d27cb42fr.png"
+  }
+]
