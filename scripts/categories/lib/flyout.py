@@ -20,7 +20,7 @@ def parse_flyout(page) -> dict[str, list[dict]]:
         for (let i = 0; i < 4; i++) {
             const items = [];
             const seen = new Set();
-            for (const a of panels[i].querySelectorAll('a')) {
+            for (const a of panels[i].querySelectorAll('a[data-category="navi"]')) {
                 let href = a.getAttribute('href') || '';
                 if (href.startsWith('https://www.uniqlo.com'))
                     href = href.replace('https://www.uniqlo.com', '');
