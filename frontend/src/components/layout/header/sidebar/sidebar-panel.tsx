@@ -1,6 +1,7 @@
 "use client";
 
-import { Heart, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,32 +14,37 @@ import { cn } from "@/lib/utils";
 import { TABS, type TabId } from "../navbar";
 import { SearchButton } from "../search";
 import { SidebarCategories } from "./sidebar-categories";
-import { CategoryNavItem } from "@/components/home/types";
+import type { CategoryNavItem } from "@/components/home/types";
 
-interface SidebarMobileProps {
+const SM = 640;
+
+function useMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${SM - 1}px)`);
+    const onChange = () => setMobile(mql.matches);
+    mql.addEventListener("change", onChange);
+    setMobile(mql.matches);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+  return mobile;
+}
+
+interface SidebarPanelProps {
   activeTab: TabId | null;
   items: CategoryNavItem[];
 }
 
-export function SidebarMobile({ activeTab, items }: SidebarMobileProps) {
-  const { setOpenMobile } = useSidebar();
-  const close = () => setOpenMobile(false);
+export function SidebarPanel({ activeTab, items }: SidebarPanelProps) {
+  const { setOpen } = useSidebar();
+  const isMobile = useMobile();
+  const close = () => setOpen(false);
 
   return (
-    <Sidebar side="right" className="bg-white">
-      <SidebarHeader className="flex flex-col gap-0 p-0">
+    <Sidebar side={isMobile ? "right" : "top"}>
+      <SidebarHeader>
         <div className="flex items-center gap-1 px-3 h-14">
           <SearchButton />
-          <Button
-            variant="ghost"
-            size="icon-lg"
-            render={<Link href="/wishlist" />}
-            nativeButton={false}
-            aria-label="Избранное"
-            onClick={close}
-          >
-            <Heart className="size-5" strokeWidth={1.5} />
-          </Button>
           <Button
             variant="ghost"
             size="icon-lg"

@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/shared/category/CategoryGrid";
+import { useSidebarStore } from "@/store/sidebar";
 import type { CategoryNavItem } from "./types";
 
 const VISIBLE_COUNT = 18;
@@ -9,10 +10,7 @@ const VISIBLE_COUNT = 18;
 export function CategoryNav({ categories }: { categories: CategoryNavItem[] }) {
   const visible = categories.slice(0, VISIBLE_COUNT);
   const hasMore = categories.length > VISIBLE_COUNT;
-
-  const openSidebar = () => {
-    window.dispatchEvent(new CustomEvent("uniqlo:open-sidebar"));
-  };
+  const openSidebar = useSidebarStore((s) => s.openSidebar);
 
   return (
     <section className="container mx-auto px-4 sm:px-3 py-4 lg:py-6">

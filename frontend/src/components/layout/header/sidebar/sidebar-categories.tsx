@@ -10,6 +10,5 @@ export function SidebarCategories({
   items: CategoryNavItem[];
   onClose: () => void;
 }) {
-  console.log(items);
   return <CategoryGrid items={items} onClose={onClose} />;
 }
