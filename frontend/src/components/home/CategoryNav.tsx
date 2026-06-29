@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
-import type { NavItem } from "@/lib/api/categories";
+import type { CategoryNavItem } from "./types";
 
 const VISIBLE_COUNT = 18;
 
-export function CategoryNav({ parents }: { parents: NavItem[] }) {
-  const visible = parents.slice(0, VISIBLE_COUNT);
-  const hasMore = parents.length > VISIBLE_COUNT;
+export function CategoryNav({ categories }: { categories: CategoryNavItem[] }) {
+  const visible = categories.slice(0, VISIBLE_COUNT);
+  const hasMore = categories.length > VISIBLE_COUNT;
 
   return (
     <section className="container mx-auto px-4 sm:px-3 py-4 lg:py-6">
