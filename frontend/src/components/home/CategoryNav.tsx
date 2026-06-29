@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { CategoryGrid } from "@/components/home/CategoryGrid";
+import { CategoryGrid } from "@/components/shared/category/CategoryGrid";
 import type { CategoryNavItem } from "./types";
 
 const VISIBLE_COUNT = 18;

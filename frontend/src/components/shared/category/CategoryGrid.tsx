@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CategoryNavItem } from "./types";
+import type { CategoryNavItem } from "../../home/types";
 
 type CategoryGridProps = {
   items: CategoryNavItem[];

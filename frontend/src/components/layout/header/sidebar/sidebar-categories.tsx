@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryGrid } from "@/components/home/CategoryGrid";
+import { CategoryGrid } from "@/components/shared/category/CategoryGrid";
 import type { CategoryNavItem } from "@/components/home/types";
 
 export function SidebarCategories({
