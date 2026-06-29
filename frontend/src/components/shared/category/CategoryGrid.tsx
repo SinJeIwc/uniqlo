@@ -12,7 +12,7 @@ export function CategoryGrid({ items, onClose }: CategoryGridProps) {
     <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-y-4 sm:gap-y-6 gap-x-2">
       {items.map((cat) => (
         <Link
-          key={cat.slug}
+          key={cat.href}
           href={`/categories/${cat.slug}`}
           className="flex flex-col items-center gap-1.5 group"
           onClick={onClose}
