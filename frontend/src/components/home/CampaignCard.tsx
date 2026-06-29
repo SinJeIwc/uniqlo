@@ -26,13 +26,13 @@ export function CampaignCard({ campaign }: { campaign: Campaign }) {
           <source src={campaign.video} />
         </video>
       ) : campaign.image ? (
-        <picture>
+        <picture className="absolute inset-0">
           {campaign.imageMobile && (
             <source srcSet={campaign.imageMobile} media="(max-width: 767px)" />
           )}
           <Image
             src={campaign.image}
-            alt={campaign.title || ""}
+            alt={campaign.title || "Uniqlo KG"}
             fill
             unoptimized
             className="object-cover"
@@ -91,8 +91,8 @@ export function CampaignGrid({ campaigns }: { campaigns: Campaign[] }) {
     <div className="flex flex-col gap-4">
       {campaigns
         .filter((c) => c.image || c.video)
-        .map((c, i) => (
-          <CampaignCard key={i} campaign={c} />
+        .map((c) => (
+          <CampaignCard key={c.link || c.image || c.video} campaign={c} />
         ))}
     </div>
   );
