@@ -1,5 +1,17 @@
 [
   {
+    "text": "ガールズ",
+    "href": "/search?q=%E3%82%AC%E3%83%BC%E3%83%AB%E3%82%BA",
+    "slug": "search?q=%E3%82%AC%E3%83%BC%E3%83%AB%E3%82%BA",
+    "image": "https://im.uniqlo.com/global-cms/spa/res2d6809184e156ca348fab5fdb6cbcfbbfr.jpg"
+  },
+  {
+    "text": "ボーイズ",
+    "href": "/search?q=%E3%83%9C%E3%83%BC%E3%82%A4%E3%82%BA",
+    "slug": "search?q=%E3%83%9C%E3%83%BC%E3%82%A4%E3%82%BA",
+    "image": "https://im.uniqlo.com/global-cms/spa/resc90e9605519a248bd5ec95776e67f425fr.jpg"
+  },
+  {
     "text": "Tシャツ・スウェット",
     "href": "/kids/tops",
     "slug": "tops",
@@ -40,6 +52,12 @@
     "href": "/kids/innerwear",
     "slug": "innerwear",
     "image": "https://image.uniqlo.com/UQ/CMS/navi/image/NAVI_481952_09.jpg"
+  },
+  {
+    "text": "ブラ・ブラトップ",
+    "href": "/kids/innerwear/bras-and-bra-top",
+    "slug": "bras-and-bra-top",
+    "image": "https://image.uniqlo.com/UQ/CMS/navi/image/NAVI_481997_60.jpg"
   },
   {
     "text": "ルームウェア",
@@ -90,10 +108,22 @@
     "image": "https://im.uniqlo.com/global-cms/spa/res7dffedf37b091bc87aeafb4a617c272afr.png"
   },
   {
+    "text": "2026夏コレクション",
+    "href": "/special-feature/lifewear-collection/kids",
+    "slug": "kids",
+    "image": "https://im.uniqlo.com/global-cms/spa/res1e24a8a824fff1927a0c9e7d28298d8dfr.png"
+  },
+  {
     "text": "特別コレクション",
     "href": "/kids/special-collaboration",
     "slug": "special-collaboration",
     "image": "https://im.uniqlo.com/global-cms/spa/res1b731a16d238ca37b7e31198c12b0071fr.png"
+  },
+  {
+    "text": "UNIQLO and Cecilie Bahnsen",
+    "href": "/kids/special-collaboration/uniqlo-and-cecilie-bahnsen",
+    "slug": "uniqlo-and-cecilie-bahnsen",
+    "image": "https://im.uniqlo.com/global-cms/spa/resca1b7875f12219a16b7545e829503cdafr.png"
   },
   {
     "text": "UT",
@@ -102,7 +132,7 @@
     "image": "https://im.uniqlo.com/global-cms/spa/res233fbd4e5003871497178aa12ad0ec5dfr.png"
   },
   {
-    "text": "期間限定価格商品",
+    "text": "期間限定 価格商品",
     "href": "/feature/limited-offers/kids",
     "slug": "kids",
     "image": "https://im.uniqlo.com/global-cms/spa/resdc4a99db8097ff711f99bfd3ef4fd5d0fr.png"
@@ -120,10 +150,16 @@
     "image": "https://im.uniqlo.com/global-cms/spa/res658d6264a178c6e31cfa6c7afd009cc0fr.png"
   },
   {
-    "text": "オンラインストア特別商品",
+    "text": "オンライン 特別商品",
     "href": "/feature/online-exclusive/kids",
     "slug": "kids",
     "image": "https://im.uniqlo.com/global-cms/spa/res794372c8e6c2a0064e08d46e030f7379fr.png"
+  },
+  {
+    "text": "再販要望商品",
+    "href": "/special-feature/cp/revival",
+    "slug": "revival",
+    "image": "https://im.uniqlo.com/global-cms/spa/res714d513ea7836aeb3c03311a4fb1f063fr.png"
   },
   {
     "text": "今週の新作",

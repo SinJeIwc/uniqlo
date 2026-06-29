@@ -30,13 +30,19 @@
     "image": "https://image.uniqlo.com/UQ/ST3/jp/imagesother/001_CMSlineup/navi/flower.png"
   },
   {
+    "text": "2026夏コレクション",
+    "href": "/special-feature/lifewear-collection/baby",
+    "slug": "baby",
+    "image": "https://im.uniqlo.com/global-cms/spa/res1e24a8a824fff1927a0c9e7d28298d8dfr.png"
+  },
+  {
     "text": "UT",
     "href": "/baby/toddler/ut-graphic-tees?path=%2C%2C2068%2C",
     "slug": "ut-graphic-tees?path=%2C%2C2068%2C",
     "image": "https://im.uniqlo.com/global-cms/spa/res233fbd4e5003871497178aa12ad0ec5dfr.png"
   },
   {
-    "text": "期間限定価格商品",
+    "text": "期間限定 価格商品",
     "href": "/feature/limited-offers/baby",
     "slug": "baby",
     "image": "https://im.uniqlo.com/global-cms/spa/resdc4a99db8097ff711f99bfd3ef4fd5d0fr.png"
@@ -58,6 +64,12 @@
     "href": "/feature/online-exclusive/baby",
     "slug": "baby",
     "image": "https://im.uniqlo.com/global-cms/spa/res794372c8e6c2a0064e08d46e030f7379fr.png"
+  },
+  {
+    "text": "再販要望商品",
+    "href": "/special-feature/cp/revival",
+    "slug": "revival",
+    "image": "https://im.uniqlo.com/global-cms/spa/res714d513ea7836aeb3c03311a4fb1f063fr.png"
   },
   {
     "text": "今週の新作",

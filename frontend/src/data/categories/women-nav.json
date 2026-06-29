@@ -114,13 +114,55 @@
     "image": "https://im.uniqlo.com/global-cms/spa/res0f81a58db982ecb78c095c661a0ecfadfr.png"
   },
   {
+    "text": "2026夏コレクション",
+    "href": "/special-feature/lifewear-collection/women",
+    "slug": "women",
+    "image": "https://im.uniqlo.com/global-cms/spa/res1e24a8a824fff1927a0c9e7d28298d8dfr.png"
+  },
+  {
     "text": "特別コレクション",
     "href": "/women/special-collaboration",
     "slug": "special-collaboration",
     "image": "https://im.uniqlo.com/global-cms/spa/res1b731a16d238ca37b7e31198c12b0071fr.png"
   },
   {
-    "text": "期間限定価格商品",
+    "text": "UNIQLO and Cecilie Bahnsen",
+    "href": "/women/special-collaboration/uniqlo-and-cecilie-bahnsen",
+    "slug": "uniqlo-and-cecilie-bahnsen",
+    "image": "https://im.uniqlo.com/global-cms/spa/resca1b7875f12219a16b7545e829503cdafr.png"
+  },
+  {
+    "text": "UNIQLO : C",
+    "href": "/women/special-collaboration/uniqlo-c",
+    "slug": "uniqlo-c",
+    "image": "https://im.uniqlo.com/global-cms/spa/resa231dea623bff5aa8ca830e5a4720d12fr.png"
+  },
+  {
+    "text": "Uniqlo U",
+    "href": "/women/special-collaboration/uniqlo-u",
+    "slug": "uniqlo-u",
+    "image": "https://im.uniqlo.com/global-cms/spa/resc95408501bf9b90408b7def1692265aefr.png"
+  },
+  {
+    "text": "UNIQLO and JW ANDERSON",
+    "href": "/women/special-collaboration/uniqlo-and-jw-anderson",
+    "slug": "uniqlo-and-jw-anderson",
+    "image": "https://im.uniqlo.com/global-cms/spa/resf7460fbc85f5758cfe6be0b11a2eccb4fr.png"
+  },
+  {
+    "text": "UT",
+    "href": "/special-feature/ut",
+    "slug": "ut",
+    "image": "https://im.uniqlo.com/global-cms/spa/res233fbd4e5003871497178aa12ad0ec5dfr.png"
+  },
+  {
+    "text": "カスタムオーダー",
+    "href": "/special-feature/uniqlo-custom-order/women",
+    "slug": "women",
+    "image": "https://im.uniqlo.com/global-cms/spa/resc15c1bbc9e1a1cd3baa835b1de1a5a60fr.png"
+  },
+  {
+    "text": "期間限定 価格商品",
     "href": "/feature/limited-offers/women",
     "slug": "women",
     "image": "https://im.uniqlo.com/global-cms/spa/resdc4a99db8097ff711f99bfd3ef4fd5d0fr.png"
@@ -142,6 +184,18 @@
     "href": "/feature/select-stores/women",
     "slug": "women",
     "image": "https://im.uniqlo.com/global-cms/spa/res658d6264a178c6e31cfa6c7afd009cc0fr.png"
+  },
+  {
+    "text": "オンライン 特別商品",
+    "href": "/feature/online-exclusive/women",
+    "slug": "women",
+    "image": "https://im.uniqlo.com/global-cms/spa/res794372c8e6c2a0064e08d46e030f7379fr.png"
+  },
+  {
+    "text": "再販要望商品",
+    "href": "/special-feature/cp/revival",
+    "slug": "revival",
+    "image": "https://im.uniqlo.com/global-cms/spa/res714d513ea7836aeb3c03311a4fb1f063fr.png"
   },
   {
     "text": "今週の新作",

@@ -3,5 +3,8 @@
 # python venv
 scripts/.venv/
 
+# python cache
+__pycache__/
+
 # sqlite database (contains admin passwords)
 frontend/data/uniqlo.db
