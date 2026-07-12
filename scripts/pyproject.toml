@@ -8,5 +8,5 @@ dependencies = [
     "playwright>=1.50",
 ]
 
-[tool.uv]
-dev-dependencies = []
+[dependency-groups]
+dev = []
