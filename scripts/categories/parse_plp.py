@@ -52,7 +52,7 @@ PRODUCTS_JS = """() => {
             let href = a.getAttribute('href') || '';
             if (href.startsWith('https://www.uniqlo.com'))
                 href = href.replace('https://www.uniqlo.com', '');
-            const match = href.match(/\\/products\\/(E\\d+-\\d+)/);
+            const match = href.match(/\\/products\\/(E\\d+-\\d+\\/\\d+)/);
             if (!match) continue;
             const pid = match[1];
             if (seen.has(pid)) continue;
@@ -113,15 +113,20 @@ def parse_plp(gender: str, slug: str) -> dict:
         page.goto(url, timeout=30000, wait_until="domcontentloaded")
         time.sleep(2)
 
-        # Scroll
-        prev_count = 0
-        for _ in range(20):
-            page.evaluate("window.scrollBy(0, window.innerHeight)")
-            time.sleep(0.6)
-            count = page.evaluate("() => document.querySelectorAll('a[href*=\"/products/E\"]').length")
-            if count > 0 and count == prev_count:
-                break
-            prev_count = count
+        # Scroll to each subcategory heading to trigger per-block lazy loading
+        headings = page.evaluate("""() => {
+            return Array.from(document.querySelectorAll('[_type="BannerWithProducts"] h2'))
+                .map(h => h.textContent.trim());
+        }""")
+
+        for i, name in enumerate(headings):
+            print(f"      scrolling to: {name}", file=sys.stderr)
+            page.evaluate(f"""() => {{
+                const h2 = document.querySelectorAll('[_type="BannerWithProducts"] h2')[{i}];
+                if (h2) h2.scrollIntoView({{block: 'center'}});
+            }}""")
+            time.sleep(1.5)
+
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(2)
 
