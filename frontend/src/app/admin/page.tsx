@@ -1,41 +1,19 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { db } from "@/db"
-import { categories, users } from "@/db/schema"
+import Link from "next/link";
 
-export const dynamic = "force-dynamic"
-
-export default function AdminDashboard() {
-  const catCount = db.select().from(categories).all().length
-  const userCount = db.select().from(users).all().length
-
+export default function AdminIndexPage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Дашборд</h1>
-        <p className="text-sm text-muted-foreground mt-1">Обзор магазина</p>
-      </div>
-      <Separator />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Категорий</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold">{catCount}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Пользователей
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold">{userCount}</p>
-          </CardContent>
-        </Card>
+    <div>
+      <h1 className="text-2xl font-bold mb-6">Admin</h1>
+      <div className="flex gap-4">
+        <Link href="/admin/categories" className="border border-border rounded-lg p-6 hover:bg-muted transition-colors">
+          <h2 className="text-lg font-semibold">Categories</h2>
+          <p className="text-sm text-muted-foreground">Manage categories from parser</p>
+        </Link>
+        <Link href="/admin/products" className="border border-border rounded-lg p-6 hover:bg-muted transition-colors">
+          <h2 className="text-lg font-semibold">Products</h2>
+          <p className="text-sm text-muted-foreground">Manage products from parser</p>
+        </Link>
       </div>
     </div>
-  )
+  );
 }

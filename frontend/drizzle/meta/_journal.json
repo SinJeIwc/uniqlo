@@ -8,6 +8,13 @@
       "when": 1782685145977,
       "tag": "0000_many_living_tribunal",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1784562690331,
+      "tag": "0001_wooden_lethal_legion",
+      "breakpoints": true
     }
   ]
 }

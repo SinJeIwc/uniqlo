@@ -14,7 +14,7 @@ export async function GET(request: Request) {
 
   let filtered = rows
   if (gender) filtered = filtered.filter((p) => p.gender === gender)
-  if (categoryId) filtered = filtered.filter((p) => p.categoryId === categoryId)
+  if (categoryId) filtered = filtered.filter((p) => p.categoryId === Number(categoryId))
 
   return NextResponse.json(filtered.slice(0, limit))
 }

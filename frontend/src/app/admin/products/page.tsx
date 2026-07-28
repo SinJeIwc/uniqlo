@@ -1,22 +1,42 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { db } from "@/db";
+import { products } from "@/db/schema";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { ProductRow } from "@/components/admin/products/product-row";
 
-export default function AdminProducts() {
+export default async function AdminProductsPage() {
+  const rows = db.select().from(products).all();
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Товары</h1>
-        <p className="text-sm text-muted-foreground mt-1">Скоро</p>
+    <div>
+      <h1 className="text-2xl font-bold mb-6">Products ({rows.length})</h1>
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-8" />
+              <TableHead>Product ID</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Price</TableHead>
+              <TableHead>Rating</TableHead>
+              <TableHead>Reviews</TableHead>
+              <TableHead>Gender</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Stock</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {rows.map((row) => (
+              <ProductRow key={row.productId} product={row as any} />
+            ))}
+          </TableBody>
+        </Table>
       </div>
-      <Separator />
-      <Card>
-        <CardHeader>
-          <CardTitle>Скоро</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">Управление товарами будет здесь.</p>
-        </CardContent>
-      </Card>
     </div>
-  )
+  );
 }
