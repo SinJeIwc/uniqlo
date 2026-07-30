@@ -1,4 +1,4 @@
-import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core"
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const categories = sqliteTable("categories", {
   id: integer().primaryKey(),
@@ -13,7 +13,7 @@ export const categories = sqliteTable("categories", {
   nav: integer().default(0),
   navOrder: integer("nav_order").default(0),
   visible: integer().default(1),
-})
+});
 
 export const products = sqliteTable("products", {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -38,7 +38,7 @@ export const products = sqliteTable("products", {
   aiReview: text("ai_review"),
   productDescription: text("product_description").default("[]"),
   inStock: integer("in_stock").default(1),
-})
+});
 
 export const users = sqliteTable("users", {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -50,4 +50,4 @@ export const users = sqliteTable("users", {
   role: text().default("user").notNull(),
   passwordHash: text("password_hash"),
   createdAt: text("created_at").notNull(),
-})
+});
