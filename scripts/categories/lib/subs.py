@@ -1,11 +1,9 @@
-"""L3 subcategory parsing — visits L2 category pages, extracts #lineupLinkWrapper."""
+"""L3/L4 subcategory parsing — extracts #lineupLinkWrapper links."""
 import time
 
-def parse_subcategories(page, gender: str, parent_slug: str) -> list[dict]:
-    url = f"https://www.uniqlo.com/jp/ja/{gender}/{parent_slug}"
-    page.goto(url, timeout=30000, wait_until="domcontentloaded")
-    time.sleep(2)
 
+def parse_subcategories(page, gender: str, parent_slug: str) -> list[dict]:
+    """Caller must already be on the page."""
     return page.evaluate("""() => {
         const wrapper = document.querySelector('#lineupLinkWrapper');
         if (!wrapper) return [];
@@ -19,7 +17,6 @@ def parse_subcategories(page, gender: str, parent_slug: str) -> list[dict]:
             const slug = href.split('/').filter(Boolean).pop() || '';
             if (seen.has(slug)) continue;
             seen.add(slug);
-
             let image = null;
             for (const img of a.querySelectorAll('img')) {
                 const src = img.getAttribute('data-src') || img.getAttribute('src') || '';

@@ -131,6 +131,8 @@ def extract(page: Page, url: str) -> list[Campaign]:
         const results = [];
         const seen = new Set();
         for (const link of document.querySelectorAll('a')) {
+            const href = link.getAttribute('href') || '';
+            if (href.includes('/products/')) continue;  // skip product cards
             const imgs = link.querySelectorAll('img');
             const video = link.querySelector('video');
             if (imgs.length === 0 && !video) continue;

@@ -1,5 +1,6 @@
-"""Flyout menu — finds nav, then extracts 4 gender panels from stable inner path."""
+"""Flyout menu — finds nav, then extracts 4 gender panels."""
 GENDERS = ["women", "men", "kids", "baby"]
+
 
 def parse_flyout(page) -> dict[str, list[dict]]:
     page.goto("https://www.uniqlo.com/jp/ja/", timeout=30000, wait_until="domcontentloaded")
@@ -11,10 +12,16 @@ def parse_flyout(page) -> dict[str, list[dict]]:
         const nav = naviLink.closest('nav');
         if (!nav) return {};
 
-        // 4 gender panels at stable path в nav
-        const panels = nav.querySelectorAll(':scope > div > div:nth-child(2) > div');
-        if (panels.length !== 4) return {};
-1
+        // Find panels: each panel is a div that has links with data-category="navi"
+        const panelCandidates = nav.querySelectorAll('div');
+        const panels = [];
+        for (const div of panelCandidates) {
+            if (div.querySelector('a[data-category="navi"]') && !div.querySelector('div a[data-category="navi"]')) {
+                panels.push(div);
+            }
+        }
+        if (panels.length < 4) return {};
+
         const result = {};
         const genders = ['women','men','kids','baby'];
         for (let i = 0; i < 4; i++) {
@@ -25,6 +32,7 @@ def parse_flyout(page) -> dict[str, list[dict]]:
                 if (href.startsWith('https://www.uniqlo.com'))
                     href = href.replace('https://www.uniqlo.com', '');
                 if (!href.startsWith('/jp/ja/')) continue;
+                if (href.includes('/products/')) continue;
                 href = href.replace(/^\\/jp\\/ja/, '');
                 if (seen.has(href)) continue;
                 seen.add(href);

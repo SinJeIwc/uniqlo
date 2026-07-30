@@ -1,0 +1,1604 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "WOMEN",
+          "item": "https://www.uniqlo.com/jp/ja/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tシャツ・スウェット",
+          "item": "https://www.uniqlo.com/jp/ja/women/tops"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tシャツ・カットソー",
+          "item": "https://www.uniqlo.com/jp/ja/women/tops/t-shirts"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Uniqlo U",
+          "item": "https://www.uniqlo.com/jp/ja/women/tops/t-shirts/uniqlo-u"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "クルーネックT",
+          "item": "https://www.uniqlo.com/jp/ja/products/E424873-000/00"
+        }
+      ]
+    },
+    {
+      "@type": "MerchantReturnPolicy",
+      "@id": "#return_policy",
+      "applicableCountry": "JP",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30
+    },
+    {
+      "@type": "ProductGroup",
+      "productGroupID": "E424873-000",
+      "name": "クルーネックT",
+      "description": "- 洗うほどになじみ、長く愛用できるようにデザイン。完成度を追求した1枚。 ヘビーウェイトのコットンで、ゆるすぎず、きつすぎない心地よいフィット。 Uniqlo U 商品ラインナップはこちら - 透け感: なし - トップスフィット: 普通 - ポケット: なし - XS・XXL・3XLサイズは、オンラインストアのみでの取り扱いとなります。",
+      "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00",
+      "brand": {
+        "@type": "Brand",
+        "name": "UNIQLO"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.5,
+        "reviewCount": 15379,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "category": "Women / Tシャツ・スウェット / Tシャツ・カットソー / Uniqlo U",
+      "material": "100% 綿",
+      "image": [
+        "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/sub/jpgoods_424873_sub3_3x4.jpg",
+        "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/424873/sub/goods_424873_sub11_3x4.jpg",
+        "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/424873/sub/goods_424873_sub14_3x4.jpg"
+      ],
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Carmy"
+          },
+          "datePublished": "2026-07-20",
+          "reviewBody": "Lサイズとさんざん迷いましたが思いきってXLにしました。ゆったり着られて気持ちよいです。\n普段はMサイズ着用ですが、もう夏が暑すぎて湿度も高いし、サイズぴったりのトップスはしんどくなってきました。\n\nREDはLもXLもオンラインストアでは売切でしたが、たまたま寄った店舗にあったので、試着して購入できたのもよかったです。",
+          "name": "大きめを購入しました",
+          "reviewRating": {
+            "@type": "Rating",
+            "bestRating": 5,
+            "ratingValue": 5,
+            "worstRating": 1
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "mimi"
+          },
+          "datePublished": "2026-07-20",
+          "reviewBody": "首周りも形もしっかりしていて普段使いにとてもよいです",
+          "name": "普段使いに",
+          "reviewRating": {
+            "@type": "Rating",
+            "bestRating": 5,
+            "ratingValue": 5,
+            "worstRating": 1
+          }
+        }
+      ],
+      "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "seller_name",
+          "value": "UNIQLO JP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "seller_url",
+          "value": "https://www.uniqlo.com/jp/ja/"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "seller_privacy_policy",
+          "value": "https://faq.uniqlo.com/articles/FAQ/privacy"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "seller_tos",
+          "value": "https://faq.uniqlo.com/articles/Knowledge/terms"
+        }
+      ],
+      "hasVariant": [
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / M",
+          "sku": "424873-15-004-000",
+          "color": "RED",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / XS",
+          "sku": "424873-00-002-000",
+          "color": "WHITE",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / S",
+          "sku": "424873-00-003-000",
+          "color": "WHITE",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / M",
+          "sku": "424873-00-004-000",
+          "color": "WHITE",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / L",
+          "sku": "424873-00-005-000",
+          "color": "WHITE",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / XL",
+          "sku": "424873-00-006-000",
+          "color": "WHITE",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / XXL",
+          "sku": "424873-00-007-000",
+          "color": "WHITE",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – WHITE / 3XL",
+          "sku": "424873-00-008-000",
+          "color": "WHITE",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=00&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / XS",
+          "sku": "424873-09-002-000",
+          "color": "BLACK",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / S",
+          "sku": "424873-09-003-000",
+          "color": "BLACK",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / M",
+          "sku": "424873-09-004-000",
+          "color": "BLACK",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / L",
+          "sku": "424873-09-005-000",
+          "color": "BLACK",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / XL",
+          "sku": "424873-09-006-000",
+          "color": "BLACK",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / XXL",
+          "sku": "424873-09-007-000",
+          "color": "BLACK",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLACK / 3XL",
+          "sku": "424873-09-008-000",
+          "color": "BLACK",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=09&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / XS",
+          "sku": "424873-10-002-000",
+          "color": "PINK",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / S",
+          "sku": "424873-10-003-000",
+          "color": "PINK",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / M",
+          "sku": "424873-10-004-000",
+          "color": "PINK",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / L",
+          "sku": "424873-10-005-000",
+          "color": "PINK",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / XL",
+          "sku": "424873-10-006-000",
+          "color": "PINK",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / XXL",
+          "sku": "424873-10-007-000",
+          "color": "PINK",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PINK / 3XL",
+          "sku": "424873-10-008-000",
+          "color": "PINK",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=10&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / XS",
+          "sku": "424873-15-002-000",
+          "color": "RED",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / S",
+          "sku": "424873-15-003-000",
+          "color": "RED",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / XXL",
+          "sku": "424873-15-007-000",
+          "color": "RED",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / 3XL",
+          "sku": "424873-15-008-000",
+          "color": "RED",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / XS",
+          "sku": "424873-37-002-000",
+          "color": "BROWN",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / S",
+          "sku": "424873-37-003-000",
+          "color": "BROWN",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / M",
+          "sku": "424873-37-004-000",
+          "color": "BROWN",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / L",
+          "sku": "424873-37-005-000",
+          "color": "BROWN",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / XL",
+          "sku": "424873-37-006-000",
+          "color": "BROWN",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / XXL",
+          "sku": "424873-37-007-000",
+          "color": "BROWN",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BROWN / 3XL",
+          "sku": "424873-37-008-000",
+          "color": "BROWN",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=37&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / XS",
+          "sku": "424873-40-002-000",
+          "color": "CREAM",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / S",
+          "sku": "424873-40-003-000",
+          "color": "CREAM",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / M",
+          "sku": "424873-40-004-000",
+          "color": "CREAM",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / L",
+          "sku": "424873-40-005-000",
+          "color": "CREAM",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / XL",
+          "sku": "424873-40-006-000",
+          "color": "CREAM",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / XXL",
+          "sku": "424873-40-007-000",
+          "color": "CREAM",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – CREAM / 3XL",
+          "sku": "424873-40-008-000",
+          "color": "CREAM",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=40&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / XS",
+          "sku": "424873-64-002-000",
+          "color": "BLUE",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / S",
+          "sku": "424873-64-003-000",
+          "color": "BLUE",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / M",
+          "sku": "424873-64-004-000",
+          "color": "BLUE",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / XXL",
+          "sku": "424873-64-007-000",
+          "color": "BLUE",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / 3XL",
+          "sku": "424873-64-008-000",
+          "color": "BLUE",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / XS",
+          "sku": "424873-69-002-000",
+          "color": "NAVY",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / S",
+          "sku": "424873-69-003-000",
+          "color": "NAVY",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / M",
+          "sku": "424873-69-004-000",
+          "color": "NAVY",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / L",
+          "sku": "424873-69-005-000",
+          "color": "NAVY",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / XL",
+          "sku": "424873-69-006-000",
+          "color": "NAVY",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / XXL",
+          "sku": "424873-69-007-000",
+          "color": "NAVY",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – NAVY / 3XL",
+          "sku": "424873-69-008-000",
+          "color": "NAVY",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=69&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / XS",
+          "sku": "424873-70-002-000",
+          "color": "LIGHT PURPLE",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / S",
+          "sku": "424873-70-003-000",
+          "color": "LIGHT PURPLE",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / M",
+          "sku": "424873-70-004-000",
+          "color": "LIGHT PURPLE",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / L",
+          "sku": "424873-70-005-000",
+          "color": "LIGHT PURPLE",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / XL",
+          "sku": "424873-70-006-000",
+          "color": "LIGHT PURPLE",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / XXL",
+          "sku": "424873-70-007-000",
+          "color": "LIGHT PURPLE",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – LIGHT PURPLE / 3XL",
+          "sku": "424873-70-008-000",
+          "color": "LIGHT PURPLE",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=70&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / XS",
+          "sku": "424873-74-002-000",
+          "color": "PURPLE",
+          "size": "XS",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=002",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / S",
+          "sku": "424873-74-003-000",
+          "color": "PURPLE",
+          "size": "S",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=003",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / M",
+          "sku": "424873-74-004-000",
+          "color": "PURPLE",
+          "size": "M",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=004",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / L",
+          "sku": "424873-74-005-000",
+          "color": "PURPLE",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / XL",
+          "sku": "424873-74-006-000",
+          "color": "PURPLE",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / XXL",
+          "sku": "424873-74-007-000",
+          "color": "PURPLE",
+          "size": "XXL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=007",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – PURPLE / 3XL",
+          "sku": "424873-74-008-000",
+          "color": "PURPLE",
+          "size": "3XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=74&sizeDisplayCode=008",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / L",
+          "sku": "424873-15-005-000",
+          "color": "RED",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/OutOfStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – RED / XL",
+          "sku": "424873-15-006-000",
+          "color": "RED",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_15_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=15&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/OutOfStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / L",
+          "sku": "424873-64-005-000",
+          "color": "BLUE",
+          "size": "L",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=005",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/OutOfStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "クルーネックT – BLUE / XL",
+          "sku": "424873-64-006-000",
+          "color": "BLUE",
+          "size": "XL",
+          "image": [
+            "https://image.uniqlo.com/UQ/ST3/jp/imagesgoods/424873/item/jpgoods_10_424873_3x4.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "1500",
+            "priceCurrency": "JPY",
+            "url": "https://www.uniqlo.com/jp/ja/products/E424873-000/00?colorDisplayCode=64&sizeDisplayCode=006",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/OutOfStock",
+            "hasMerchantReturnPolicy": {
+              "@id": "#return_policy"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
