@@ -6,19 +6,28 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
-  Table,
-  TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+interface Variant {
+  sku: string;
+  color: string;
+  size: string;
+  image: string;
+  price: number | null;
+  currency: string;
+  inStock: boolean;
+}
 
 interface Product {
   productId: string;
   name: string;
   description?: string | null;
+  brand?: string | null;
+  section?: string | null;
   category?: string | null;
+  subcategory?: string | null;
   price?: number | null;
   rating?: string | null;
   reviewCount?: number | null;
@@ -28,11 +37,11 @@ interface Product {
   colors: string;
   colorChips: string;
   sizes: string;
+  variants: string;
   gallery: string;
   aiReview?: string | null;
   productDescription: string;
-  breadcrumbs: string;
-  availability: string;
+  inStock?: number | null;
 }
 
 function ColorChip({ name, image }: { name: string; image: string }) {
@@ -48,14 +57,50 @@ function ProductDetail({ product }: { product: Product }) {
   const colors = JSON.parse(product.colors || "[]");
   const colorChips = JSON.parse(product.colorChips || "[]");
   const sizes = JSON.parse(product.sizes || "[]");
+  const variants: Variant[] = JSON.parse(product.variants || "[]");
   const gallery = JSON.parse(product.gallery || "[]");
-  const breadcrumbs = JSON.parse(product.breadcrumbs || "[]");
-  const availability = JSON.parse(product.availability || "{}");
   const productDesc = JSON.parse(product.productDescription || "[]");
+  const inStock = variants.filter((v) => v.inStock).length;
 
   return (
     <div className="bg-muted/30 border-t border-border">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+        {/* Brand & Category */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm">Info</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2 text-sm">
+            <div><span className="text-muted-foreground">Brand:</span> {product.brand}</div>
+            <div><span className="text-muted-foreground">Section:</span> {product.section || "—"}</div>
+            <div><span className="text-muted-foreground">Category:</span> {product.category || "—"}</div>
+            <div><span className="text-muted-foreground">Subcategory:</span> {product.subcategory || "—"}</div>
+          </CardContent>
+        </Card>
+
+        {/* Stock summary */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm">Stock</CardTitle>
+          </CardHeader>
+          <CardContent className="flex gap-4">
+            <div>
+              <span className="text-sm text-muted-foreground">In stock</span>
+              <p className="text-2xl font-bold text-green-600">{inStock}</p>
+            </div>
+            <Separator orientation="vertical" className="h-10" />
+            <div>
+              <span className="text-sm text-muted-foreground">Out of stock</span>
+              <p className="text-2xl font-bold text-red-600">{variants.length - inStock}</p>
+            </div>
+            <Separator orientation="vertical" className="h-10" />
+            <div>
+              <span className="text-sm text-muted-foreground">Total variants</span>
+              <p className="text-2xl font-bold">{variants.length}</p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Colors */}
         <Card>
           <CardHeader>
@@ -102,20 +147,39 @@ function ProductDetail({ product }: { product: Product }) {
           </CardContent>
         </Card>
 
-        {/* Stock */}
+        {/* Variants table */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Stock</CardTitle>
+            <CardTitle className="text-sm">Variants ({variants.length})</CardTitle>
           </CardHeader>
-          <CardContent className="flex gap-4">
-            <div>
-              <span className="text-sm text-muted-foreground">In stock</span>
-              <p className="text-2xl font-bold text-green-600">{availability.inStock ?? "?"}</p>
-            </div>
-            <Separator orientation="vertical" className="h-10" />
-            <div>
-              <span className="text-sm text-muted-foreground">Out of stock</span>
-              <p className="text-2xl font-bold text-red-600">{availability.outOfStock ?? "?"}</p>
+          <CardContent>
+            <div className="max-h-48 overflow-y-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="text-muted-foreground border-b border-border">
+                    <th className="text-left py-1">Color</th>
+                    <th className="text-left py-1">Size</th>
+                    <th className="text-right py-1">Price</th>
+                    <th className="text-right py-1">Stock</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {variants.map((v, i) => (
+                    <tr key={i} className="border-b border-border/50">
+                      <td className="py-1">{v.color}</td>
+                      <td className="py-1">{v.size}</td>
+                      <td className="py-1 text-right">¥{v.price?.toLocaleString()}</td>
+                      <td className="py-1 text-right">
+                        {v.inStock ? (
+                          <Badge variant="outline" className="text-green-600 text-[10px]">in</Badge>
+                        ) : (
+                          <Badge variant="outline" className="text-red-600 text-[10px]">out</Badge>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </CardContent>
         </Card>
@@ -123,33 +187,23 @@ function ProductDetail({ product }: { product: Product }) {
         {/* Material */}
         {product.material && (
           <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-sm">Material</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">{product.material}</p>
-            </CardContent>
+            <CardHeader><CardTitle className="text-sm">Material</CardTitle></CardHeader>
+            <CardContent><p className="text-sm text-muted-foreground">{product.material}</p></CardContent>
           </Card>
         )}
 
         {/* AI Review */}
         {product.aiReview && (
           <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-sm">AI Review</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground leading-relaxed">{product.aiReview}</p>
-            </CardContent>
+            <CardHeader><CardTitle className="text-sm">AI Review</CardTitle></CardHeader>
+            <CardContent><p className="text-sm text-muted-foreground leading-relaxed">{product.aiReview}</p></CardContent>
           </Card>
         )}
 
         {/* Product Description */}
         {productDesc.length > 0 && (
           <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-sm">Product Description</CardTitle>
-            </CardHeader>
+            <CardHeader><CardTitle className="text-sm">Product Description</CardTitle></CardHeader>
             <CardContent className="flex flex-col gap-4">
               {productDesc.map((sec: any, i: number) => (
                 <div key={i}>
@@ -158,18 +212,11 @@ function ProductDetail({ product }: { product: Product }) {
                     <div className="grid grid-cols-2 gap-4">
                       {sec.pairs.map((pair: any, j: number) => (
                         <div key={j} className="flex gap-3">
-                          {pair.image && (
-                            <img src={pair.image} alt="" className="size-12 object-cover rounded border border-border" />
-                          )}
+                          {pair.image && <img src={pair.image} alt="" className="size-12 object-cover rounded border border-border" />}
                           <p className="text-xs text-muted-foreground">
                             {Array.isArray(pair.text)
                               ? pair.text.map((t: any, k: number) =>
-                                  t.href ? (
-                                    <span key={k} className="text-primary underline">{t.content}</span>
-                                  ) : (
-                                    <span key={k}>{t.content}</span>
-                                  )
-                                )
+                                  t.href ? <span key={k} className="text-primary underline">{t.content}</span> : <span key={k}>{t.content}</span>)
                               : pair.text}
                           </p>
                         </div>
@@ -184,25 +231,6 @@ function ProductDetail({ product }: { product: Product }) {
             </CardContent>
           </Card>
         )}
-
-        {/* Breadcrumbs */}
-        {breadcrumbs.length > 0 && (
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-sm">Breadcrumbs</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-1 items-center text-xs text-muted-foreground">
-                {breadcrumbs.map((b: any, i: number) => (
-                  <span key={i}>
-                    {i > 0 && <span className="mx-1">/</span>}
-                    {b.name}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
       </div>
     </div>
   );
@@ -210,40 +238,30 @@ function ProductDetail({ product }: { product: Product }) {
 
 export function ProductRow({ product }: { product: Product }) {
   const [open, setOpen] = useState(false);
-  const avail = JSON.parse(product.availability || "{}");
-  const inStock = avail.inStock ?? 0;
-  const outStock = avail.outOfStock ?? 0;
+  const variants: Variant[] = JSON.parse(product.variants || "[]");
+  const inStock = variants.filter((v) => v.inStock).length;
 
   return (
     <>
-      <TableRow
-        className="cursor-pointer hover:bg-muted/50"
-        onClick={() => setOpen(!open)}
-      >
-        <TableCell className="w-8">
-          {open ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
-        </TableCell>
+      <TableRow className="cursor-pointer hover:bg-muted/50" onClick={() => setOpen(!open)}>
+        <TableCell className="w-8">{open ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}</TableCell>
         <TableCell className="font-mono text-xs">{product.productId}</TableCell>
         <TableCell className="font-medium max-w-56 truncate">{product.name}</TableCell>
         <TableCell>¥{product.price?.toLocaleString()}</TableCell>
         <TableCell>
-          <div className="flex items-center gap-1">
-            <span>{product.rating}</span>
-            <span className="text-[10px] text-muted-foreground">★</span>
-          </div>
+          <span>{product.rating}</span>
+          <span className="text-[10px] text-muted-foreground">★</span>
         </TableCell>
         <TableCell className="text-xs">{product.reviewCount}</TableCell>
         <TableCell className="text-xs">{product.gender}</TableCell>
-        <TableCell className="text-xs max-w-40 truncate">{product.category}</TableCell>
+        <TableCell className="text-xs max-w-40 truncate">
+          {[product.section, product.category, product.subcategory].filter(Boolean).join(" / ")}
+        </TableCell>
         <TableCell>
-          {inStock > 0 ? (
-            <Badge variant="outline" className="text-green-600 border-green-600">
-              {inStock} in stock
-            </Badge>
+          {product.inStock ? (
+            <Badge variant="outline" className="text-green-600 border-green-600">{inStock}/{variants.length}</Badge>
           ) : (
-            <Badge variant="outline" className="text-red-600 border-red-600">
-              out
-            </Badge>
+            <Badge variant="outline" className="text-red-600 border-red-600">out</Badge>
           )}
         </TableCell>
       </TableRow>
