@@ -4,7 +4,7 @@ import { SaveIcon, Trash2Icon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner"
@@ -51,7 +51,7 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: category!.id,
+          id: category?.id,
           name,
           slug,
           image: image || null,
@@ -68,10 +68,10 @@ export function CategoryEditForm({ category, onSave }: CategoryEditFormProps) {
   }
 
   async function handleDelete() {
-    if (!confirm(`Удалить «${category!.name}»? Это нельзя отменить.`)) return
+    if (!confirm(`Удалить «${category?.name}»? Это нельзя отменить.`)) return
     setSaving(true)
     try {
-      const res = await fetch(`/api/admin/categories?id=${category!.id}`, { method: "DELETE" })
+      const res = await fetch(`/api/admin/categories?id=${category?.id}`, { method: "DELETE" })
       if (!res.ok) throw new Error("Delete failed")
       onSave()
     } catch {

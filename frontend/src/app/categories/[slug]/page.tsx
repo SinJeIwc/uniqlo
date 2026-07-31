@@ -1,3 +1,3 @@
 export default function CategoryPage() {
-  return <div>В разработке</div>;
+  return <div>В разработке</div>
 }

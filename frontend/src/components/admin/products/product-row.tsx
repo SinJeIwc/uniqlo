@@ -1,66 +1,67 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import {
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
+import { ChevronDown, ChevronRight } from "lucide-react"
+import { useState } from "react"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { TableCell, TableRow } from "@/components/ui/table"
 
 interface Variant {
-  sku: string;
-  color: string;
-  size: string;
-  image: string;
-  price: number | null;
-  currency: string;
-  inStock: boolean;
+  sku: string
+  color: string
+  size: string
+  image: string
+  price: number | null
+  currency: string
+  inStock: boolean
 }
 
 interface Product {
-  productId: string;
-  name: string;
-  description?: string | null;
-  brand?: string | null;
-  section?: string | null;
-  category?: string | null;
-  subcategory?: string | null;
-  price?: number | null;
-  rating?: string | null;
-  reviewCount?: number | null;
-  gender: string;
-  categoryId?: number | null;
-  material?: string | null;
-  colors: string;
-  colorChips: string;
-  sizes: string;
-  variants: string;
-  gallery: string;
-  aiReview?: string | null;
-  productDescription: string;
-  inStock?: number | null;
+  productId: string
+  name: string
+  description?: string | null
+  brand?: string | null
+  section?: string | null
+  category?: string | null
+  subcategory?: string | null
+  price?: number | null
+  rating?: string | null
+  reviewCount?: number | null
+  gender: string
+  categoryId?: number | null
+  material?: string | null
+  colors: string
+  colorChips: string
+  sizes: string
+  variants: string
+  gallery: string
+  aiReview?: string | null
+  productDescription: string
+  inStock?: number | null
 }
 
 function ColorChip({ name, image }: { name: string; image: string }) {
   return (
     <div className="flex flex-col items-center gap-1">
-      <img src={image} alt={name} className="size-10 rounded-full border border-border object-cover" />
+      <img
+        src={image}
+        alt={name}
+        className="size-10 rounded-full border border-border object-cover"
+      />
       <span className="text-[10px] text-muted-foreground">{name}</span>
     </div>
-  );
+  )
 }
 
 function ProductDetail({ product }: { product: Product }) {
-  const colors = JSON.parse(product.colors || "[]");
-  const colorChips = JSON.parse(product.colorChips || "[]");
-  const sizes = JSON.parse(product.sizes || "[]");
-  const variants: Variant[] = JSON.parse(product.variants || "[]");
-  const gallery = JSON.parse(product.gallery || "[]");
-  const productDesc = JSON.parse(product.productDescription || "[]");
-  const inStock = variants.filter((v) => v.inStock).length;
+  const colors = JSON.parse(product.colors || "[]")
+  const colorChips = JSON.parse(product.colorChips || "[]")
+  const sizes = JSON.parse(product.sizes || "[]")
+  const variants: Variant[] = JSON.parse(product.variants || "[]")
+  const gallery = JSON.parse(product.gallery || "[]")
+  const productDesc = JSON.parse(product.productDescription || "[]")
+  const inStock = variants.filter((v) => v.inStock).length
 
   return (
     <div className="bg-muted/30 border-t border-border">
@@ -71,10 +72,19 @@ function ProductDetail({ product }: { product: Product }) {
             <CardTitle className="text-sm">Info</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-2 text-sm">
-            <div><span className="text-muted-foreground">Brand:</span> {product.brand}</div>
-            <div><span className="text-muted-foreground">Section:</span> {product.section || "—"}</div>
-            <div><span className="text-muted-foreground">Category:</span> {product.category || "—"}</div>
-            <div><span className="text-muted-foreground">Subcategory:</span> {product.subcategory || "—"}</div>
+            <div>
+              <span className="text-muted-foreground">Brand:</span> {product.brand}
+            </div>
+            <div>
+              <span className="text-muted-foreground">Section:</span> {product.section || "—"}
+            </div>
+            <div>
+              <span className="text-muted-foreground">Category:</span> {product.category || "—"}
+            </div>
+            <div>
+              <span className="text-muted-foreground">Subcategory:</span>{" "}
+              {product.subcategory || "—"}
+            </div>
           </CardContent>
         </Card>
 
@@ -113,7 +123,9 @@ function ProductDetail({ product }: { product: Product }) {
                     <ColorChip key={c.name} name={c.name} image={c.image} />
                   ))
                 : colors.map((c: any) => (
-                    <Badge key={c.name} variant="outline">{c.name}</Badge>
+                    <Badge key={c.name} variant="outline">
+                      {c.name}
+                    </Badge>
                   ))}
             </div>
           </CardContent>
@@ -127,7 +139,9 @@ function ProductDetail({ product }: { product: Product }) {
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {sizes.map((s: string) => (
-                <Badge key={s} variant="secondary">{s}</Badge>
+                <Badge key={s} variant="secondary">
+                  {s}
+                </Badge>
               ))}
             </div>
           </CardContent>
@@ -141,7 +155,12 @@ function ProductDetail({ product }: { product: Product }) {
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {gallery.slice(0, 8).map((g: any, i: number) => (
-                <img key={i} src={g.url} alt="" className="size-16 object-cover rounded-md border border-border" />
+                <img
+                  key={i}
+                  src={g.url}
+                  alt=""
+                  className="size-16 object-cover rounded-md border border-border"
+                />
               ))}
             </div>
           </CardContent>
@@ -171,9 +190,13 @@ function ProductDetail({ product }: { product: Product }) {
                       <td className="py-1 text-right">¥{v.price?.toLocaleString()}</td>
                       <td className="py-1 text-right">
                         {v.inStock ? (
-                          <Badge variant="outline" className="text-green-600 text-[10px]">in</Badge>
+                          <Badge variant="outline" className="text-green-600 text-[10px]">
+                            in
+                          </Badge>
                         ) : (
-                          <Badge variant="outline" className="text-red-600 text-[10px]">out</Badge>
+                          <Badge variant="outline" className="text-red-600 text-[10px]">
+                            out
+                          </Badge>
                         )}
                       </td>
                     </tr>
@@ -187,36 +210,61 @@ function ProductDetail({ product }: { product: Product }) {
         {/* Material */}
         {product.material && (
           <Card className="lg:col-span-2">
-            <CardHeader><CardTitle className="text-sm">Material</CardTitle></CardHeader>
-            <CardContent><p className="text-sm text-muted-foreground">{product.material}</p></CardContent>
+            <CardHeader>
+              <CardTitle className="text-sm">Material</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">{product.material}</p>
+            </CardContent>
           </Card>
         )}
 
         {/* AI Review */}
         {product.aiReview && (
           <Card className="lg:col-span-2">
-            <CardHeader><CardTitle className="text-sm">AI Review</CardTitle></CardHeader>
-            <CardContent><p className="text-sm text-muted-foreground leading-relaxed">{product.aiReview}</p></CardContent>
+            <CardHeader>
+              <CardTitle className="text-sm">AI Review</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground leading-relaxed">{product.aiReview}</p>
+            </CardContent>
           </Card>
         )}
 
         {/* Product Description */}
         {productDesc.length > 0 && (
           <Card className="lg:col-span-2">
-            <CardHeader><CardTitle className="text-sm">Product Description</CardTitle></CardHeader>
+            <CardHeader>
+              <CardTitle className="text-sm">Product Description</CardTitle>
+            </CardHeader>
             <CardContent className="flex flex-col gap-4">
               {productDesc.map((sec: any, i: number) => (
                 <div key={i}>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">{sec.section}</h4>
+                  <h4 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
+                    {sec.section}
+                  </h4>
                   {sec.pairs ? (
                     <div className="grid grid-cols-2 gap-4">
                       {sec.pairs.map((pair: any, j: number) => (
                         <div key={j} className="flex gap-3">
-                          {pair.image && <img src={pair.image} alt="" className="size-12 object-cover rounded border border-border" />}
+                          {pair.image && (
+                            <img
+                              src={pair.image}
+                              alt=""
+                              className="size-12 object-cover rounded border border-border"
+                            />
+                          )}
                           <p className="text-xs text-muted-foreground">
                             {Array.isArray(pair.text)
                               ? pair.text.map((t: any, k: number) =>
-                                  t.href ? <span key={k} className="text-primary underline">{t.content}</span> : <span key={k}>{t.content}</span>)
+                                  t.href ? (
+                                    <span key={k} className="text-primary underline">
+                                      {t.content}
+                                    </span>
+                                  ) : (
+                                    <span key={k}>{t.content}</span>
+                                  ),
+                                )
                               : pair.text}
                           </p>
                         </div>
@@ -233,18 +281,20 @@ function ProductDetail({ product }: { product: Product }) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
 export function ProductRow({ product }: { product: Product }) {
-  const [open, setOpen] = useState(false);
-  const variants: Variant[] = JSON.parse(product.variants || "[]");
-  const inStock = variants.filter((v) => v.inStock).length;
+  const [open, setOpen] = useState(false)
+  const variants: Variant[] = JSON.parse(product.variants || "[]")
+  const inStock = variants.filter((v) => v.inStock).length
 
   return (
     <>
       <TableRow className="cursor-pointer hover:bg-muted/50" onClick={() => setOpen(!open)}>
-        <TableCell className="w-8">{open ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}</TableCell>
+        <TableCell className="w-8">
+          {open ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
+        </TableCell>
         <TableCell className="font-mono text-xs">{product.productId}</TableCell>
         <TableCell className="font-medium max-w-56 truncate">{product.name}</TableCell>
         <TableCell>¥{product.price?.toLocaleString()}</TableCell>
@@ -259,9 +309,13 @@ export function ProductRow({ product }: { product: Product }) {
         </TableCell>
         <TableCell>
           {product.inStock ? (
-            <Badge variant="outline" className="text-green-600 border-green-600">{inStock}/{variants.length}</Badge>
+            <Badge variant="outline" className="text-green-600 border-green-600">
+              {inStock}/{variants.length}
+            </Badge>
           ) : (
-            <Badge variant="outline" className="text-red-600 border-red-600">out</Badge>
+            <Badge variant="outline" className="text-red-600 border-red-600">
+              out
+            </Badge>
           )}
         </TableCell>
       </TableRow>
@@ -273,5 +327,5 @@ export function ProductRow({ product }: { product: Product }) {
         </TableRow>
       )}
     </>
-  );
+  )
 }

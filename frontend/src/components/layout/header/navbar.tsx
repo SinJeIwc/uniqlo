@@ -1,18 +1,18 @@
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 export const TABS = [
   { id: "women", label: "WOMEN", href: "/" },
   { id: "men", label: "MEN", href: "/men" },
   { id: "kids", label: "KIDS", href: "/kids" },
   { id: "baby", label: "BABY", href: "/baby" },
-] as const;
+] as const
 
-export type TabId = (typeof TABS)[number]["id"];
+export type TabId = (typeof TABS)[number]["id"]
 
 interface NavbarProps {
-  activeTab: TabId | null;
-  variant?: "header" | "sidebar";
+  activeTab: TabId | null
+  variant?: "header" | "sidebar"
 }
 
 function tabLinkClass(isActive: boolean, variant: "header" | "sidebar") {
@@ -24,7 +24,7 @@ function tabLinkClass(isActive: boolean, variant: "header" | "sidebar") {
         ? "border-foreground"
         : "border-background"
       : "border-transparent",
-  );
+  )
 }
 
 /** Desktop: inline tabs in the main header row */
@@ -41,7 +41,7 @@ export function NavbarDesktop({ activeTab, variant = "header" }: NavbarProps) {
         </Link>
       ))}
     </nav>
-  );
+  )
 }
 
 /** Mobile: 4-column grid below the main row, 44px height */
@@ -58,5 +58,5 @@ export function NavbarMobile({ activeTab, variant = "header" }: NavbarProps) {
         </Link>
       ))}
     </div>
-  );
+  )
 }

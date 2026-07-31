@@ -46,12 +46,12 @@ export async function POST(request: Request) {
     // Set session
     const session = await getSession()
     session.user = {
-      id: user!.id,
-      name: user!.name,
-      email: user!.email,
-      avatar: user!.avatar,
-      role: user!.role,
-      provider: user!.provider,
+      id: user?.id,
+      name: user?.name,
+      email: user?.email,
+      avatar: user?.avatar,
+      role: user?.role,
+      provider: user?.provider,
     }
     await session.save()
 

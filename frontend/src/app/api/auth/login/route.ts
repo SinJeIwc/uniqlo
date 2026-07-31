@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       .where(and(eq(users.provider, "email"), eq(users.providerId, email)))
       .get()
 
-    if (!user || !user.passwordHash) {
+    if (!user?.passwordHash) {
       return NextResponse.json({ error: "Неверный email или пароль" }, { status: 401 })
     }
 

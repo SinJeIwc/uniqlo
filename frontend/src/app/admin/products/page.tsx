@@ -1,16 +1,10 @@
-import { db } from "@/db";
-import { products } from "@/db/schema";
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { ProductRow } from "@/components/admin/products/product-row";
+import { ProductRow } from "@/components/admin/products/product-row"
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { db } from "@/db"
+import { products } from "@/db/schema"
 
 export default async function AdminProductsPage() {
-  const rows = db.select().from(products).all();
+  const rows = db.select().from(products).all()
 
   return (
     <div>
@@ -38,5 +32,5 @@ export default async function AdminProductsPage() {
         </Table>
       </div>
     </div>
-  );
+  )
 }

@@ -20,13 +20,20 @@ pnpm drizzle-kit push         # Применить schema.ts к БД напря�
 
 ## Типы
 
-Не пиши тип вручную — бери из Drizzle:
+**Все типы — в `src/db/types.ts`.** Меняешь `schema.ts` → типы обновляются автоматически.
 
 ```ts
-import type { categories } from "@/db/schema";
-type Cat = typeof categories.$inferSelect;   // для чтения
-type NewCat = typeof categories.$inferInsert; // для вставки
+import type { Category, Product, User } from "@/db/types";
+import type { CategoryNode, NewCategory, ProductVariant } from "@/db/types";
+
+// Пример: все поля категории (включая image_sp, video_url, subtitle, ...)
+const cat: Category = { ... };
+
+// Подтипы через Pick/Omit
+type NavItem = Pick<Category, "name" | "slug" | "gender" | "image">;
 ```
+
+**Не пиши DB-типы вручную.** Везде используй импорт из `@/db/types`.
 
 ## Где лежит
 

@@ -1,6 +1,6 @@
+import { mkdirSync, readFileSync } from "node:fs"
+import { join } from "node:path"
 import Database from "better-sqlite3"
-import { mkdirSync, readFileSync } from "fs"
-import { join } from "path"
 
 const ROOT = join(import.meta.dirname, "..")
 mkdirSync(join(ROOT, "data"), { recursive: true })

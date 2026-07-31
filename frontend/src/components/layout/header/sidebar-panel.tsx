@@ -1,42 +1,42 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react"
+import type { CategoryNavItem } from "@/components/home/types"
+import { CategoryGrid } from "@/components/shared/category/CategoryGrid"
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarTrigger,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { NavbarDesktop, NavbarMobile, type TabId } from "./navbar";
-import { SearchButton } from "./search";
-import type { CategoryNavItem } from "@/components/home/types";
-import { HeaderLogo } from "./logo";
-import { CategoryGrid } from "@/components/shared/category/CategoryGrid";
+} from "@/components/ui/sidebar"
+import { HeaderLogo } from "./logo"
+import { NavbarDesktop, NavbarMobile, type TabId } from "./navbar"
+import { SearchButton } from "./search"
 
-const SM = 640;
+const SM = 640
 
 function useMobile() {
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(false)
   useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${SM - 1}px)`);
-    const onChange = () => setMobile(mql.matches);
-    mql.addEventListener("change", onChange);
-    setMobile(mql.matches);
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
-  return mobile;
+    const mql = window.matchMedia(`(max-width: ${SM - 1}px)`)
+    const onChange = () => setMobile(mql.matches)
+    mql.addEventListener("change", onChange)
+    setMobile(mql.matches)
+    return () => mql.removeEventListener("change", onChange)
+  }, [])
+  return mobile
 }
 
 interface SidebarPanelProps {
-  activeTab: TabId | null;
-  items: CategoryNavItem[];
+  activeTab: TabId | null
+  items: CategoryNavItem[]
 }
 
 export function SidebarPanel({ activeTab, items }: SidebarPanelProps) {
-  const { setOpen } = useSidebar();
-  const isMobile = useMobile();
-  const close = () => setOpen(false);
+  const { setOpen } = useSidebar()
+  const isMobile = useMobile()
+  const close = () => setOpen(false)
 
   return (
     <Sidebar side={isMobile ? "right" : "top"}>
@@ -55,5 +55,5 @@ export function SidebarPanel({ activeTab, items }: SidebarPanelProps) {
         <CategoryGrid items={items} onClose={close} />
       </SidebarContent>
     </Sidebar>
-  );
+  )
 }

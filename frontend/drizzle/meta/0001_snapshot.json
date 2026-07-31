@@ -259,9 +259,7 @@
       "indexes": {
         "products_product_id_unique": {
           "name": "products_product_id_unique",
-          "columns": [
-            "product_id"
-          ],
+          "columns": ["product_id"],
           "isUnique": true
         }
       },
@@ -270,12 +268,8 @@
           "name": "products_category_id_categories_id_fk",
           "tableFrom": "products",
           "tableTo": "categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }

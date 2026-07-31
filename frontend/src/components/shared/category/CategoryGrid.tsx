@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { CategoryNavItem } from "../../home/types";
+import Image from "next/image"
+import Link from "next/link"
+import type { CategoryNavItem } from "../../home/types"
 
 type CategoryGridProps = {
-  items: CategoryNavItem[];
-  onClose?: () => void;
-};
+  items: CategoryNavItem[]
+  onClose?: () => void
+}
 
 export function CategoryGrid({ items, onClose }: CategoryGridProps) {
   return (
@@ -39,5 +39,5 @@ export function CategoryGrid({ items, onClose }: CategoryGridProps) {
         </Link>
       ))}
     </div>
-  );
+  )
 }

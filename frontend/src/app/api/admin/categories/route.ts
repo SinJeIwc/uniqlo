@@ -1,4 +1,4 @@
-import { and, asc, eq, isNull } from "drizzle-orm"
+import { asc, eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
 import { db } from "@/db"
 import { categories } from "@/db/schema"
@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic"
 /** GET /api/admin/categories?gender=women — tree of categories for admin */
 export async function GET(request: Request) {
   const session = await getSession()
-  if (!session.user || session.user.role !== "admin") {
+  if (session.user?.role !== "admin") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
@@ -45,7 +45,7 @@ export async function GET(request: Request) {
 /** PATCH /api/admin/categories — update category */
 export async function PATCH(request: Request) {
   const session = await getSession()
-  if (!session.user || session.user.role !== "admin") {
+  if (session.user?.role !== "admin") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
@@ -69,7 +69,7 @@ export async function PATCH(request: Request) {
 /** DELETE /api/admin/categories — delete category */
 export async function DELETE(request: Request) {
   const session = await getSession()
-  if (!session.user || session.user.role !== "admin") {
+  if (session.user?.role !== "admin") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 

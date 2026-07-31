@@ -1,13 +1,10 @@
 import { asc, eq } from "drizzle-orm"
 import { db } from "@/db"
 import { categories } from "@/db/schema"
+import type { Category } from "@/db/types"
 
-export type NavItem = {
-  name: string
-  slug: string
-  gender: string
-  image: string | null
-}
+/** Nav item — subset of Category fields for the header menu. */
+export type NavItem = Pick<Category, "name" | "slug" | "gender" | "image">
 
 export async function getAllNavCategories(): Promise<NavItem[]> {
   return db

@@ -5,9 +5,9 @@
  * Usage: pnpm setup-admin
  */
 
+import readline from "node:readline"
 import bcrypt from "bcryptjs"
 import Database from "better-sqlite3"
-import readline from "readline"
 
 const rl = readline.createInterface({
   input: process.stdin,
