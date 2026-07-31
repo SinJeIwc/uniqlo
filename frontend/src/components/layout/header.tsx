@@ -4,14 +4,10 @@ import { HeaderClient } from "./header-client"
 export async function Header() {
   const all = await getAllNavCategories()
 
-  const navItems = {
-    women: [] as NavItem[],
-    men: [] as NavItem[],
-    kids: [] as NavItem[],
-    baby: [] as NavItem[],
-  }
+  const navItems: Record<string, NavItem[]> = { women: [], men: [], kids: [], baby: [] }
   for (const item of all) {
-    if (item.gender in navItems) navItems[item.gender as keyof typeof navItems].push(item)
+    const g = item.gender.toLowerCase()
+    if (g in navItems) navItems[g].push(item)
   }
 
   return <HeaderClient navItems={navItems} />

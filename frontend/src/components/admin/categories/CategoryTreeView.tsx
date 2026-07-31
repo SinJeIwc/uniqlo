@@ -22,7 +22,9 @@ export function CategoryTreeView({ nodes }: Props) {
     const result: CategoryNode[] = []
     for (const node of list) {
       const match =
-        node.name.toLowerCase().includes(lower) || node.slug.toLowerCase().includes(lower)
+        node.name.toLowerCase().includes(lower) ||
+        (node.nameRu || "").toLowerCase().includes(lower) ||
+        node.slug.toLowerCase().includes(lower)
       const filteredChildren = node.children ? filterTree(node.children, q) : []
       if (match || filteredChildren.length > 0) {
         result.push({

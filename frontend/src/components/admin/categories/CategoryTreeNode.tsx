@@ -2,6 +2,7 @@
 
 import { ChevronRight, EyeOffIcon, ImageIcon, VideoIcon } from "lucide-react"
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { CategoryNode } from "./types"
 
@@ -18,29 +19,32 @@ const KIND_LABEL: Record<string, string> = {
   category: "C",
 }
 
+const DEPTH_PL = ["pl-3", "pl-8", "pl-[52px]", "pl-[72px]"]
+
 export function CategoryTreeNode({ node, depth, selectedId, onSelect }: Props) {
   const [expanded, setExpanded] = useState(depth === 0)
   const hasChildren = node.children && node.children.length > 0
   const selected = selectedId === node.id
-
   const hasImage = !!(node.imagePc || node.imageSp || node.image)
   const hasVideo = !!node.videoUrl
 
   return (
     <div>
-      <button
+      <Button
+        variant="ghost"
+        size="sm"
+        type="button"
         onClick={() => {
           onSelect(node)
           if (hasChildren) setExpanded(!expanded)
         }}
         className={cn(
-          "group w-full flex items-center gap-2 py-2 px-3 text-sm text-left transition-colors hover:bg-muted/40 border-l-2",
+          "w-full justify-start gap-2 h-auto py-2 text-sm border-l-2 rounded-none text-foreground",
           selected ? "border-l-primary bg-primary/5 font-medium" : "border-l-transparent",
           !node.visible && "opacity-50",
+          DEPTH_PL[depth] || "pl-3",
         )}
-        style={{ paddingLeft: `${depth * 20 + 12}px` }}
       >
-        {/* Expand arrow */}
         {hasChildren ? (
           <ChevronRight
             className={cn(
@@ -52,30 +56,27 @@ export function CategoryTreeNode({ node, depth, selectedId, onSelect }: Props) {
           <span className="w-3.5 shrink-0" />
         )}
 
-        {/* Kind badge */}
         <span
           className={cn(
-            "shrink-0 w-5 h-5 rounded text-[10px] font-mono font-bold flex items-center justify-center",
-            node.kind === "section"
-              ? "bg-primary/10 text-primary"
-              : node.kind === "feature"
-                ? "bg-amber-500/10 text-amber-500"
-                : "bg-muted text-muted-foreground",
+            "shrink-0 size-5 rounded text-[10px] font-mono font-bold flex items-center justify-center",
+            node.kind === "section" && "bg-primary/10 text-primary",
+            node.kind === "feature" && "bg-amber-500/10 text-amber-500",
+            node.kind === "category" && "bg-muted text-muted-foreground",
           )}
         >
           {KIND_LABEL[node.kind] || "?"}
         </span>
 
-        {/* Name + subtitle */}
-        <div className="min-w-0 flex-1">
-          <div className="truncate">{node.name}</div>
-          {node.subtitle && (
-            <div className="text-[11px] text-muted-foreground truncate">{node.subtitle}</div>
+        <div className="min-w-0 flex-1 text-left">
+          <div className="truncate">{node.nameRu || node.name}</div>
+          {(node.subtitleRu || node.subtitle) && (
+            <div className="text-[11px] text-muted-foreground truncate">
+              {node.subtitleRu || node.subtitle}
+            </div>
           )}
         </div>
 
-        {/* Right-side indicators */}
-        <div className="flex items-center gap-1.5 shrink-0 ml-auto">
+        <div className="flex items-center gap-1.5 shrink-0">
           {node.productCount != null && (
             <span className="text-[10px] text-muted-foreground font-mono tabular-nums">
               {node.productCount}
@@ -85,7 +86,7 @@ export function CategoryTreeNode({ node, depth, selectedId, onSelect }: Props) {
           {hasImage && <ImageIcon className="size-3 text-muted-foreground" />}
           {!node.visible && <EyeOffIcon className="size-3 text-muted-foreground/40" />}
         </div>
-      </button>
+      </Button>
 
       {expanded && hasChildren && (
         <div>

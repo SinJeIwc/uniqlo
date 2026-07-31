@@ -3,16 +3,23 @@ import { db } from "@/db"
 import { categories } from "@/db/schema"
 import type { Category } from "@/db/types"
 
-/** Nav item — subset of Category fields for the header menu. */
-export type NavItem = Pick<Category, "name" | "slug" | "gender" | "image">
+/** Nav item with optional Russian name. */
+export type NavItem = {
+  name: string
+  nameRu: string | null
+  slug: string
+  gender: string
+  image: string | null  // image_nav from DB
+}
 
 export async function getAllNavCategories(): Promise<NavItem[]> {
   return db
     .select({
       name: categories.name,
+      nameRu: categories.nameRu,
       slug: categories.slug,
       gender: categories.gender,
-      image: categories.image,
+      image: categories.imageNav,
     })
     .from(categories)
     .where(eq(categories.nav, 1))

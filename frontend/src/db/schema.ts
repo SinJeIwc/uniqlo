@@ -19,6 +19,9 @@ export const categories = sqliteTable("categories", {
   videoPoster: text("video_poster"),
   subtitle: text(),
   productCount: integer("product_count"),
+  imageNav: text("image_nav"),
+  nameRu: text("name_ru"),
+  subtitleRu: text("subtitle_ru"),
 })
 
 export const products = sqliteTable("products", {
@@ -44,6 +47,12 @@ export const products = sqliteTable("products", {
   aiReview: text("ai_review"),
   productDescription: text("product_description").default("[]"),
   inStock: integer("in_stock").default(1),
+  nameRu: text("name_ru"),
+  descriptionRu: text("description_ru"),
+  sectionRu: text("section_ru"),
+  categoryRu: text("category_ru"),
+  subcategoryRu: text("subcategory_ru"),
+  active: integer().default(1),
 })
 
 export const users = sqliteTable("users", {

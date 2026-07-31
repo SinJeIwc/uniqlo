@@ -109,8 +109,8 @@ export function CategoryDetail({ category }: Props) {
       {hasGallery && (
         <Carousel className="w-full">
           <CarouselContent>
-            {slides.map((slide, i) => (
-              <CarouselItem key={i}>
+            {slides.map((slide) => (
+              <CarouselItem key={slide.src}>
                 <MediaSlide {...slide} />
               </CarouselItem>
             ))}
@@ -124,8 +124,8 @@ export function CategoryDetail({ category }: Props) {
           {/* Dot indicators */}
           {slides.length > 1 && (
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {slides.map((_, i) => (
-                <div key={i} className="size-1.5 rounded-full bg-white/60" />
+              {slides.map((slide) => (
+                <div key={slide.src} className="size-1.5 rounded-full bg-white/60" />
               ))}
             </div>
           )}
@@ -135,12 +135,24 @@ export function CategoryDetail({ category }: Props) {
       <CardHeader className={hasGallery ? "pt-4" : "pt-6"}>
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <CardTitle className="text-lg leading-snug">{category.name}</CardTitle>
-            {category.subtitle && (
+            <CardTitle className="text-lg leading-snug">
+              {category.nameRu || category.name}
+            </CardTitle>
+            {category.nameRu && category.nameRu !== category.name && (
+              <p className="text-xs text-muted-foreground mt-0.5">{category.name}</p>
+            )}
+            {(category.subtitleRu || category.subtitle) && (
               <p className="text-xs text-muted-foreground mt-1.5 whitespace-pre-line leading-relaxed">
-                {category.subtitle}
+                {category.subtitleRu || category.subtitle}
               </p>
             )}
+            {category.subtitleRu &&
+              category.subtitleRu !== category.subtitle &&
+              category.subtitle && (
+                <p className="text-[11px] text-muted-foreground/60 mt-0.5 whitespace-pre-line leading-relaxed">
+                  {category.subtitle}
+                </p>
+              )}
           </div>
           <Badge
             variant={kindVariant as "default" | "secondary" | "outline"}
@@ -179,6 +191,19 @@ export function CategoryDetail({ category }: Props) {
             {category.gender}
           </Badge>
         </FieldRow>
+
+        <Separator className="my-2" />
+
+        <FieldRow label="Name JP">
+          <span className="text-sm">{category.name}</span>
+        </FieldRow>
+        {category.subtitle && (
+          <FieldRow label="Subtitle JP">
+            <span className="text-xs text-muted-foreground whitespace-pre-line">
+              {category.subtitle}
+            </span>
+          </FieldRow>
+        )}
 
         <Separator className="my-2" />
 

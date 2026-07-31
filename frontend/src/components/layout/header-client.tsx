@@ -23,7 +23,7 @@ function getActiveTab(pathname: string): TabId | null {
 
 function toCategoryNavItems(items: NavItem[]): CategoryNavItem[] {
   return items.map((item) => ({
-    text: item.name,
+    text: item.nameRu || item.name,
     href: `/categories/${item.slug}`,
     slug: item.slug,
     image: item.image ?? "",
