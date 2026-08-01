@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs"
 import { z } from "zod"
+import { AuthError, ValidationError } from "@/lib/errors/api-error"
 import type { SessionUser } from "@/lib/session"
 import { getSession } from "@/lib/session"
+import { extractTelegramUser, type TelegramUser, verifyTelegramHash } from "@/lib/telegram"
 import { usersRepository } from "@/repositories/users.repository"
-import { AuthError, ValidationError } from "@/lib/errors/api-error"
-import { extractTelegramUser, verifyTelegramHash, type TelegramUser } from "@/lib/telegram"
 
 const emailLoginSchema = z.object({
   email: z.string().email("Invalid email format"),
