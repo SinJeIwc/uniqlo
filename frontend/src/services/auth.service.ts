@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs"
 import { z } from "zod"
-import { AuthError, ValidationError } from "@/lib/errors/api-error"
 import type { SessionUser } from "@/lib/session"
 import { getSession } from "@/lib/session"
-import { extractTelegramUser, verifyTelegramHash } from "@/lib/telegram"
 import { usersRepository } from "@/repositories/users.repository"
+import { AuthError, ValidationError } from "@/lib/errors/api-error"
+import { extractTelegramUser, verifyTelegramHash, type TelegramUser } from "@/lib/telegram"
 
 const emailLoginSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -19,10 +19,11 @@ const telegramAuthSchema = z.object({
   photo_url: z.string().optional(),
   auth_date: z.number(),
   hash: z.string(),
-})
+}) satisfies z.ZodType<TelegramUser>
 
 /**
  * Authentication service — handles login, logout, session management.
+ */
 export class AuthService {
   /**
    * Email/password login.
