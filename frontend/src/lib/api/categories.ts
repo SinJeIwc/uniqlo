@@ -1,7 +1,6 @@
 import { asc, eq } from "drizzle-orm"
 import { db } from "@/db"
 import { categories } from "@/db/schema"
-import type { Category } from "@/db/types"
 
 /** Nav item with optional Russian name. */
 export type NavItem = {
@@ -9,7 +8,7 @@ export type NavItem = {
   nameRu: string | null
   slug: string
   gender: string
-  image: string | null  // image_nav from DB
+  image: string | null // image_nav from DB
 }
 
 export async function getAllNavCategories(): Promise<NavItem[]> {

@@ -1,12 +1,17 @@
 import { NextResponse } from "next/server"
-import { getSession } from "@/lib/session"
+import { handleApiError } from "@/lib/errors/api-error"
+import { authService } from "@/services/auth.service"
 
 export const dynamic = "force-dynamic"
 
 export async function GET() {
-  const session = await getSession()
-  if (!session.user) {
-    return NextResponse.json({ user: null }, { status: 401 })
+  try {
+    const user = await authService.getCurrentUser()
+    if (!user) {
+      return NextResponse.json({ user: null }, { status: 401 })
+    }
+    return NextResponse.json({ user })
+  } catch (error) {
+    return handleApiError(error)
   }
-  return NextResponse.json({ user: session.user })
 }

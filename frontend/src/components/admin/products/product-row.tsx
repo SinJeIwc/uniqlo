@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { TableCell, TableRow } from "@/components/ui/table"
+import type { Product } from "@/db"
 
 interface Variant {
   sku: string
@@ -15,30 +16,6 @@ interface Variant {
   price: number | null
   currency: string
   inStock: boolean
-}
-
-interface Product {
-  productId: string
-  name: string
-  description?: string | null
-  brand?: string | null
-  section?: string | null
-  category?: string | null
-  subcategory?: string | null
-  price?: number | null
-  rating?: string | null
-  reviewCount?: number | null
-  gender: string
-  categoryId?: number | null
-  material?: string | null
-  colors: string
-  colorChips: string
-  sizes: string
-  variants: string
-  gallery: string
-  aiReview?: string | null
-  productDescription: string
-  inStock?: number | null
 }
 
 function ColorChip({ name, image }: { name: string; image: string }) {

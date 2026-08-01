@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { FolderTree, LayoutDashboard, LogOut, Package } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import type { SessionUser } from "@/lib/session";
-import { cn } from "@/lib/utils";
+import { FolderTree, LayoutDashboard, LogOut, Package } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
+import type { SessionUser } from "@/lib/session"
+import { cn } from "@/lib/utils"
 
 interface AdminHeaderProps {
-  user: SessionUser;
+  user: SessionUser
 }
 
 const navItems = [
@@ -29,21 +29,21 @@ const navItems = [
     label: "Products",
     icon: Package,
   },
-];
+]
 
 export function AdminHeader({ user }: AdminHeaderProps) {
-  const pathname = usePathname();
-  const router = useRouter();
+  const pathname = usePathname()
+  const router = useRouter()
 
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" });
-      router.push("/login");
-      router.refresh();
+      await fetch("/api/auth/logout", { method: "POST" })
+      router.push("/login")
+      router.refresh()
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error("Logout failed:", error)
     }
-  };
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full container mx-auto border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -53,12 +53,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
           href="/admin"
           className="flex items-center gap-2 font-bold text-lg tracking-tight transition-colors hover:text-primary"
         >
-          <Image
-            src="/uniqlo-logo.svg"
-            alt="Logo"
-            width={75}
-            height={34}
-          />
+          <Image src="/uniqlo-logo.svg" alt="Logo" width={75} height={34} />
           <span>Admin Panel</span>
         </Link>
 
@@ -67,8 +62,8 @@ export function AdminHeader({ user }: AdminHeaderProps) {
         {/* Navigation */}
         <nav className="flex items-center gap-1">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            const Icon = item.icon;
+            const isActive = pathname === item.href
+            const Icon = item.icon
 
             return (
               <Link
@@ -89,7 +84,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
                 />
                 {item.label}
               </Link>
-            );
+            )
           })}
         </nav>
 
@@ -103,16 +98,11 @@ export function AdminHeader({ user }: AdminHeaderProps) {
             <p className="text-xs text-muted-foreground">{user.role}</p>
           </div>
 
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handleLogout}
-            title="Logout"
-          >
+          <Button variant="outline" size="icon" onClick={handleLogout} title="Logout">
             <LogOut />
           </Button>
         </div>
       </div>
     </header>
-  );
+  )
 }

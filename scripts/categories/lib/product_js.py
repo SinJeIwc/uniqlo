@@ -1,4 +1,4 @@
-"""Shared JS for product page extraction — used by parse_product.py and parse_db.py."""
+"""Shared JS for product page extraction — used by parse.py and parse_product.py."""
 
 PRODUCT_PAGE_JS = """() => {
     const result = {};
@@ -8,15 +8,19 @@ PRODUCT_PAGE_JS = """() => {
     const ld = JSON.parse(ldScript.textContent);
     const graph = ld['@graph'] || [ld];
 
-    // --- Breadcrumbs -> gender, section, category, subcategory ---
+    // --- Breadcrumbs -> gender, section, category ---
     const bc = graph.find(item => item['@type'] === 'BreadcrumbList');
     if (bc && bc.itemListElement) {
         const items = bc.itemListElement;
         result.gender = items[0]?.name || '';
         result.section = items[1]?.name || '';
         result.category = items[2]?.name || '';
-        result.subcategory = items[3]?.name || '';
+        // Subcategory comes from ProductGroup.category, NOT breadcrumbs
     }
+
+    // --- ProductGroup.category last segment -> subcategory ---
+    // E.g. "Women / Tシャツ・スウェット / Tシャツ・カットソー / Uniqlo U"
+    //   -> subcategory = "Uniqlo U"
 
     const pg = graph.find(item => item['@type'] === 'ProductGroup');
     if (!pg) return result;
@@ -29,7 +33,31 @@ PRODUCT_PAGE_JS = """() => {
         result.reviewCount = pg.aggregateRating.reviewCount;
     }
     result.material = pg.material || null;
+
+    // Extract subcategory from ProductGroup.category last segment
+    if (pg.category) {
+        const parts = pg.category.split(' / ');
+        if (parts.length >= 4) result.subcategory = parts[parts.length - 1].trim();
+    }
     result.gallery = (pg.image || []).map(url => ({type: 'image', url}));
+
+    // Fallback: DOM media gallery (when JSON-LD image[] is empty)
+    if (!result.gallery.length) {
+        const domGallery = [];
+        const container = document.querySelector('.media-gallery--container');
+        if (container) {
+            for (const el of container.querySelectorAll('img, video')) {
+                if (el.tagName === 'IMG') {
+                    const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
+                    if (src && !src.startsWith('blob:')) domGallery.push({type: 'image', url: src});
+                } else {
+                    const src = el.getAttribute('data-src') || el.getAttribute('src') || '';
+                    if (src && !src.startsWith('blob:')) domGallery.push({type: 'video', url: src});
+                }
+            }
+        }
+        if (domGallery.length) result.gallery = domGallery;
+    }
 
     // --- Variants ---
     const variants = pg.hasVariant || [];

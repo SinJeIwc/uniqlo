@@ -6,3 +6,4 @@ const sqlite = new Database(process.env.DATABASE_URL || "data/uniqlo.db")
 sqlite.pragma("journal_mode = WAL")
 
 export const db = drizzle(sqlite, { schema })
+export * from "./types"

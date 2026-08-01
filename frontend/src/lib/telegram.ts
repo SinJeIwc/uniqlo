@@ -1,6 +1,6 @@
 import crypto from "node:crypto"
 
-interface TelegramUser {
+export interface TelegramUser {
   id: number
   first_name: string
   last_name?: string
@@ -11,7 +11,7 @@ interface TelegramUser {
 }
 
 /** Verify Telegram Login Widget hash. Returns true if valid. */
-export function verifyTelegramHash(data: Record<string, string>): boolean {
+export function verifyTelegramHash(data: TelegramUser): boolean {
   const botToken = process.env.TELEGRAM_BOT_TOKEN
   if (!botToken) {
     console.error("TELEGRAM_BOT_TOKEN not set")
@@ -20,10 +20,18 @@ export function verifyTelegramHash(data: Record<string, string>): boolean {
 
   const { hash, ...rest } = data
 
+  // Convert to string key-value pairs for verification
+  const checkData: Record<string, string> = {}
+  for (const [key, value] of Object.entries(rest)) {
+    if (value !== undefined) {
+      checkData[key] = String(value)
+    }
+  }
+
   // Sort keys alphabetically, join key=value with \n
-  const checkString = Object.keys(rest)
+  const checkString = Object.keys(checkData)
     .sort()
-    .map((k) => `${k}=${rest[k]}`)
+    .map((k) => `${k}=${checkData[k]}`)
     .join("\n")
 
   // SHA256(bot_token) as secret key
@@ -36,7 +44,7 @@ export function verifyTelegramHash(data: Record<string, string>): boolean {
 }
 
 /** Extract user info from verified Telegram login data */
-export function extractTelegramUser(data: Record<string, string>) {
+export function extractTelegramUser(data: TelegramUser) {
   return {
     providerId: String(data.id),
     name: [data.first_name, data.last_name].filter(Boolean).join(" ") || data.username || "User",

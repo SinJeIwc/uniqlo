@@ -1,40 +1,37 @@
-/** Auto-generated types from Drizzle schema — single source of truth.
- *
- * After `pnpm drizzle-kit introspect` or schema changes,
- * these types update automatically. Never write DB types by hand.
- */
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm"
 import type { categories, products, users } from "./schema"
 
-// ── Categories ──
-export type Category = typeof categories.$inferSelect
-export type NewCategory = typeof categories.$inferInsert
+// Select types (for reading from DB)
+export type Category = InferSelectModel<typeof categories>
+export type Product = InferSelectModel<typeof products>
+export type User = InferSelectModel<typeof users>
 
-/** Category with recursive children (for tree UIs). */
-export type CategoryNode = Category & { children?: CategoryNode[] }
+// Insert types (for inserting into DB)
+export type CategoryInsert = InferInsertModel<typeof categories>
+export type ProductInsert = InferInsertModel<typeof products>
+export type UserInsert = InferInsertModel<typeof users>
 
-// ── Products ──
-export type Product = typeof products.$inferSelect
-export type NewProduct = typeof products.$inferInsert
-
-// ── Users ──
-export type User = typeof users.$inferSelect
-export type NewUser = typeof users.$inferInsert
-
-// ── JSON column types (parse with JSON.parse()) ──
-export type ProductColor = { name: string; image: string }
-export type ColorChip = { name: string; image: string }
-export type ProductVariant = {
-  sku: string
-  color: string
-  size: string
-  image: string
-  price: number | null
-  currency: string
-  inStock: boolean
+// Parsed product type with JSON fields typed
+export type ProductParsed = Omit<
+  Product,
+  "colors" | "colorChips" | "sizes" | "variants" | "gallery" | "productDescription"
+> & {
+  colors: string[]
+  colorChips: string[]
+  sizes: string[]
+  variants: Array<{ id: string; color: string; size: string; inStock: boolean }>
+  gallery: string[]
+  productDescription: Array<{ title: string; content: string }>
 }
-export type GalleryImage = { type: "image"; url: string }
-export type ProductDescriptionBlock = {
-  section: string
-  text?: string
-  pairs?: { image: string | null; text: { content: string; href?: string }[] }[]
+
+// Admin list response types
+export type ProductsResponse = {
+  rows: Product[]
+  total: number
+  page: number
+  limit: number
+}
+
+export type CategoriesTreeNode = Category & {
+  children: Array<CategoriesTreeNode>
 }

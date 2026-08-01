@@ -9,10 +9,10 @@
 
 ```
 1. flyout          → parse.py            → JSON: [{text, href, slug, image, gender}] (фильтр: a[data-category="navi"])
-2. lineup/L3       → parse_lineup.py    → JSON: [{text, href, slug, image, parent_slug}]
+2. lineup/L2       → parse_lineup.py    → JSON: [{text, href, slug, image, parent_slug}]
 3. PLP (terminal)  → parse_plp.py       → JSON: {hero, subcategories: [{name, products: [id]}]}
 4. product page    → parse_product.py   → JSON: {id, name, price, colors, sizes, images, ...}
-5. integration     → parse_db.py        → все вместе → SQLite
+5. integration     → parse.py all       → категории + товары → SQLite
 ```
 
 Каждый скрипт:

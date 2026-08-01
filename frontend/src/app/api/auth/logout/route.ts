@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server"
-import { getSession } from "@/lib/session"
+import { handleApiError } from "@/lib/errors/api-error"
+import { authService } from "@/services/auth.service"
 
 export const dynamic = "force-dynamic"
 
 export async function POST() {
-  const session = await getSession()
-  session.destroy()
-  return NextResponse.json({ ok: true })
+  try {
+    await authService.logout()
+    return NextResponse.json({ ok: true })
+  } catch (error) {
+    return handleApiError(error)
+  }
 }
