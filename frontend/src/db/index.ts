@@ -7,3 +7,8 @@ sqlite.pragma("journal_mode = WAL")
 
 export const db = drizzle(sqlite, { schema })
 export * from "./types"
+
+// Auto-seed admin user in development
+if (process.env.NODE_ENV === "development") {
+  import("./seed").then((m) => m.seedDatabase()).catch(console.error)
+}

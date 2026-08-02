@@ -46,7 +46,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full container mx-auto border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-50 w-full max-w-400 mx-auto border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="flex h-16 items-center gap-6 px-4">
         {/* Brand */}
         <Link

@@ -310,3 +310,7 @@ sqlite3 data/uniqlo.db "SELECT COUNT(*) FROM categories"
 - Database uses WAL mode for concurrent read/write safety
 - Admin routes are protected by role check
 - Product images, colors, sizes, galleries are JSON arrays stored as text columns
+
+**Docs:**
+- Keep `AGENTS.md` updated with new parser commands and DB schema changes
+- all docs are in `docs/` folder, organized by topic

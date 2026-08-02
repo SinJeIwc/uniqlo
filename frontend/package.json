@@ -10,7 +10,8 @@
     "lint:fix": "biome check --write",
     "format": "biome format --write",
     "ci": "biome ci",
-    "setup-admin": "tsx scripts/setup-admin.ts"
+    "setup-admin": "tsx scripts/setup-admin.ts",
+    "seed-db": "tsx scripts/seed-db.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
