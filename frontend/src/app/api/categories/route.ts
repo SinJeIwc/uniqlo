@@ -1,20 +1,28 @@
-import { and, asc, eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
-import { db } from "@/db"
-import { categories } from "@/db/schema"
+import { handleApiError } from "@/lib/errors/api-error"
+import { categoriesService } from "@/services/categories.service"
 
+export const dynamic = "force-dynamic"
+
+/**
+ * GET /api/categories — public category tree or navbar list.
+ * Query params: gender, type=nav (for navbar categories)
+ */
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const gender = searchParams.get("gender")
-  const type = searchParams.get("type")
+  try {
+    const { searchParams } = new URL(request.url)
+    const type = searchParams.get("type")
 
-  const conditions = []
-  if (gender) conditions.push(eq(categories.gender, gender))
-  if (type === "nav") conditions.push(eq(categories.nav, 1))
+    // Special case: navbar categories
+    if (type === "nav") {
+      const navCategories = await categoriesService.getNavCategories()
+      return NextResponse.json(navCategories)
+    }
 
-  const query = db.select().from(categories).$dynamic()
-  if (conditions.length > 0) query.where(and(...conditions))
-
-  const rows = query.orderBy(asc(categories.order)).all()
-  return NextResponse.json(rows)
+    // Default: hierarchical tree (optionally filtered by gender)
+    const result = await categoriesService.getCategories(Object.fromEntries(searchParams))
+    return NextResponse.json(result)
+  } catch (error) {
+    return handleApiError(error)
+  }
 }

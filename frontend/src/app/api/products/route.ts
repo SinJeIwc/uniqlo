@@ -1,20 +1,26 @@
 import { NextResponse } from "next/server"
-import { db } from "@/db"
-import { products } from "@/db/schema"
+import { handleApiError } from "@/lib/errors/api-error"
+import { productsService } from "@/services/products.service"
 
 export const dynamic = "force-dynamic"
 
+/**
+ * GET /api/products — public product listing.
+ * Query params: q, gender, categoryId, limit, page
+ */
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const gender = searchParams.get("gender")
-  const categoryId = searchParams.get("categoryId")
-  const limit = Number(searchParams.get("limit") || 20)
+  try {
+    const { searchParams } = new URL(request.url)
 
-  const rows = db.select().from(products).all()
+    // Public API only shows active products
+    const params = {
+      ...Object.fromEntries(searchParams),
+      active: "1",
+    }
 
-  let filtered = rows
-  if (gender) filtered = filtered.filter((p) => p.gender === gender)
-  if (categoryId) filtered = filtered.filter((p) => p.categoryId === Number(categoryId))
-
-  return NextResponse.json(filtered.slice(0, limit))
+    const result = await productsService.list(params)
+    return NextResponse.json(result)
+  } catch (error) {
+    return handleApiError(error)
+  }
 }
