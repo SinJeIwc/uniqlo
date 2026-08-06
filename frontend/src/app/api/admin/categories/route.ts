@@ -23,6 +23,23 @@ export async function GET(request: Request) {
 }
 
 /**
+ * POST /api/admin/categories — create new category.
+ * Body: { name, slug, gender, nameRu?, parentId?, ... }
+ */
+export async function POST(request: Request) {
+  try {
+    await requireAdmin()
+
+    const body = await request.json()
+    const category = await categoriesService.create(body)
+
+    return NextResponse.json(category, { status: 201 })
+  } catch (error) {
+    return handleApiError(error)
+  }
+}
+
+/**
  * PATCH /api/admin/categories — update category.
  * Body: { id, name?, slug?, image?, visible?, order?, ... }
  */

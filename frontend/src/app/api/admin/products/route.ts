@@ -21,3 +21,26 @@ export async function GET(request: Request) {
     return handleApiError(error)
   }
 }
+
+/**
+ * PATCH /api/admin/products — update product.
+ * Body: { id, nameRu?, descriptionRu?, active?, ... }
+ */
+export async function PATCH(request: Request) {
+  try {
+    await requireAdmin()
+
+    const body = await request.json()
+    const { id, ...data } = body
+
+    if (!id) {
+      return NextResponse.json({ error: "id required" }, { status: 400 })
+    }
+
+    await productsService.update({ id: Number(id), data })
+
+    return NextResponse.json({ ok: true })
+  } catch (error) {
+    return handleApiError(error)
+  }
+}

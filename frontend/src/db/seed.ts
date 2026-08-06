@@ -1,5 +1,5 @@
 /**
- * Database seeding — auto-create admin user from ENV.
+ * Database seeding — auto-create/update admin user from ENV.
  * Runs on dev server start and in production builds.
  */
 
@@ -19,34 +19,44 @@ export async function seedDatabase() {
     return
   }
 
-  // Check if admin already exists
+  // Check if THIS admin email already exists
   const existingAdmin = db
     .select()
     .from(users)
-    .where(eq(users.role, "admin"))
+    .where(eq(users.providerId, adminEmail))
     .get()
 
-  if (existingAdmin) {
-    console.log("✅ Admin user already exists:", existingAdmin.email || existingAdmin.name)
-    return
-  }
-
-  // Create admin user
   const passwordHash = bcrypt.hashSync(adminPassword, 10)
 
-  db.insert(users)
-    .values({
-      name: adminName,
-      email: adminEmail,
-      provider: "email",
-      providerId: adminEmail,
-      role: "admin",
-      passwordHash,
-      createdAt: new Date().toISOString(),
-    })
-    .run()
+  if (existingAdmin) {
+    // Update existing admin (upsert)
+    db.update(users)
+      .set({
+        name: adminName,
+        email: adminEmail,
+        passwordHash,
+        role: "admin",
+      })
+      .where(eq(users.id, existingAdmin.id))
+      .run()
 
-  console.log(`✅ Admin user created: ${adminEmail}`)
+    console.log(`✅ Admin user updated: ${adminEmail}`)
+  } else {
+    // Create new admin
+    db.insert(users)
+      .values({
+        name: adminName,
+        email: adminEmail,
+        provider: "email",
+        providerId: adminEmail,
+        role: "admin",
+        passwordHash,
+        createdAt: new Date().toISOString(),
+      })
+      .run()
+
+    console.log(`✅ Admin user created: ${adminEmail}`)
+  }
 }
 
 // Auto-run in development

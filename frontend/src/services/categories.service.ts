@@ -11,6 +11,24 @@ const getCategoriesSchema = z.object({
     .transform((v) => v === "1"),
 })
 
+const createCategorySchema = z.object({
+  name: z.string().min(1),
+  slug: z.string().min(1),
+  gender: z.enum(["women", "men", "kids", "baby"]),
+  nameRu: z.string().optional(),
+  subtitle: z.string().optional(),
+  subtitleRu: z.string().optional(),
+  parentId: z.number().int().nullable().optional(),
+  order: z.number().int().default(0),
+  image: z.string().nullable().optional(),
+  imageSp: z.string().nullable().optional(),
+  imagePc: z.string().nullable().optional(),
+  imageNav: z.string().nullable().optional(),
+  visible: z.number().int().min(0).max(1).default(1),
+  nav: z.number().int().min(0).max(1).default(0),
+  navOrder: z.number().int().default(0),
+})
+
 const updateCategorySchema = z.object({
   id: z.number().int().positive(),
   data: z.object({
@@ -123,6 +141,19 @@ export class CategoriesService {
       throw new NotFoundError("Category not found")
     }
     return category
+  }
+
+  /**
+   * Create new category (admin only).
+   * @throws {ValidationError} if input is invalid
+   */
+  async create(params: unknown) {
+    const validated = createCategorySchema.safeParse(params)
+    if (!validated.success) {
+      throw new ValidationError(validated.error.issues[0]?.message ?? "Invalid input")
+    }
+
+    return categoriesRepository.create(validated.data)
   }
 
   /**

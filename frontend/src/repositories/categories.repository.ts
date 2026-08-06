@@ -1,5 +1,5 @@
 import { and, asc, eq, isNull } from "drizzle-orm"
-import type { Category } from "@/db"
+import type { Category, CategoryInsert } from "@/db"
 import { db } from "@/db"
 import { categories } from "@/db/schema"
 
@@ -121,9 +121,25 @@ export class CategoriesRepository {
   }
 
   /**
+   * Create a new category.
+   * Drizzle applies schema defaults automatically.
+   */
+  async create(data: CategoryInsert): Promise<Category> {
+    const result = db.insert(categories).values(data).run()
+    const id = Number(result.lastInsertRowid)
+
+    const created = await this.findById(id)
+    if (!created) {
+      throw new Error("Failed to create category")
+    }
+
+    return created
+  }
+
+  /**
    * Update category by ID.
    */
-  async update(id: number, data: Partial<Category>): Promise<Category | undefined> {
+  async update(id: number, data: Partial<CategoryInsert>): Promise<Category | undefined> {
     db.update(categories).set(data).where(eq(categories.id, id)).run()
     return this.findById(id)
   }

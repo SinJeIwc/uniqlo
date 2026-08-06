@@ -1,5 +1,5 @@
 import { and, asc, count, eq, like, or } from "drizzle-orm"
-import type { Product, ProductsResponse } from "@/db"
+import type { Product, ProductInsert, ProductsResponse } from "@/db"
 import { db } from "@/db"
 import { products } from "@/db/schema"
 
@@ -106,7 +106,7 @@ export class ProductsRepository {
   /**
    * Update product by ID.
    */
-  async update(id: number, data: Partial<Product>): Promise<Product | undefined> {
+  async update(id: number, data: Partial<ProductInsert>): Promise<Product | undefined> {
     db.update(products).set(data).where(eq(products.id, id)).run()
     return this.findById(id)
   }
