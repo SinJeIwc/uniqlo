@@ -65,10 +65,14 @@ export class CategoriesService {
 
     const all = await categoriesRepository.findMany({ gender })
 
-    // Flat mode: return simple name+slug list for dropdowns
+    // Flat mode: return only categories that have products
     if (flat) {
+      // Get categories that have products linked
+      const withProducts = await categoriesRepository.findWithProducts()
+      
       return {
-        categories: all.map((c) => ({
+        categories: withProducts.map((c) => ({
+          id: c.id,
           name: c.nameRu || c.name,
           slug: c.slug,
         })),

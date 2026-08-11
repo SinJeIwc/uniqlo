@@ -41,7 +41,13 @@ export class ProductsService {
       throw new ValidationError(validated.error.issues[0]?.message ?? "Invalid input")
     }
 
-    return productsRepository.findMany(validated.data)
+    // Convert gender to uppercase to match DB format (WOMEN, MEN, KIDS, BABY)
+    const queryParams = {
+      ...validated.data,
+      gender: validated.data.gender?.toUpperCase(),
+    }
+
+    return productsRepository.findMany(queryParams)
   }
 
   /**

@@ -15,9 +15,17 @@ PAGE_TIMEOUT = 30000
 PARALLEL_TABS = 4
 
 
+"""
+Clean replacement for parse_products() with lineup subcategory expansion.
+Copy this into products.py replacing the old parse_products function (lines 18-150).
+"""
+
 def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int:
     """Parse products from all terminal category pages.
-
+    
+    Now includes expansion of lineup pages: when a terminal category has
+    #lineupLinkWrapper, we follow those sub-category links to find more products.
+    
     Returns number of products parsed.
     """
     conn = sqlite3.connect(db_path)
@@ -25,7 +33,7 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
 
     # Terminal categories: leaf nodes (no children) — these are where products live
     terminal_cats = conn.execute(
-        """SELECT c.id, c.gender, c.slug
+        """SELECT c.id, c.gender, c.slug, c.href
            FROM categories c
            WHERE c.id NOT IN (
                SELECT DISTINCT parent_id FROM categories WHERE parent_id IS NOT NULL
@@ -43,26 +51,72 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
     if existing:
         print(f"  resume: {len(existing)} products already parsed", flush=True)
 
-    # Step 1: collect product hrefs from each terminal page
-    print(f"▸ Collecting product links from {len(terminal_cats)} terminal pages...", flush=True)
+    # Step 1a: Expand terminal categories with lineup sub-categories (skip if --max for test speed)
+    if max_products > 0:
+        # Fast path: skip expansion for quick --max tests
+        expanded_cats = list(terminal_cats)
+        print(f"  Skipping lineup expansion for --max test, scanning {len(expanded_cats)} terminal pages", flush=True)
+    else:
+        # Full run: expand lineup pages to find sub-categories + keep parent products
+        print(f"▸ Expanding {len(terminal_cats)} categories with lineup sub-categories...", flush=True)
+        page_temp = browser.new_page(viewport={"width": 1440, "height": 900})
+        expanded_cats = []
+        
+        for cat_id, gender, slug, href in terminal_cats:
+            url = f"https://www.uniqlo.com/jp/ja{href}"
+            try:
+                page_temp.goto(url, timeout=PAGE_TIMEOUT, wait_until="domcontentloaded")
+                page_temp.wait_for_selector("body", timeout=5000)
+                
+                # Check for lineup sub-categories
+                subcats = page_temp.evaluate("""() => {
+                    const wrapper = document.querySelector('#lineupLinkWrapper');
+                    if (!wrapper) return [];
+                    return Array.from(wrapper.querySelectorAll('a[href]'))
+                        .map(a => a.getAttribute('href'))
+                        .filter(h => h && h.startsWith('/jp/ja/') && !h.includes('/products/'));
+                }""")
+                
+                # ALWAYS keep parent (may have direct products like /women/tops with 36 items)
+                expanded_cats.append((cat_id, gender, slug, href))
+                
+                # PLUS add sub-categories if found
+                if subcats:
+                    for subcat_href in subcats:
+                        subcat_slug = subcat_href.split('/')[-1]
+                        # Remove /jp/ja prefix to match DB convention (Step 1b adds it back)
+                        subcat_href_clean = subcat_href.removeprefix("/jp/ja")
+                        expanded_cats.append((cat_id, gender, subcat_slug, subcat_href_clean))
+                        
+            except Exception:
+                # On error, keep original
+                expanded_cats.append((cat_id, gender, slug, href))
+        
+        page_temp.close()
+        
+        added_count = len(expanded_cats) - len(terminal_cats)
+        if added_count > 0:
+            print(f"  Expanded to {len(expanded_cats)} pages (+{added_count} sub-categories)", flush=True)
+        else:
+            print(f"  No lineup sub-categories found, scanning {len(expanded_cats)} terminal pages", flush=True)
+
+    # Step 1b: collect product hrefs from each expanded page
+    print(f"▸ Collecting product links from {len(expanded_cats)} pages...", flush=True)
     product_hrefs: list[tuple[str, str, int, str]] = []  # (productId, href, catId, gender)
     seen_pids: set[str] = set()
 
     page = browser.new_page(viewport={"width": 1440, "height": 900})
 
-    for i, (cat_id, gender, slug) in enumerate(terminal_cats):
-        url = f"https://www.uniqlo.com/jp/ja/{gender}/{slug}"
+    for i, (cat_id, gender, slug, href) in enumerate(expanded_cats):
+        # Use href from DB for correct nested paths
+        url = f"https://www.uniqlo.com/jp/ja{href}"
         try:
             page.goto(url, timeout=PAGE_TIMEOUT, wait_until="domcontentloaded")
             page.wait_for_selector("body", timeout=10000)
 
-            # Skip lineup pages (could happen if our terminal detection misses)
-            if page.evaluate("() => !!document.querySelector('#lineupLinkWrapper')"):
-                continue
-
-            # Scroll to load all products (lazy-loaded)
+            # Scroll to load all products (lazy-loaded) - increased to 40 for large catalogs
             prev = 0
-            for _ in range(6):
+            for _ in range(40):
                 page.evaluate("window.scrollBy(0, window.innerHeight)")
                 time.sleep(0.3)
                 try:
@@ -74,7 +128,7 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
                     break
                 prev = cur
 
-            # Collect all unique product links from this terminal page
+            # Collect all unique product links from this page
             new_links = page.evaluate("""() => {
                 const links = [];
                 const seen = new Set();
@@ -106,7 +160,7 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
             continue
 
         if (i + 1) % 20 == 0:
-            print(f"  {i+1}/{len(terminal_cats)} pages, {len(product_hrefs)} new products",
+            print(f"  {i+1}/{len(expanded_cats)} pages, {len(product_hrefs)} new products",
                   flush=True)
 
     page.close()
@@ -116,19 +170,17 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
         conn.close()
         return 0
 
-    # Apply --max limit to collection as well
-    if max_products > 0 and len(product_hrefs) > max_products:
-        product_hrefs = product_hrefs[:max_products]
-    # Step 2: parse product pages in parallel
+    # Step 2: parse product detail pages in parallel
     print(f"▸ Parsing {len(product_hrefs)} product pages ({PARALLEL_TABS} tabs)...", flush=True)
     parsed = _parse_parallel(browser, product_hrefs, max_products)
 
-    # Step 3: save to DB
+
     if parsed:
         _save_products(db_path, parsed)
 
-        # Deactivate stale products (only on full parse, not --max)
-        if max_products == 0:
+        # Deactivate stale products ONLY on full parse (not --max, not resume)
+        # Resume mode skips existing products, so deactivation would be incorrect
+        if max_products == 0 and not existing:
             cat_ids = set(p.get("category_id") for p in parsed if p.get("category_id"))
             parsed_pids = [p["product_id"] for p in parsed]
             if cat_ids and parsed_pids:
@@ -145,8 +197,6 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
 
     conn.close()
     return len(parsed)
-
-
 def _parse_parallel(browser: Browser, hrefs: list, max_products: int) -> list[dict]:
     """Load product pages in parallel batches and extract data."""
     pages = [browser.new_page(viewport={"width": 1440, "height": 900})

@@ -1,7 +1,7 @@
-import { and, asc, eq, isNull } from "drizzle-orm"
+import { and, asc, eq, inArray, isNotNull, isNull } from "drizzle-orm"
 import type { Category, CategoryInsert } from "@/db"
 import { db } from "@/db"
-import { categories } from "@/db/schema"
+import { categories, products } from "@/db/schema"
 
 export interface FindCategoriesOptions {
   gender?: string
@@ -117,6 +117,32 @@ export class CategoriesRepository {
       .from(categories)
       .where(and(...conditions))
       .orderBy(asc(categories.gender), asc(categories.order))
+      .all()
+  }
+
+  /**
+   * Find categories that have products linked (for filter dropdowns).
+   */
+  async findWithProducts(): Promise<Category[]> {
+    // Get distinct category_ids from products
+    const withProductsIds = await db
+      .selectDistinct({ categoryId: products.categoryId })
+      .from(products)
+      .where(isNotNull(products.categoryId))
+      .all()
+
+    const ids = withProductsIds.map((r) => r.categoryId).filter((id): id is number => id !== null)
+
+    if (ids.length === 0) {
+      return []
+    }
+
+    // Get full categories by those IDs
+    return db
+      .select()
+      .from(categories)
+      .where(inArray(categories.id, ids))
+      .orderBy(asc(categories.gender), asc(categories.name))
       .all()
   }
 

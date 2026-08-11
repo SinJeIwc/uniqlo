@@ -1,7 +1,7 @@
 "use client"
 
 import { SearchIcon, XIcon } from "lucide-react"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 import { ProductRow } from "@/components/admin/products/product-row"
 import { Button } from "@/components/ui/button"
@@ -21,24 +21,24 @@ const PAGE_SIZE = 20
 interface FilterState {
   q: string
   gender: string
-  category: string
+  categoryId: string
   active: string
   page: number
 }
 
 export default function AdminProductsPage() {
   const searchParams = useSearchParams()
-
+  const router = useRouter()
   const [filters, setFilters] = useState<FilterState>({
     q: searchParams.get("q") || "",
     gender: searchParams.get("gender") || "",
-    category: searchParams.get("category") || "",
+    categoryId: searchParams.get("categoryId") || "",
     active: searchParams.get("active") || "",
     page: Number(searchParams.get("page")) || 1,
   })
 
   const [data, setData] = useState<{ rows: Product[]; total: number }>({ rows: [], total: 0 })
-  const [categories, setCategories] = useState<{ name: string; slug: string }[]>([])
+  const [categories, setCategories] = useState<{ id: number; name: string; slug: string }[]>([])
   const [loading, setLoading] = useState(false)
 
   // Load categories for filter
@@ -57,7 +57,7 @@ export default function AdminProductsPage() {
     const params = new URLSearchParams()
     if (filters.q) params.set("q", filters.q)
     if (filters.gender) params.set("gender", filters.gender)
-    if (filters.category) params.set("category", filters.category)
+    if (filters.categoryId) params.set("categoryId", filters.categoryId)
     if (filters.active) params.set("active", filters.active)
     params.set("page", String(filters.page))
     params.set("limit", String(PAGE_SIZE))
@@ -73,14 +73,27 @@ export default function AdminProductsPage() {
   }, [fetchProducts])
 
   const updateFilter = (key: keyof FilterState, value: string) => {
-    setFilters((prev) => ({ ...prev, [key]: value, page: key === "page" ? Number(value) : 1 }))
+    // Map "all" sentinel to empty string for backend
+    const normalized = value === "all" ? "" : value
+    const newFilters = { ...filters, [key]: normalized, page: key === "page" ? Number(normalized) : 1 }
+    setFilters(newFilters)
+
+    // Sync to URL
+    const params = new URLSearchParams()
+    if (newFilters.q) params.set("q", newFilters.q)
+    if (newFilters.gender) params.set("gender", newFilters.gender)
+    if (newFilters.categoryId) params.set("categoryId", newFilters.categoryId)
+    if (newFilters.active) params.set("active", newFilters.active)
+    if (newFilters.page > 1) params.set("page", String(newFilters.page))
+
+    router.push(`/admin/products${params.toString() ? `?${params}` : ""}`, { scroll: false })
   }
 
   const clearFilters = () => {
-    setFilters({ q: "", gender: "", category: "", active: "", page: 1 })
+    setFilters({ q: "", gender: "", categoryId: "", active: "", page: 1 })
   }
 
-  const hasFilters = filters.q || filters.gender || filters.category || filters.active
+  const hasFilters = filters.q || filters.gender || filters.categoryId || filters.active
   const totalPages = Math.ceil(data.total / PAGE_SIZE)
 
   return (
@@ -119,14 +132,14 @@ export default function AdminProductsPage() {
           </SelectContent>
         </Select>
 
-        <Select value={filters.category} onValueChange={(v) => updateFilter("category", v || "")}>
+        <Select value={filters.categoryId} onValueChange={(v) => updateFilter("categoryId", v || "")}>
           <SelectTrigger className="w-44 h-9 text-sm">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All</SelectItem>
             {categories.map((c) => (
-              <SelectItem key={c.slug} value={c.slug}>
+              <SelectItem key={c.id} value={String(c.id)}>
                 {c.name}
               </SelectItem>
             ))}
