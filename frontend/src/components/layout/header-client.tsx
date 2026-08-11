@@ -14,17 +14,17 @@ import { SearchButton } from "./header/search"
 import { SidebarPanel } from "./header/sidebar-panel"
 
 function getActiveTab(pathname: string): TabId | null {
-  if (pathname === "/" || pathname.startsWith("/categories/women")) return "women"
-  if (pathname.startsWith("/men") || pathname.startsWith("/categories/men")) return "men"
-  if (pathname.startsWith("/kids") || pathname.startsWith("/categories/kids")) return "kids"
-  if (pathname.startsWith("/baby") || pathname.startsWith("/categories/baby")) return "baby"
+  if (pathname === "/" || pathname.startsWith("/women")) return "women"
+  if (pathname.startsWith("/men")) return "men"
+  if (pathname.startsWith("/kids")) return "kids"
+  if (pathname.startsWith("/baby")) return "baby"
   return null
 }
 
 function toCategoryNavItems(items: NavItem[]): CategoryNavItem[] {
   return items.map((item) => ({
     text: item.nameRu || item.name,
-    href: `/categories/${item.slug}`,
+    href: `/${item.gender}/${item.slug}`,
     slug: item.slug,
     image: item.image ?? "",
   }))
