@@ -1,7 +1,7 @@
 import { getAllNavCategories, type NavItem } from "@/lib/api/categories"
 import { HeaderClient } from "./header-client"
 
-export async function Header() {
+export async function Header({ variant = "transparent" }: { variant?: "transparent" | "solid" }) {
   const all = await getAllNavCategories()
 
   const navItems: Record<string, NavItem[]> = { women: [], men: [], kids: [], baby: [] }
@@ -10,5 +10,5 @@ export async function Header() {
     if (g in navItems) navItems[g].push(item)
   }
 
-  return <HeaderClient navItems={navItems} />
+  return <HeaderClient navItems={navItems} variant={variant} />
 }

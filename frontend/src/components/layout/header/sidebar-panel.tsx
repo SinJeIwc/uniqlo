@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import type { CategoryNavItem } from "@/components/home/types"
-import { CategoryGrid } from "@/components/shared/category/CategoryGrid"
+import { CategoryGrid } from "@/components/categories/CategoryGrid"
 import {
   Sidebar,
   SidebarContent,

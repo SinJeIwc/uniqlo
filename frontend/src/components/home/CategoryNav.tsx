@@ -1,6 +1,6 @@
 "use client"
 
-import { CategoryGrid } from "@/components/shared/category/CategoryGrid"
+import { CategoryGrid } from "@/components/categories/CategoryGrid"
 import { Button } from "@/components/ui/button"
 import { useSidebarStore } from "@/store/sidebar"
 import type { CategoryNavItem } from "./types"

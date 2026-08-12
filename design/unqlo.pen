@@ -1,0 +1,1511 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Category Page — UNIQLO:C",
+      "clip": true,
+      "width": 1440,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "opuUG",
+          "name": "Top Nav",
+          "width": "fill_container",
+          "fill": "#121212",
+          "gap": 32,
+          "padding": [
+            14,
+            40
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "BtjgH",
+              "name": "Logo",
+              "fill": "#FFFFFF",
+              "content": "UNIQLO KG",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "afzm7",
+              "name": "Tabs",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "V3Gl7Z",
+                  "name": "WOMEN",
+                  "width": 51,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X3tzCa",
+                      "fill": "#ABABAB",
+                      "content": "WOMEN",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "L7l0Qq",
+                      "fill": "#00000000",
+                      "width": 51,
+                      "height": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Rikju",
+                  "name": "MEN",
+                  "width": 33,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VcLhc",
+                      "fill": "#FFFFFF",
+                      "content": "MEN",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "zwkks",
+                      "fill": "#FFFFFF",
+                      "width": 33,
+                      "height": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "I1cyv",
+                  "name": "KIDS",
+                  "width": 42,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VoTul",
+                      "fill": "#ABABAB",
+                      "content": "KIDS",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "S5nIWP",
+                      "fill": "#00000000",
+                      "width": 42,
+                      "height": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Paef0",
+                  "name": "BABY",
+                  "width": 42,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xf6YO",
+                      "fill": "#ABABAB",
+                      "content": "BABY",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "h8YnD",
+                      "fill": "#00000000",
+                      "width": 42,
+                      "height": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PsyKu",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "sIPtH",
+              "name": "Icons",
+              "gap": 18,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "lWb9c",
+                  "name": "Search",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "icon",
+                  "id": "zLFHY",
+                  "name": "Bag",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "shopping-bag",
+                  "library": "lucide",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XN17e",
+          "name": "Collection Subnav",
+          "width": "fill_container",
+          "stroke": "#EAEAEA",
+          "strokeWidth": {
+            "bottom": 0.5
+          },
+          "gap": 24,
+          "padding": [
+            12,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "CIIhh",
+              "fill": "#9A9A9A",
+              "content": "Все спецколлекции",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "bZxhf",
+              "fill": "#9A9A9A",
+              "content": "UNIQLO F.RISSO",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "U1JF7",
+              "fill": "#9A9A9A",
+              "content": "UNIQLO and Cecilie Bahnsen",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "n4Z4mQ",
+              "fill": "#111111",
+              "content": "UNIQLO : C",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "WGzWr",
+              "fill": "#9A9A9A",
+              "content": "Uniqlo U",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "iDsxt",
+              "fill": "#9A9A9A",
+              "content": "UNIQLO and JW ANDERSON",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fT9AH",
+          "name": "Hero",
+          "metadata": {
+            "type": "unsplash",
+            "username": "mattkoffel_",
+            "link": "https://unsplash.com/@mattkoffel_",
+            "author": "Matt Koffel"
+          },
+          "clip": true,
+          "width": "fill_container",
+          "height": 520,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1785679674338.png",
+            "mode": "fill"
+          },
+          "children": [
+            {
+              "type": "frame",
+              "id": "LC2Aw",
+              "name": "Hero Overlay",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "#00000045",
+              "layout": "vertical",
+              "gap": 14,
+              "padding": [
+                0,
+                0,
+                0,
+                60
+              ],
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k72eH",
+                  "fill": "#FFFFFF",
+                  "content": "UNIQLO : C",
+                  "fontFamily": "Inter",
+                  "fontSize": 38,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "cwkQd",
+                  "fill": "#F0F0F0",
+                  "content": "Осень-зима 2026 — часть коллекции в продаже уже сейчас",
+                  "fontFamily": "Inter",
+                  "fontSize": 15
+                },
+                {
+                  "type": "frame",
+                  "id": "M4PyPh",
+                  "name": "Hero Pills",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ElZnG",
+                      "name": "Hero Pill Дизайнер",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 999,
+                      "padding": [
+                        10,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ToLPC",
+                          "fill": "#111111",
+                          "content": "Дизайнер",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "r78wt",
+                      "name": "Hero Pill Весь образ",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 999,
+                      "padding": [
+                        10,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ow8n8",
+                          "fill": "#111111",
+                          "content": "Весь образ",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "eRU2Y",
+          "name": "Gender Toggle",
+          "width": "fill_container",
+          "gap": 40,
+          "padding": [
+            18,
+            40,
+            0,
+            40
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "d87ss",
+              "name": "WOMEN",
+              "width": 70,
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "w1HsC",
+                  "fill": "#111111",
+                  "content": "WOMEN",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "rectangle",
+                  "id": "y0MP8",
+                  "fill": "#111111",
+                  "width": 70,
+                  "height": 2
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Kf4nz",
+              "name": "MEN",
+              "width": 70,
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ITRGy",
+                  "fill": "#B0B0B0",
+                  "content": "MEN",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "rectangle",
+                  "id": "Z6TTT",
+                  "fill": "#00000000",
+                  "width": 70,
+                  "height": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RzMBH",
+          "name": "Subcategory Pills",
+          "width": "fill_container",
+          "gap": 8,
+          "padding": [
+            18,
+            40,
+            4,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "z80Bf",
+              "name": "Pill Все",
+              "fill": "#121212",
+              "cornerRadius": 999,
+              "stroke": "#00000000",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q1zfKE",
+                  "fill": "#FFFFFF",
+                  "content": "Все",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ZPyhK",
+              "name": "Pill Верхняя одежда",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "igYqJ",
+                  "fill": "#333333",
+                  "content": "Верхняя одежда",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bP1qX",
+              "name": "Pill Трикотаж",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "W0Et4w",
+                  "fill": "#333333",
+                  "content": "Трикотаж",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LHprs",
+              "name": "Pill Рубашки",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "D2uwFV",
+                  "fill": "#333333",
+                  "content": "Рубашки",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wJQvQ",
+              "name": "Pill Свитшоты",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aJ0bc",
+                  "fill": "#333333",
+                  "content": "Свитшоты",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ZWMpx",
+              "name": "Pill Брюки",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "G4KQu0",
+                  "fill": "#333333",
+                  "content": "Брюки",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "znYD1",
+              "name": "Pill Heattech",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "E4XY6U",
+                  "fill": "#333333",
+                  "content": "Heattech",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QQNRm",
+              "name": "Pill Аксессуары",
+              "fill": "#FFFFFF",
+              "cornerRadius": 999,
+              "stroke": "#DBDBDB",
+              "strokeWidth": 1,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "JfJaj",
+                  "fill": "#333333",
+                  "content": "Аксессуары",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tMMaR",
+          "name": "Toolbar",
+          "width": "fill_container",
+          "stroke": "#E4E4E4",
+          "strokeWidth": {
+            "top": 0.5,
+            "bottom": 0.5
+          },
+          "padding": [
+            14,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "OJH3e",
+              "fill": "#767676",
+              "content": "28 товаров",
+              "fontFamily": "Inter",
+              "fontSize": 12.5
+            },
+            {
+              "type": "frame",
+              "id": "X3wW5",
+              "name": "Toolbar Spacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "VRfUS",
+              "name": "Actions",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rF8yj",
+                  "name": "Filter Button",
+                  "stroke": "#DBDBDB",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    8,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "wfMTh",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "sliders-horizontal",
+                      "library": "lucide",
+                      "fill": "#111111"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YR9vb",
+                      "fill": "#111111",
+                      "content": "Фильтр",
+                      "fontFamily": "Inter",
+                      "fontSize": 12.5,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tMxwt",
+                  "name": "Sort Button",
+                  "stroke": "#DBDBDB",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    8,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LbZG6",
+                      "fill": "#111111",
+                      "content": "По популярности",
+                      "fontFamily": "Inter",
+                      "fontSize": 12.5,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "pfPAK",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "#111111"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pt9dC",
+          "name": "Product Grid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 28,
+          "padding": [
+            20,
+            40,
+            40,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "GjrrN",
+              "name": "Row 1",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "b9qtYo",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Джинсовая трекер-куртка",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "MEN, XS-4XL"
+                    },
+                    "HkThw": {
+                      "content": "Джинсовая трекер-куртка"
+                    },
+                    "dDu73": {
+                      "content": "5 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.6"
+                    },
+                    "OcQ55": {
+                      "content": "(18)"
+                    }
+                  }
+                },
+                {
+                  "id": "fQ6gB",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Джинсовая рубашка-куртка",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "WOMEN, XS-XXL"
+                    },
+                    "HkThw": {
+                      "content": "Джинсовая рубашка-куртка"
+                    },
+                    "dDu73": {
+                      "content": "4 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "5.0"
+                    },
+                    "OcQ55": {
+                      "content": "(2)"
+                    }
+                  }
+                },
+                {
+                  "id": "u3IE4",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Свитшот оверсайз на молнии",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "MEN, XS-4XL"
+                    },
+                    "HkThw": {
+                      "content": "Свитшот оверсайз на молнии"
+                    },
+                    "dDu73": {
+                      "content": "4 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.4"
+                    },
+                    "OcQ55": {
+                      "content": "(350)"
+                    }
+                  }
+                },
+                {
+                  "id": "n8k8Rz",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Свитшот оверсайз пуловер",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "MEN, XS-4XL"
+                    },
+                    "HkThw": {
+                      "content": "Свитшот оверсайз пуловер"
+                    },
+                    "dDu73": {
+                      "content": "3 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.5"
+                    },
+                    "OcQ55": {
+                      "content": "(999+)"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oPPDb",
+              "name": "Row 2",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "VyaTW",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Свитшот оверсайз",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "MEN, XS-4XL"
+                    },
+                    "HkThw": {
+                      "content": "Свитшот оверсайз"
+                    },
+                    "dDu73": {
+                      "content": "3 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.6"
+                    },
+                    "OcQ55": {
+                      "content": "(999+)"
+                    }
+                  }
+                },
+                {
+                  "id": "cvGzX",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Пуловер на короткой молнии",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "WOMEN, XS-3XL"
+                    },
+                    "HkThw": {
+                      "content": "Пуловер на короткой молнии"
+                    },
+                    "dDu73": {
+                      "content": "3 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.4"
+                    },
+                    "OcQ55": {
+                      "content": "(120)"
+                    }
+                  }
+                },
+                {
+                  "id": "PLWKC",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Широкие свитшот-брюки",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "MEN, XS-4XL"
+                    },
+                    "HkThw": {
+                      "content": "Широкие свитшот-брюки"
+                    },
+                    "dDu73": {
+                      "content": "3 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.6"
+                    },
+                    "OcQ55": {
+                      "content": "(999+)"
+                    }
+                  }
+                },
+                {
+                  "id": "PHvVr",
+                  "type": "ref",
+                  "ref": "ULzRF",
+                  "name": "Прямые свитшот-брюки",
+                  "width": "fill_container",
+                  "descendants": {
+                    "DGVWJ": {
+                      "content": "WOMEN, XS-3XL"
+                    },
+                    "HkThw": {
+                      "content": "Прямые свитшот-брюки"
+                    },
+                    "dDu73": {
+                      "content": "3 990 KGS"
+                    },
+                    "a0otmK": {
+                      "content": "4.4"
+                    },
+                    "OcQ55": {
+                      "content": "(999+)"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "o70qIh",
+          "name": "Shop By Category",
+          "width": "fill_container",
+          "stroke": "#EAEAEA",
+          "strokeWidth": {
+            "top": 0.5
+          },
+          "layout": "vertical",
+          "gap": 36,
+          "padding": [
+            10,
+            40,
+            40,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "lZHxG",
+              "name": "Category Section Верхняя одежда",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "WCfNG",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X3pVmH",
+                      "fill": "#111111",
+                      "content": "Верхняя одежда",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tFzfW",
+                      "name": "Spacer",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "NQA3V",
+                      "fill": "#111111",
+                      "content": "Смотреть товары →",
+                      "fontFamily": "Inter",
+                      "fontSize": 12.5,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ecll5",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "Irtib",
+                      "type": "ref",
+                      "ref": "ULzRF",
+                      "name": "Джинсовая трекер-куртка",
+                      "width": "fill_container",
+                      "descendants": {
+                        "DGVWJ": {
+                          "content": "MEN, XS-4XL"
+                        },
+                        "HkThw": {
+                          "content": "Джинсовая трекер-куртка"
+                        },
+                        "dDu73": {
+                          "content": "5 990 KGS"
+                        },
+                        "a0otmK": {
+                          "content": "4.6"
+                        },
+                        "OcQ55": {
+                          "content": "(18)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AD2Zt",
+                      "type": "ref",
+                      "ref": "ULzRF",
+                      "name": "Джинсовая рубашка-куртка",
+                      "width": "fill_container",
+                      "descendants": {
+                        "DGVWJ": {
+                          "content": "WOMEN, XS-XXL"
+                        },
+                        "HkThw": {
+                          "content": "Джинсовая рубашка-куртка"
+                        },
+                        "dDu73": {
+                          "content": "4 990 KGS"
+                        },
+                        "a0otmK": {
+                          "content": "5.0"
+                        },
+                        "OcQ55": {
+                          "content": "(2)"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hyG4K",
+              "name": "Category Section Трикотаж",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "P1qMv",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "h9u6VJ",
+                      "fill": "#111111",
+                      "content": "Трикотаж",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "I6mNV",
+                      "name": "Spacer",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "tdFjZ",
+                      "fill": "#111111",
+                      "content": "Смотреть товары →",
+                      "fontFamily": "Inter",
+                      "fontSize": 12.5,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tBljg",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "UsNNI",
+                      "type": "ref",
+                      "ref": "ULzRF",
+                      "name": "Свитер с круглым вырезом",
+                      "width": "fill_container",
+                      "descendants": {
+                        "DGVWJ": {
+                          "content": "WOMEN, XS-3XL"
+                        },
+                        "HkThw": {
+                          "content": "Свитер с круглым вырезом"
+                        },
+                        "dDu73": {
+                          "content": "3 990 KGS"
+                        },
+                        "a0otmK": {
+                          "content": "4.5"
+                        },
+                        "OcQ55": {
+                          "content": "(999+)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "l3aS7",
+                      "type": "ref",
+                      "ref": "ULzRF",
+                      "name": "Кардиган на молнии",
+                      "width": "fill_container",
+                      "descendants": {
+                        "DGVWJ": {
+                          "content": "WOMEN, XS-3XL"
+                        },
+                        "HkThw": {
+                          "content": "Кардиган на молнии"
+                        },
+                        "dDu73": {
+                          "content": "4 990 KGS"
+                        },
+                        "a0otmK": {
+                          "content": "4.3"
+                        },
+                        "OcQ55": {
+                          "content": "(167)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "A4nlxX",
+                      "type": "ref",
+                      "ref": "ULzRF",
+                      "name": "Свитер с круглым вырезом",
+                      "width": "fill_container",
+                      "descendants": {
+                        "DGVWJ": {
+                          "content": "WOMEN, 3XL"
+                        },
+                        "HkThw": {
+                          "content": "Свитер с круглым вырезом"
+                        },
+                        "dDu73": {
+                          "content": "1 290 KGS"
+                        },
+                        "a0otmK": {
+                          "content": "4.5"
+                        },
+                        "OcQ55": {
+                          "content": "(999+)"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MKVPV",
+          "name": "Pagination",
+          "width": "fill_container",
+          "gap": 6,
+          "padding": [
+            10,
+            40,
+            40,
+            40
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "U8qOmT",
+              "name": "Page Prev",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "WXVkI",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-left",
+                  "library": "lucide",
+                  "fill": "#767676"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pxbnP",
+              "name": "Page 1",
+              "width": 28,
+              "height": 28,
+              "fill": "#121212",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EOWwM",
+                  "fill": "#FFFFFF",
+                  "content": "1",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nACva",
+              "name": "Page 2",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nCAnH",
+                  "fill": "#333333",
+                  "content": "2",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p9mSUD",
+              "name": "Page 3",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ETzz0",
+                  "fill": "#333333",
+                  "content": "3",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QYcn8",
+              "name": "Page Dots",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g6xW1",
+                  "fill": "#9A9A9A",
+                  "content": "...",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LKnG7",
+              "name": "Page 12",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yMwrH",
+                  "fill": "#333333",
+                  "content": "12",
+                  "fontFamily": "Inter",
+                  "fontSize": 12.5,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v5o8O",
+              "name": "Page Next",
+              "width": 28,
+              "height": 28,
+              "fill": "#00000000",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "wqKrH",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#767676"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ULzRF",
+      "x": 1540,
+      "y": 0,
+      "name": "Product Card",
+      "reusable": true,
+      "width": 280,
+      "layout": "vertical",
+      "gap": 10,
+      "children": [
+        {
+          "type": "frame",
+          "id": "CMaHA",
+          "name": "Image",
+          "width": "fill_container",
+          "height": 340,
+          "fill": "#F2F2F0",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "OAW6d",
+              "name": "Placeholder Icon",
+              "width": 28,
+              "height": 28,
+              "icon": "image",
+              "library": "lucide",
+              "fill": "#C4C4C0"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "q8XQH1",
+          "name": "Info",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 5,
+          "children": [
+            {
+              "type": "text",
+              "id": "DGVWJ",
+              "name": "Badge",
+              "fill": "#767676",
+              "content": "MEN, XS-4XL",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "HkThw",
+              "name": "Name",
+              "fill": "#111111",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Свитшот оверсайз с молнией",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "dDu73",
+              "name": "Price",
+              "fill": "#111111",
+              "content": "3 990 KGS",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "s6sglg",
+              "name": "Rating Row",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "QDPxz",
+                  "width": 12,
+                  "height": 12,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "#111111"
+                },
+                {
+                  "type": "text",
+                  "id": "a0otmK",
+                  "name": "Rating",
+                  "fill": "#111111",
+                  "content": "4.6",
+                  "fontFamily": "Inter",
+                  "fontSize": 11.5,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "OcQ55",
+                  "name": "Reviews",
+                  "fill": "#9A9A9A",
+                  "content": "(350)",
+                  "fontFamily": "Inter",
+                  "fontSize": 11.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

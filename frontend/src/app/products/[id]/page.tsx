@@ -27,26 +27,6 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     <>
       <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-8 py-8">
-        {/* Breadcrumbs */}
-        <nav className="text-sm text-zinc-500 mb-6">
-          <Link href="/" className="hover:text-zinc-900">
-            Главная
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href={`/categories/${product.category}`} className="hover:text-zinc-900">
-            {product.gender === "women"
-              ? "Женщины"
-              : product.gender === "men"
-                ? "Мужчины"
-                : product.gender === "kids"
-                  ? "Дети"
-                  : product.gender === "baby"
-                    ? "Младенцы"
-                    : "Унисекс"}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-zinc-900">{product.nameRu}</span>
-        </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left: Image Gallery */}

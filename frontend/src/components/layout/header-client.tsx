@@ -30,7 +30,13 @@ function toCategoryNavItems(items: NavItem[]): CategoryNavItem[] {
   }))
 }
 
-export function HeaderClient({ navItems }: { navItems: Record<string, NavItem[]> }) {
+export function HeaderClient({
+  navItems,
+  variant = "transparent",
+}: {
+  navItems: Record<string, NavItem[]>
+  variant?: "transparent" | "solid"
+}) {
   const pathname = usePathname()
   const activeTab = getActiveTab(pathname)
   const items = toCategoryNavItems(navItems[activeTab ?? "women"] ?? [])
@@ -42,7 +48,13 @@ export function HeaderClient({ navItems }: { navItems: Record<string, NavItem[]>
       onOpenChange={(v) => (v ? openSidebar() : closeSidebar())}
       className="contents"
     >
-      <header className="fixed top-0 left-0 right-0 z-40 w-full text-white bg-linear-to-b from-black/40 to-transparent drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 w-full ${
+          variant === "transparent"
+            ? "text-white bg-linear-to-b from-black/40 to-transparent drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
+            : "text-foreground bg-white border-b"
+        }`}
+      >
         <div className="container mx-auto px-1 lg:px-4.5 xl:px-9 h-14 lg:h-16 flex items-center text-shadow-current">
           <HeaderLogo />
           <NavbarDesktop activeTab={activeTab} />
