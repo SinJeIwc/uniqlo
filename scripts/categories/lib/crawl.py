@@ -120,6 +120,20 @@ def _process_node(page: Page, parent: dict, all_cats: list[dict], cat_id: int) -
         if count is not None:
             parent["product_count"] = count
 
+        # Extract lineup hero from first link (href=None "すべて" link)
+        lineup_hero = page.evaluate("""() => {
+            const wrapper = document.querySelector('#lineupLinkWrapper');
+            if (!wrapper) return null;
+            const firstLink = wrapper.querySelector('a');
+            if (!firstLink) return null;
+            const img = firstLink.querySelector('img');
+            if (!img) return null;
+            const src = img.getAttribute('data-src') || img.getAttribute('src') || '';
+            return src.startsWith('//') ? 'https:' + src : src;
+        }""")
+        if lineup_hero:
+            parent["image_nav"] = lineup_hero
+
     else:
         # Terminal page: extract MediaBanner hero media
         media = page.evaluate("""() => {

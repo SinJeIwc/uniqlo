@@ -9,8 +9,11 @@ _EMPTY_OBJ = "{}"
 def upsert_categories(db_path: str, cats: list[dict]):
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA journal_mode = WAL")
-    conn.execute("BEGIN")
-    conn.execute("DELETE FROM categories")
+    # Delete only the genders being upserted
+    if cats:
+        genders = {cat["gender"] for cat in cats}
+        for gender in genders:
+            conn.execute("DELETE FROM categories WHERE gender=?", (gender,))
     for i, cat in enumerate(cats):
         conn.execute(
             """INSERT OR REPLACE INTO categories

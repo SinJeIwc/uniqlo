@@ -1,80 +1,64 @@
 import Link from "next/link"
 import Image from "next/image"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 
 type CategoryNavItem = {
-  id: number
-  slug: string
-  name: string
-  nameRu: string | null
-  imageNav?: string | null
+	id: number
+	slug: string
+	name: string
+	nameRu: string | null
+	imageNav?: string | null
 }
 
 type CategoryNavProps = {
-  gender: string
-  parentSlug: string
-  items: CategoryNavItem[]
-  showAll?: boolean
-  currentSlug?: string
+	gender: string
+	parentSlug: string
+	parentName: string
+	parentImage?: string | null
+	items: CategoryNavItem[]
+	currentSlug?: string
+	showTitle?: boolean
 }
 
-export function CategoryNav({
-  gender,
-  parentSlug,
-  items,
-  showAll = true,
-  currentSlug,
-}: CategoryNavProps) {
-  if (items.length === 0 && !showAll) {
-    return null
-  }
+export function CategoryNav({ gender, parentSlug, parentName, parentImage, items, currentSlug, showTitle = true }: CategoryNavProps) {
+	const allCategories = [
+		{
+			slug: "",
+			name: `すべての${parentName}`,
+			nameRu: `Все ${parentName}`,
+			imageNav: parentImage,
+			isCurrent: !currentSlug,
+		},
+		...items.map((item) => ({
+			slug: item.slug,
+			name: item.name,
+			nameRu: item.nameRu,
+			imageNav: item.imageNav,
+			isCurrent: currentSlug === item.slug,
+		})),
+	]
 
-  return (
-    <div className="mb-6 pb-4 border-b overflow-x-auto">
-      <div className="flex gap-6 min-w-max">
-        {showAll && (
-          <Link
-            href={`/${gender}/${parentSlug}`}
-            className={`flex flex-col items-center gap-2 min-w-[80px] group ${
-              !currentSlug ? "opacity-100" : "opacity-60 hover:opacity-100"
-            }`}
-          >
-            <div className="w-16 h-16 rounded-full border-2 border-gray-200 flex items-center justify-center bg-gray-50">
-              <span className="text-2xl">📦</span>
-            </div>
-            <span className="text-xs text-center font-medium">Все</span>
-          </Link>
-        )}
-        {items.map((item) => (
-          <Link
-            key={item.id}
-            href={`/${gender}/${parentSlug}/${item.slug}`}
-            className={`flex flex-col items-center gap-2 min-w-[80px] group ${
-              currentSlug === item.slug ? "opacity-100" : "opacity-60 hover:opacity-100"
-            }`}
-          >
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 bg-white">
-              {item.imageNav ? (
-                <Image
-                  src={item.imageNav}
-                  alt={item.nameRu || item.name}
-                  width={64}
-                  height={64}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gray-50">
-                  <span className="text-xs text-gray-400">
-                    {(item.nameRu || item.name).slice(0, 2)}
-                  </span>
-                </div>
-              )}
-            </div>
-            <span className="text-xs text-center max-w-[80px] line-clamp-2">
-              {item.nameRu || item.name}
-            </span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  )
+	return (
+		<div className="mb-6">
+			{showTitle && <h1 className="text-3xl font-bold mb-6">{parentName}</h1>}
+			<Carousel opts={{ align: "start", slidesToScroll: 1 }} className="w-full">
+				<CarouselContent className="-ml-2">
+					{allCategories.map((cat, i) => (
+						<CarouselItem key={i} className="pl-2 basis-auto">
+							<Link href={cat.slug ? `/${gender}/${parentSlug}/${cat.slug}` : `/${gender}/${parentSlug}`} className="flex flex-col items-center gap-2">
+								<Image
+									src={cat.imageNav!}
+									alt={cat.nameRu || cat.name}
+									width={130}
+									height={173}
+									className={`w-[130px] aspect-[3/4] object-cover border ${cat.isCurrent ? "border-black" : "border-border"}`}
+								/>
+								<span className={`text-xs text-center w-[130px] line-clamp-2 ${cat.isCurrent ? "font-semibold" : ""}`}>{cat.nameRu || cat.name}</span>
+							</Link>
+						</CarouselItem>
+					))}
+				</CarouselContent>
+			</Carousel>
+		</div>
+	)
 }

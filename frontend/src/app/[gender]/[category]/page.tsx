@@ -70,14 +70,8 @@ export default async function CategoryPage({ params }: PageProps) {
           subtitle={displaySubtitle}
         />
 
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{displayName}</h1>
-          <p className="text-gray-600">
-            {categoryProducts.length} {categoryProducts.length === 1 ? "товар" : "товаров"}
-          </p>
-        </div>
 
-        <CategoryNav gender={gender} parentSlug={slug} items={children} showAll={true} />
+				<CategoryNav gender={gender} parentSlug={slug} parentName={displayName} parentImage={category.imageNav} items={children} showTitle />
 
         <ProductGrid products={categoryProducts} />
       </main>
