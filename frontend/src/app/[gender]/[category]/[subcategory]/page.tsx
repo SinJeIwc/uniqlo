@@ -1,4 +1,4 @@
-import { and, eq, isNotNull, isNull } from "drizzle-orm"
+import { and, asc, eq, isNull, sql } from "drizzle-orm"
 import { notFound } from "next/navigation"
 import { ProductGrid } from "@/components/products/ProductGrid"
 import { Banner } from "@/components/shared/Banner"
@@ -35,10 +35,20 @@ export default async function SubcategoryPage({ params }: PageProps) {
 		notFound()
 	}
 
-	const categoryProducts = await db
+	// Get total count for subcategory
+	const [{ count: totalProducts }] = db
+		.select({ count: sql<number>`count(*)` })
+		.from(products)
+		.where(and(eq(products.categoryId, subcategory.id), eq(products.active, 1)))
+		.all()
+
+	// Get initial products (first page)
+	const initialProducts = await db
 		.select()
 		.from(products)
 		.where(and(eq(products.categoryId, subcategory.id), eq(products.active, 1)))
+		.orderBy(asc(products.name), asc(products.id))
+		.limit(20)
 		.all()
 
 	const siblings = await db
@@ -70,13 +80,6 @@ export default async function SubcategoryPage({ params }: PageProps) {
 					subtitle={displaySubtitle}
 				/>
 
-				<div className="mb-8">
-					<h1 className="text-3xl font-bold mb-2">{displayName}</h1>
-					<p className="text-gray-600">
-						{categoryProducts.length} {categoryProducts.length === 1 ? "товар" : "товаров"}
-					</p>
-				</div>
-
 				<CategoryNav
 					gender={gender}
 					parentSlug={parentCategory.slug}
@@ -87,7 +90,7 @@ export default async function SubcategoryPage({ params }: PageProps) {
 					showTitle
 				/>
 
-				<ProductGrid products={categoryProducts} />
+				<ProductGrid initialProducts={initialProducts} categoryIds={[subcategory.id]} totalCount={totalProducts} />
 			</main>
 			<Footer />
 		</>

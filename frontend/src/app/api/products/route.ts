@@ -5,22 +5,16 @@ import { productsService } from "@/services/products.service"
 export const dynamic = "force-dynamic"
 
 /**
- * GET /api/products — public product listing.
- * Query params: q, gender, categoryId, limit, page
+ * GET /api/products — public product listing with filters and pagination.
+ * Query params: q, gender, section, category, subcategory, categoryId, categoryIds, active, page, limit
  */
 export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url)
+	try {
+		const { searchParams } = new URL(request.url)
+		const result = await productsService.list(Object.fromEntries(searchParams))
 
-    // Public API only shows active products
-    const params = {
-      ...Object.fromEntries(searchParams),
-      active: "1",
-    }
-
-    const result = await productsService.list(params)
-    return NextResponse.json(result)
-  } catch (error) {
-    return handleApiError(error)
-  }
+		return NextResponse.json(result)
+	} catch (error) {
+		return handleApiError(error)
+	}
 }

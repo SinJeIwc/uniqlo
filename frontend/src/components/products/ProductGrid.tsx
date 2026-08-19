@@ -13,19 +13,57 @@ function getRussianPlural(count: number): string {
 }
 
 type ProductGridProps = {
-	products: Product[]
-	pageSize?: number
+	initialProducts: Product[]
 	totalCount?: number
+	categoryIds?: number[]
+	filters?: {
+		section?: string
+		gender?: string
+		category?: string
+		subcategory?: string
+	}
+	pageSize?: number
 }
 
-export function ProductGrid({ products, pageSize = 20, totalCount }: ProductGridProps) {
-	const [visibleCount, setVisibleCount] = useState(pageSize)
+export function ProductGrid({ initialProducts, totalCount, categoryIds, filters = {}, pageSize = 20 }: ProductGridProps) {
+	const [products, setProducts] = useState<Product[]>(initialProducts)
+	const [page, setPage] = useState(1)
+	const [total, setTotal] = useState(totalCount ?? initialProducts.length)
 	const [isLoading, setIsLoading] = useState(false)
 	const loaderRef = useRef<HTMLDivElement>(null)
 
-	const visibleProducts = products.slice(0, visibleCount)
-	const hasMore = visibleCount < products.length
-	const count = totalCount ?? products.length
+	const hasMore = products.length < total
+
+	const loadMore = async () => {
+		if (isLoading || !hasMore) return
+
+		setIsLoading(true)
+		try {
+			const params = new URLSearchParams({
+				page: String(page + 1),
+				limit: String(pageSize),
+			})
+
+			if (categoryIds && categoryIds.length > 0) {
+				params.set("categoryIds", categoryIds.join(","))
+			}
+
+			Object.entries(filters).forEach(([key, value]) => {
+				if (value) params.set(key, value)
+			})
+
+			const response = await fetch(`/api/products?${params}`)
+			const data = await response.json()
+
+			setProducts((prev) => [...prev, ...data.products])
+			setTotal(data.total)
+			setPage(data.page)
+		} catch (error) {
+			console.error("Failed to load products:", error)
+		} finally {
+			setIsLoading(false)
+		}
+	}
 
 	useEffect(() => {
 		if (!loaderRef.current || !hasMore) return
@@ -33,11 +71,7 @@ export function ProductGrid({ products, pageSize = 20, totalCount }: ProductGrid
 		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting && !isLoading) {
-					setIsLoading(true)
-					setTimeout(() => {
-						setVisibleCount((prev) => Math.min(prev + pageSize, products.length))
-						setIsLoading(false)
-					}, 300)
+					loadMore()
 				}
 			},
 			{ threshold: 0.1 },
@@ -45,7 +79,7 @@ export function ProductGrid({ products, pageSize = 20, totalCount }: ProductGrid
 
 		observer.observe(loaderRef.current)
 		return () => observer.disconnect()
-	}, [hasMore, isLoading, pageSize, products.length])
+	}, [hasMore, isLoading, page])
 
 	if (products.length === 0) {
 		return (
@@ -59,12 +93,13 @@ export function ProductGrid({ products, pageSize = 20, totalCount }: ProductGrid
 		<div>
 			<div className="flex items-center justify-between mb-6">
 				<p className="text-sm text-muted-foreground">
-					{count} {getRussianPlural(count)}
+					{total} {getRussianPlural(total)}
 				</p>
 				{/* Future: filters here */}
 			</div>
+
 			<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
-				{visibleProducts.map((product) => (
+				{products.map((product) => (
 					<ProductCard
 						key={product.productId}
 						id={product.productId}
