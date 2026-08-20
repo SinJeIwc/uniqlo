@@ -139,13 +139,32 @@ def _process_node(page: Page, parent: dict, all_cats: list[dict], cat_id: int) -
         media = page.evaluate("""() => {
             const banner = document.querySelector('[_type="MediaBanner"]');
             if (!banner) return null;
-            const img = banner.querySelector('img');
+            
+            // Find picture element (may contain responsive sources)
+            const picture = banner.querySelector('picture');
             const video = banner.querySelector('video');
+            const img = picture?.querySelector('img') || banner.querySelector('img');
+            const sources = Array.from(picture?.querySelectorAll('source') || []);
+            
+            // Find mobile source (max-width media query)
+            const spSource = sources.find(s => 
+                s.getAttribute('media')?.includes('max-width')
+            );
+            
+            // Extract subtitle paragraphs
             const ps = banner.querySelectorAll('p[data-testid="ITOTypography"]');
+            
             return {
-                image_sp: img?.getAttribute('smallmediumimageurl') || null,
-                image_pc: img?.getAttribute('largeimageurl') || null,
-                video_url: video?.getAttribute('data-src') || video?.getAttribute('src') || null,
+                image_sp: spSource?.getAttribute('srcSet') || 
+                          img?.getAttribute('smallmediumimageurl') || 
+                          null,
+                image_pc: img?.getAttribute('src') || 
+                          img?.getAttribute('largeimageurl') || 
+                          video?.getAttribute('poster') ||  // Fallback from video poster
+                          null,
+                video_url: video?.getAttribute('data-src') || 
+                          video?.getAttribute('src') || 
+                          null,
                 video_poster: video?.getAttribute('poster') || null,
                 subtitle: ps[1]?.textContent?.trim() || null,
             };

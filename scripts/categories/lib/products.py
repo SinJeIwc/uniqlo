@@ -114,19 +114,28 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
             page.goto(url, timeout=PAGE_TIMEOUT, wait_until="domcontentloaded")
             page.wait_for_selector("body", timeout=10000)
 
-            # Scroll to load all products (lazy-loaded) - increased to 40 for large catalogs
+            # Scroll to load ALL products via infinite scroll
+            # Wait longer for network requests and check for loader/end marker
             prev = 0
-            for _ in range(40):
-                page.evaluate("window.scrollBy(0, window.innerHeight)")
-                time.sleep(0.3)
+            no_change_count = 0
+            for scroll_iter in range(80):  # Increased for large catalogs (305+ items)
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                time.sleep(1.0)  # Longer wait for network + render
+                
                 try:
                     cur = page.evaluate(
                         "() => document.querySelectorAll('a[href*=\"/products/E\"]').length")
                 except Exception:
                     break  # page navigated away
+                
                 if cur == prev:
-                    break
-                prev = cur
+                    no_change_count += 1
+                    # Wait 2 more iterations to confirm end (loader might be slow)
+                    if no_change_count >= 3:
+                        break
+                else:
+                    no_change_count = 0
+                    prev = cur
 
             # Collect all unique product links from this page
             new_links = page.evaluate("""() => {
