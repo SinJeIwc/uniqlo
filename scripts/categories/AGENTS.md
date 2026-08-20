@@ -1,47 +1,149 @@
-# Categories parser — conventions
+# Categories Parser — Documentation
 
-## Incremental build
-
-Каждый этап — отдельный скрипт, который запускается сам по себе и выдаёт JSON.
-Только когда кусочек работает — встраиваем в общий модуль.
-
-Порядок:
+## Structure
 
 ```
-1. flyout          → parse.py            → JSON: [{text, href, slug, image, gender}] (фильтр: a[data-category="navi"])
-2. lineup/L2       → parse_lineup.py    → JSON: [{text, href, slug, image, parent_slug}]
-3. PLP (terminal)  → parse_plp.py       → JSON: {hero, subcategories: [{name, products: [id]}]}
-4. product page    → parse_product.py   → JSON: {id, name, price, colors, sizes, images, ...}
-5. integration     → parse.py all       → категории + товары → SQLite
+scripts/categories/
+├── parse.py              # Main CLI with subcommands
+├── translate.py          # Translation module (JA→RU)
+├── lib/
+│   ├── crawl.py         # Category tree traversal
+│   ├── products.py      # Parallel product scraping
+│   ├── db.py            # Database upsert operations
+│   ├── flyout.py        # Flyout navigation parsing
+│   ├── subs.py          # Subcategory extraction
+│   ├── product_js.py    # Product page JS extraction
+│   └── count_products.py # Product count utility
+└── AGENTS.md            # This file
 ```
 
-Каждый скрипт:
-- Принимает URL или gender как аргумент
-- Выводит JSON в stdout или файл
-- Не зависит от других этапов (кроме входных данных)
+## Commands
 
-## Product ↔ category rule
-
-Товары парсим только на **терминальных** страницах (без `#lineupLinkWrapper`).
-Каждый товар получает `category_id` той страницы где найден.
-
-```
-/women/tops (терминал) → товары → category_id = tops
-/women/special-collaboration (lineup) → L3 children → каждая L3 терминал → товары → category_id = L3
-```
-
-## Japan vs US
-
-- Парсер работает с Japan (`uniqlo.com/jp/ja/`)
-- US использовался только для проверки DOM-структуры
-- `?path=` — только US, японцам не нужен
-
-## Запуск
+All run from `scripts/` directory:
 
 ```bash
-cd scripts
-uv run python categories/parse.py
-uv run python categories/parse_lineup.py --gender women --slug tops
-uv run python categories/parse_plp.py --url https://www.uniqlo.com/jp/ja/women/tops
-uv run python categories/parse_product.py --url https://www.uniqlo.com/jp/ja/products/E482148-000
+# Categories only (2-5 min)
+uv run python categories/parse.py categories
+uv run python categories/parse.py categories --gender women
+
+# Products only
+uv run python categories/parse.py products
+uv run python categories/parse.py products --max 50
+
+# Everything (categories + products)
+uv run python categories/parse.py all
+uv run python categories/parse.py all --gender men
+
+# Everything + translation
+uv run python categories/parse.py all --translate
+
+# Translation only (JA→RU)
+uv run python categories/parse.py translate
+uv run python categories/parse.py translate --dry-run --limit 10
+
+# Single product (debug)
+uv run python categories/parse.py product \
+  --url https://www.uniqlo.com/jp/ja/products/E424873-000/00 \
+  --pretty
+
+# Product count per category
+uv run python categories/parse.py count
 ```
+
+## Translation
+
+**translate.py** generates Russian translations for:
+- Categories: `name_ru`, `subtitle_ru`  
+- Products: `name_ru`, `description_ru`, `section_ru`, `category_ru`, `subcategory_ru`
+
+**Features:**
+- Uses deep-translator (Google Translate, free)
+- Resume-safe: skips already-translated rows
+- Rate limiting: 1.5s between requests
+- Batch pauses: every 20 items
+
+**Usage:**
+```bash
+# Translate all untranslated rows
+uv run python categories/parse.py translate
+
+# Preview without writing
+uv run python categories/parse.py translate --dry-run
+
+# Test with 10 rows
+uv run python categories/parse.py translate --limit 10
+```
+
+## Architecture
+
+### Parse Flow
+
+1. **Flyout** → extract L1 nav categories
+2. **Crawl tree** → visit each category page
+3. **Check #lineupLinkWrapper** → extract L2/L3 subcategories
+4. **Terminal pages** → collect product links
+5. **Parallel scraping** → parse products (4 tabs)
+6. **Translation** (optional) → JA→RU conversion
+
+### Category Hierarchy
+
+| Level | Source | Example |
+|-------|--------|---------|
+| L0 | hardcoded | women, men, kids, baby |
+| L1 | Flyout nav | tops, bottoms, special-collaboration |
+| L2 | LineupWrapper | t-shirts, jeans |
+| L3 | BannerProducts | crew-neck, skinny-fit |
+
+### Modules
+
+**crawl.py** — Category traversal
+- Visits category pages recursively
+- Extracts MediaBanner (images, video, subtitle)
+- Handles L0→L1→L2→L3 hierarchy
+
+**products.py** — Product scraping
+- Parallel execution (4 browser tabs)
+- Resume support (skips parsed products)
+- Infinite scroll for complete lists
+- Lineup subcategory expansion
+
+**db.py** — Database operations
+- Upsert categories/products
+- **Translation preservation**: clears _ru fields ONLY when source text changes
+
+**translate.py** — Translation
+- Standalone module with reusable functions
+- Used by parse.py as thin wrapper
+- Direct CLI: `uv run python categories/translate.py`
+
+## Output
+
+**Database:** `frontend/data/uniqlo.db`
+
+**Tables:**
+- `categories` — hierarchical tree with images, translations
+- `products` — full catalog with variants, gallery, translations
+
+**Russian fields:**
+- Preserved on re-parse if source text unchanged
+- Cleared if source text changes (requires re-translation)
+- Generated by `translate` command
+
+## Development
+
+**Testing:**
+- `--max N` limits product count
+- `--gender X` filters categories
+- `product --url ...` debugs single product
+- `translate --dry-run --limit 10` previews translation
+
+**Resume:**
+- Products skipped by `productId`
+- Translations skipped by `name_ru IS NULL`
+- Safe to re-run parser
+
+**Translation Notes:**
+- Free tier: ~100 requests/minute
+- Conservative delays avoid throttling
+- Batch pause every 20 items
+- Total time: ~1.5s per row

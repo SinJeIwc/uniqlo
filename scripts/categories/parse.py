@@ -8,8 +8,11 @@ Usage:
     uv run python categories/parse.py products                # parse products from categories in DB
     uv run python categories/parse.py products --max 50       # limit for testing
     uv run python categories/parse.py all                     # categories + products
-    uv run python categories/parse.py all --gender men
+    uv run python categories/parse.py all --gender men --translate
+    uv run python categories/parse.py translate               # translate JA→RU
+    uv run python categories/parse.py translate --dry-run --limit 10
     uv run python categories/parse.py product --url https://... # single product
+    uv run python categories/parse.py count                   # count products
 """
 import argparse, sys
 from pathlib import Path
@@ -72,7 +75,17 @@ def cmd_all(args):
         count = parse_products(browser, str(DB_PATH), max_products=args.max)
         browser.close()
 
-    print(f"Done. {len(cats)} categories, {count} products.")
+    # Phase 3: Translate (if requested)
+    if args.translate:
+        print("\n" + "="*70)
+        print("TRANSLATION PHASE")
+        print("="*70)
+        from translate import translate_categories, translate_products
+        cat_count = translate_categories(str(DB_PATH), dry_run=False, limit=0)
+        prod_count = translate_products(str(DB_PATH), dry_run=False, limit=0)
+        print(f"  Translated: {cat_count} categories, {prod_count} products")
+
+    print(f"\nDone. {len(cats)} categories, {count} products.")
 
 
 def cmd_product(args):
@@ -91,6 +104,8 @@ def cmd_product(args):
 
     data["url"] = args.url
     print(json.dumps(data, ensure_ascii=False, indent=2 if args.pretty else None))
+
+
 def cmd_count(args):
     from playwright.sync_api import sync_playwright
     from lib.count_products import count_products
@@ -119,6 +134,17 @@ def cmd_count(args):
         print(f"\nFirst missing IDs: {', '.join(result['missing_ids'][:10])}")
 
 
+def cmd_translate(args):
+    """Translate categories and products JA→RU (thin wrapper around translate.py)."""
+    from translate import translate_categories, translate_products
+    
+    cat_count = translate_categories(str(DB_PATH), args.dry_run, args.limit)
+    prod_count = translate_products(str(DB_PATH), args.dry_run, args.limit)
+    
+    if not args.dry_run:
+        print(f"\nTranslated: {cat_count} categories, {prod_count} products.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="UNIQLO Parser")
     sub = ap.add_subparsers(dest="command")
@@ -132,14 +158,23 @@ def main():
     p_prods.add_argument("--max", type=int, default=0, help="Max products (0 = all)")
 
     # all
-    p_all = sub.add_parser("all", help="Categories + products")
-    p_count = sub.add_parser("count", help="Count products without parsing")
-
+    p_all = sub.add_parser("all", help="Parse categories + products")
+    p_all.add_argument("--gender", default="all", choices=["all", "women", "men", "kids", "baby"])
+    p_all.add_argument("--max", type=int, default=0, help="Max products (0 = all)")
+    p_all.add_argument("--translate", action="store_true", help="Run JA→RU translation after parsing")
 
     # product (single)
     p_prod = sub.add_parser("product", help="Parse single product page")
-    p_prod.add_argument("--url", required=True)
-    p_prod.add_argument("--pretty", action="store_true")
+    p_prod.add_argument("--url", required=True, help="Product URL")
+    p_prod.add_argument("--pretty", action="store_true", help="Pretty JSON output")
+
+    # count
+    p_count = sub.add_parser("count", help="Count products per category")
+
+    # translate
+    p_translate = sub.add_parser("translate", help="Translate categories/products JA→RU")
+    p_translate.add_argument("--dry-run", action="store_true", help="Preview without writing")
+    p_translate.add_argument("--limit", type=int, default=0, help="Limit rows (for testing)")
 
     args = ap.parse_args()
 
@@ -153,6 +188,8 @@ def main():
         cmd_product(args)
     elif args.command == "count":
         cmd_count(args)
+    elif args.command == "translate":
+        cmd_translate(args)
     else:
         ap.print_help()
 

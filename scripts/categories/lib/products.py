@@ -15,10 +15,6 @@ PAGE_TIMEOUT = 30000
 PARALLEL_TABS = 4
 
 
-"""
-Clean replacement for parse_products() with lineup subcategory expansion.
-Copy this into products.py replacing the old parse_products function (lines 18-150).
-"""
 
 def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int:
     """Parse products from all terminal category pages.
