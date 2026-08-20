@@ -9,18 +9,18 @@ export const dynamic = "force-dynamic"
  * Query params: q, gender, section, category, subcategory, categoryId, categoryIds, active, page, limit
  */
 export async function GET(request: Request) {
-	try {
-		const { searchParams } = new URL(request.url)
-		const result = await productsService.list(Object.fromEntries(searchParams))
+  try {
+    const { searchParams } = new URL(request.url)
+    const result = await productsService.list(Object.fromEntries(searchParams))
 
-		// Transform response: rows → products for consistency with ProductGrid
-		return NextResponse.json({
-			products: result.rows,
-			total: result.total,
-			page: result.page,
-			limit: result.limit,
-		})
-	} catch (error) {
-		return handleApiError(error)
-	}
+    // Transform response: rows → products for consistency with ProductGrid
+    return NextResponse.json({
+      products: result.rows,
+      total: result.total,
+      page: result.page,
+      limit: result.limit,
+    })
+  } catch (error) {
+    return handleApiError(error)
+  }
 }

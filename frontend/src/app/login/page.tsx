@@ -1,13 +1,13 @@
 "use client"
 
+import { ArrowLeft, ShieldCheck, User } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, User, ShieldCheck } from "lucide-react"
+import { useAuth } from "@/components/auth/AuthProvider"
 import { TelegramLogin } from "@/components/auth/TelegramLogin"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { useAuth } from "@/components/auth/AuthProvider"
 
 export default function UserLoginPage() {
   const router = useRouter()

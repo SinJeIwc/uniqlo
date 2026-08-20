@@ -1,9 +1,10 @@
-import { formatPrice } from "@/lib/utils"
 import { Heart, Minus, Plus, Share2 } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { formatPrice } from "@/lib/utils"
+
 // Dynamic product loading
 async function getProduct(id: string) {
   try {
@@ -27,7 +28,6 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     <>
       <Header />
       <main className="flex-1 max-w-[1440px] mx-auto px-4 lg:px-8 py-8">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left: Image Gallery */}
           <div>

@@ -20,11 +20,7 @@ export async function seedDatabase() {
   }
 
   // Check if THIS admin email already exists
-  const existingAdmin = db
-    .select()
-    .from(users)
-    .where(eq(users.providerId, adminEmail))
-    .get()
+  const existingAdmin = db.select().from(users).where(eq(users.providerId, adminEmail)).get()
 
   const passwordHash = bcrypt.hashSync(adminPassword, 10)
 

@@ -1,10 +1,10 @@
 import { and, asc, eq, inArray, isNull, or, sql } from "drizzle-orm"
 import { notFound } from "next/navigation"
+import { CategoryNav } from "@/components/categories/CategoryNav"
+import { Footer } from "@/components/layout/footer"
+import { Header } from "@/components/layout/header"
 import { ProductGrid } from "@/components/products/ProductGrid"
 import { Banner } from "@/components/shared/Banner"
-import { CategoryNav } from "@/components/categories/CategoryNav"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
 import { db } from "@/db"
 import { categories, products } from "@/db/schema"
 
@@ -35,21 +35,21 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const categoryIds = allCategories.map((c) => c.id)
 
-	// Get total count for category tree
-	const [{ count: totalProducts }] = db
-		.select({ count: sql<number>`count(*)` })
-		.from(products)
-		.where(and(inArray(products.categoryId, categoryIds), eq(products.active, 1)))
-		.all()
+  // Get total count for category tree
+  const [{ count: totalProducts }] = db
+    .select({ count: sql<number>`count(*)` })
+    .from(products)
+    .where(and(inArray(products.categoryId, categoryIds), eq(products.active, 1)))
+    .all()
 
-	// Get initial products (first page) for server-side render
-	const initialProducts = await db
-		.select()
-		.from(products)
-		.where(and(inArray(products.categoryId, categoryIds), eq(products.active, 1)))
-		.orderBy(asc(products.name), asc(products.id))
-		.limit(20)
-		.all()
+  // Get initial products (first page) for server-side render
+  const initialProducts = await db
+    .select()
+    .from(products)
+    .where(and(inArray(products.categoryId, categoryIds), eq(products.active, 1)))
+    .orderBy(asc(products.name), asc(products.id))
+    .limit(20)
+    .all()
 
   const children = await db
     .select({
@@ -80,11 +80,20 @@ export default async function CategoryPage({ params }: PageProps) {
           subtitle={displaySubtitle}
         />
 
+        <CategoryNav
+          gender={gender}
+          parentSlug={slug}
+          parentName={displayName}
+          parentImage={category.imageNav}
+          items={children}
+          showTitle
+        />
 
-				<CategoryNav gender={gender} parentSlug={slug} parentName={displayName} parentImage={category.imageNav} items={children} showTitle />
-
-				<ProductGrid initialProducts={initialProducts} categoryIds={categoryIds} totalCount={totalProducts} />
-
+        <ProductGrid
+          initialProducts={initialProducts}
+          categoryIds={categoryIds}
+          totalCount={totalProducts}
+        />
       </main>
       <Footer />
     </>

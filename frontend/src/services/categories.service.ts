@@ -69,7 +69,7 @@ export class CategoriesService {
     if (flat) {
       // Get categories that have products linked
       const withProducts = await categoriesRepository.findWithProducts()
-      
+
       return {
         categories: withProducts.map((c) => ({
           id: c.id,
@@ -114,13 +114,13 @@ export class CategoriesService {
   async getNavCategories() {
     const navCats = await categoriesRepository.findNavCategories()
 
-	return navCats.map((cat) => ({
-		name: cat.name,
-		nameRu: cat.nameRu,
-		slug: cat.slug,
-		gender: cat.gender,
-		image: cat.image, // Flyout icons (no gray background)
-	}))
+    return navCats.map((cat) => ({
+      name: cat.name,
+      nameRu: cat.nameRu,
+      slug: cat.slug,
+      gender: cat.gender,
+      image: cat.image, // Flyout icons (no gray background)
+    }))
   }
 
   /**

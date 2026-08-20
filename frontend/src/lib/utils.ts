@@ -10,5 +10,5 @@ export function cn(...inputs: ClassValue[]) {
  * Avoids hydration mismatch from toLocaleString().
  */
 export function formatPrice(price: number): string {
-	return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }

@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import type { CategoryNavItem } from "@/components/home/types"
 import { CategoryGrid } from "@/components/categories/CategoryGrid"
+import type { CategoryNavItem } from "@/components/home/types"
 import {
   Sidebar,
   SidebarContent,

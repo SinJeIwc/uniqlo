@@ -7,14 +7,7 @@ type BannerProps = {
   subtitle?: string | null
 }
 
-export function Banner({
-  videoUrl,
-  videoPoster,
-  imagePc,
-  imageSp,
-  title,
-  subtitle,
-}: BannerProps) {
+export function Banner({ videoUrl, videoPoster, imagePc, imageSp, title, subtitle }: BannerProps) {
   if (!videoUrl && !imagePc && !imageSp) {
     return null
   }

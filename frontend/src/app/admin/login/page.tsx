@@ -1,14 +1,9 @@
-import { ArrowLeft } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { LoginForm } from "@/components/admin/login/LoginForm";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { LoginForm } from "@/components/admin/login/LoginForm"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function AdminLoginPage() {
   return (
@@ -33,9 +28,7 @@ export default function AdminLoginPage() {
         <CardHeader className="flex flex-col items-center justify-center">
           <Image src="/uniqlo-logo.svg" alt="Logo" width={75} height={34} />
 
-          <CardTitle className="text-2xl font-bold tracking-tight">
-            UNIQLO KG
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold tracking-tight">UNIQLO KG</CardTitle>
         </CardHeader>
 
         <CardContent>
@@ -49,6 +42,6 @@ export default function AdminLoginPage() {
           © 2026 UNIQLO Kyrgyzstan. Все права защищены.
         </p>
       </div>
-    </div >
-  );
+    </div>
+  )
 }

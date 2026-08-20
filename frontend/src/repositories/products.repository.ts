@@ -4,138 +4,155 @@ import { db } from "@/db"
 import { products } from "@/db/schema"
 
 export interface FindProductsOptions {
-	q?: string
-	gender?: string
-	section?: string
-	category?: string
-	subcategory?: string
-	categoryId?: number
-	categoryIds?: number[]
-	active?: 0 | 1
-	page?: number
-	limit?: number
+  q?: string
+  gender?: string
+  section?: string
+  category?: string
+  subcategory?: string
+  categoryId?: number
+  categoryIds?: number[]
+  active?: 0 | 1
+  page?: number
+  limit?: number
 }
 
 /**
  * Data access layer for products table.
  */
 export class ProductsRepository {
-	/**
-	 * Find products with filtering, pagination, and sorting.
-	 */
-	async findMany(options: FindProductsOptions): Promise<ProductsResponse> {
-		const { q, gender, section, category, subcategory, categoryId, categoryIds, active, page = 1, limit = 20 } = options
-		const offset = (page - 1) * limit
+  /**
+   * Find products with filtering, pagination, and sorting.
+   */
+  async findMany(options: FindProductsOptions): Promise<ProductsResponse> {
+    const {
+      q,
+      gender,
+      section,
+      category,
+      subcategory,
+      categoryId,
+      categoryIds,
+      active,
+      page = 1,
+      limit = 20,
+    } = options
+    const offset = (page - 1) * limit
 
-		const conditions = []
+    const conditions = []
 
-		// Search by product_id or name (Russian or original)
-		if (q) {
-			conditions.push(or(like(products.name, `%${q}%`), like(products.nameRu, `%${q}%`), like(products.productId, `%${q}%`)))
-		}
+    // Search by product_id or name (Russian or original)
+    if (q) {
+      conditions.push(
+        or(
+          like(products.name, `%${q}%`),
+          like(products.nameRu, `%${q}%`),
+          like(products.productId, `%${q}%`),
+        ),
+      )
+    }
 
-		// Filter by gender (DB stores uppercase)
-		if (gender) {
-			conditions.push(eq(products.gender, gender.toUpperCase()))
-		}
+    // Filter by gender (DB stores uppercase)
+    if (gender) {
+      conditions.push(eq(products.gender, gender.toUpperCase()))
+    }
 
-		// Filter by section
-		if (section) {
-			conditions.push(eq(products.section, section))
-		}
+    // Filter by section
+    if (section) {
+      conditions.push(eq(products.section, section))
+    }
 
-		// Filter by category name
-		if (category) {
-			conditions.push(eq(products.category, category))
-		}
+    // Filter by category name
+    if (category) {
+      conditions.push(eq(products.category, category))
+    }
 
-		// Filter by subcategory name
-		if (subcategory) {
-			conditions.push(eq(products.subcategory, subcategory))
-		}
+    // Filter by subcategory name
+    if (subcategory) {
+      conditions.push(eq(products.subcategory, subcategory))
+    }
 
-		// Filter by single category ID (foreign key)
-		if (categoryId !== undefined) {
-			conditions.push(eq(products.categoryId, categoryId))
-		}
+    // Filter by single category ID (foreign key)
+    if (categoryId !== undefined) {
+      conditions.push(eq(products.categoryId, categoryId))
+    }
 
-		// Filter by multiple category IDs (for navigation tree)
-		if (categoryIds && categoryIds.length > 0) {
-			conditions.push(inArray(products.categoryId, categoryIds))
-		}
+    // Filter by multiple category IDs (for navigation tree)
+    if (categoryIds && categoryIds.length > 0) {
+      conditions.push(inArray(products.categoryId, categoryIds))
+    }
 
-		// Filter by active flag
-		if (active !== undefined) {
-			conditions.push(eq(products.active, active))
-		}
+    // Filter by active flag
+    if (active !== undefined) {
+      conditions.push(eq(products.active, active))
+    }
 
-		const where = conditions.length > 0 ? and(...conditions) : undefined
+    const where = conditions.length > 0 ? and(...conditions) : undefined
 
-		// Parallel queries for total count and paginated rows
-		const [totalResult, rows] = await Promise.all([
-			db.select({ count: count() }).from(products).where(where).get(),
-			db
-				.select()
-				.from(products)
-				.where(where)
-				.orderBy(asc(products.name), asc(products.id)) // Stable pagination
-				.limit(limit)
-				.offset(offset)
-				.all(),
-		])
+    // Parallel queries for total count and paginated rows
+    const [totalResult, rows] = await Promise.all([
+      db.select({ count: count() }).from(products).where(where).get(),
+      db
+        .select()
+        .from(products)
+        .where(where)
+        .orderBy(asc(products.name), asc(products.id)) // Stable pagination
+        .limit(limit)
+        .offset(offset)
+        .all(),
+    ])
 
-		return {
-			rows,
-			total: totalResult?.count ?? 0,
-			page,
-			limit,
-		}
-	}
+    return {
+      rows,
+      total: totalResult?.count ?? 0,
+      page,
+      limit,
+    }
+  }
 
-	/**
-	 * Find product by internal database ID.
-	 */
-	async findById(id: number): Promise<Product | undefined> {
-		return db.select().from(products).where(eq(products.id, id)).get()
-	}
+  /**
+   * Find product by internal database ID.
+   */
+  async findById(id: number): Promise<Product | undefined> {
+    return db.select().from(products).where(eq(products.id, id)).get()
+  }
 
-	/**
-	 * Find product by external product_id (UNIQLO SKU).
-	 */
-	async findByProductId(productId: string): Promise<Product | undefined> {
-		return db.select().from(products).where(eq(products.productId, productId)).get()
-	}
+  /**
+   * Find product by external product_id (UNIQLO SKU).
+   */
+  async findByProductId(productId: string): Promise<Product | undefined> {
+    return db.select().from(products).where(eq(products.productId, productId)).get()
+  }
 
-	/**
-	 * Get total product count (optionally filtered by active status).
-	 */
-	async count(active?: 0 | 1): Promise<number> {
-		const where = active !== undefined ? eq(products.active, active) : undefined
-		const result = await db.select({ count: count() }).from(products).where(where).get()
-		return result?.count ?? 0
-	}
+  /**
+   * Get total product count (optionally filtered by active status).
+   */
+  async count(active?: 0 | 1): Promise<number> {
+    const where = active !== undefined ? eq(products.active, active) : undefined
+    const result = await db.select({ count: count() }).from(products).where(where).get()
+    return result?.count ?? 0
+  }
 
-	/**
-	 * Update product by ID.
-	 */
-	async update(id: number, data: Partial<ProductInsert>): Promise<Product | undefined> {
-		db.update(products).set(data).where(eq(products.id, id)).run()
-		return this.findById(id)
-	}
+  /**
+   * Update product by ID.
+   */
+  async update(id: number, data: Partial<ProductInsert>): Promise<Product | undefined> {
+    db.update(products).set(data).where(eq(products.id, id)).run()
+    return this.findById(id)
+  }
 
-	/**
-	 * Soft-delete product (set active = 0).
-	 */
-	async deactivate(id: number): Promise<void> {
-		db.update(products).set({ active: 0 }).where(eq(products.id, id)).run()
-	}
+  /**
+   * Soft-delete product (set active = 0).
+   */
+  async deactivate(id: number): Promise<void> {
+    db.update(products).set({ active: 0 }).where(eq(products.id, id)).run()
+  }
 
-	/**
-	 * Hard-delete product by ID.
-	 */
-	async delete(id: number): Promise<void> {
-		db.delete(products).where(eq(products.id, id)).run()
-	}
+  /**
+   * Hard-delete product by ID.
+   */
+  async delete(id: number): Promise<void> {
+    db.delete(products).where(eq(products.id, id)).run()
+  }
 }
 
 export const productsRepository = new ProductsRepository()

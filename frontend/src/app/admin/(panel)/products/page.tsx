@@ -75,7 +75,11 @@ export default function AdminProductsPage() {
   const updateFilter = (key: keyof FilterState, value: string) => {
     // Map "all" sentinel to empty string for backend
     const normalized = value === "all" ? "" : value
-    const newFilters = { ...filters, [key]: normalized, page: key === "page" ? Number(normalized) : 1 }
+    const newFilters = {
+      ...filters,
+      [key]: normalized,
+      page: key === "page" ? Number(normalized) : 1,
+    }
     setFilters(newFilters)
 
     // Sync to URL
@@ -132,7 +136,10 @@ export default function AdminProductsPage() {
           </SelectContent>
         </Select>
 
-        <Select value={filters.categoryId} onValueChange={(v) => updateFilter("categoryId", v || "")}>
+        <Select
+          value={filters.categoryId}
+          onValueChange={(v) => updateFilter("categoryId", v || "")}
+        >
           <SelectTrigger className="w-44 h-9 text-sm">
             <SelectValue placeholder="Category" />
           </SelectTrigger>

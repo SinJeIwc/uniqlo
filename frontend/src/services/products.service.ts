@@ -3,19 +3,22 @@ import { NotFoundError, ValidationError } from "@/lib/errors/api-error"
 import { productsRepository } from "@/repositories/products.repository"
 
 const listProductsSchema = z.object({
-	q: z.string().optional(),
-	gender: z.enum(["women", "men", "kids", "baby"]).optional(),
-	section: z.string().optional(),
-	category: z.string().optional(),
-	subcategory: z.string().optional(),
-	categoryId: z.coerce.number().int().positive().optional(),
-	categoryIds: z.string().optional().transform((v) => v?.split(",").map(Number)),
-	active: z
-		.enum(["0", "1"])
-		.optional()
-		.transform((v) => (v !== undefined ? Number(v) : undefined) as 0 | 1 | undefined),
-	page: z.coerce.number().int().min(1).default(1),
-	limit: z.coerce.number().int().min(1).max(100).default(20),
+  q: z.string().optional(),
+  gender: z.enum(["women", "men", "kids", "baby"]).optional(),
+  section: z.string().optional(),
+  category: z.string().optional(),
+  subcategory: z.string().optional(),
+  categoryId: z.coerce.number().int().positive().optional(),
+  categoryIds: z
+    .string()
+    .optional()
+    .transform((v) => v?.split(",").map(Number)),
+  active: z
+    .enum(["0", "1"])
+    .optional()
+    .transform((v) => (v !== undefined ? Number(v) : undefined) as 0 | 1 | undefined),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
 })
 
 const updateProductSchema = z.object({
