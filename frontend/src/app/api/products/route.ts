@@ -13,7 +13,13 @@ export async function GET(request: Request) {
 		const { searchParams } = new URL(request.url)
 		const result = await productsService.list(Object.fromEntries(searchParams))
 
-		return NextResponse.json(result)
+		// Transform response: rows → products for consistency with ProductGrid
+		return NextResponse.json({
+			products: result.rows,
+			total: result.total,
+			page: result.page,
+			limit: result.limit,
+		})
 	} catch (error) {
 		return handleApiError(error)
 	}

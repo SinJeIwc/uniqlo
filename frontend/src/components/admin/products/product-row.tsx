@@ -1,5 +1,6 @@
 "use client"
 
+import { formatPrice } from "@/lib/utils"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
@@ -164,7 +165,7 @@ function ProductDetail({ product }: { product: Product }) {
                     <tr key={i} className="border-b border-border/50">
                       <td className="py-1">{v.color}</td>
                       <td className="py-1">{v.size}</td>
-                      <td className="py-1 text-right">¥{v.price?.toLocaleString()}</td>
+											<td className="py-1 text-right">¥{formatPrice(v.price ?? 0)}</td>
                       <td className="py-1 text-right">
                         {v.inStock ? (
                           <Badge variant="outline" className="text-green-600 text-[10px]">
@@ -274,7 +275,7 @@ export function ProductRow({ product }: { product: Product }) {
         </TableCell>
         <TableCell className="font-mono text-xs">{product.productId}</TableCell>
         <TableCell className="font-medium max-w-56 truncate">{product.name}</TableCell>
-        <TableCell>¥{product.price?.toLocaleString()}</TableCell>
+				<TableCell>¥{formatPrice(product.price ?? 0)}</TableCell>
         <TableCell>
           <span>{product.rating}</span>
           <span className="text-[10px] text-muted-foreground">★</span>

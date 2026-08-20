@@ -1,9 +1,9 @@
+import { formatPrice } from "@/lib/utils"
 import { Heart, Minus, Plus, Share2 } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
-
 // Dynamic product loading
 async function getProduct(id: string) {
   try {
@@ -64,11 +64,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             {/* Price */}
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-zinc-900">
-                {product.price.toLocaleString()} KGS
+                {formatPrice(product.price)} KGS
               </span>
               {product.originalPrice && (
                 <span className="text-lg text-zinc-400 line-through">
-                  {product.originalPrice.toLocaleString()} KGS
+                  {formatPrice(product.originalPrice)} KGS
                 </span>
               )}
             </div>

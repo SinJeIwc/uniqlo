@@ -1,3 +1,4 @@
+import { formatPrice } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -65,7 +66,7 @@ export function ProductCard({
         <h3 className="text-sm leading-tight line-clamp-2 min-h-[2.5rem]">{displayName}</h3>
 
         {/* Price */}
-        {price && <p className="text-sm font-medium">¥{price.toLocaleString()}</p>}
+		{price && <p className="text-sm font-medium">¥{formatPrice(price)}</p>}
 
         {/* Rating & Reviews */}
         {rating && reviewCount !== null && reviewCount > 0 && (
