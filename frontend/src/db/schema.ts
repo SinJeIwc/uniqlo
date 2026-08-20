@@ -12,6 +12,7 @@ export const categories = sqliteTable("categories", {
   kind: text().notNull().default("category"),
   nav: integer().default(0),
   navOrder: integer("nav_order").default(0),
+	homeNav: integer("home_nav").default(0),
   visible: integer().default(1),
   imageSp: text("image_sp"),
   imagePc: text("image_pc"),

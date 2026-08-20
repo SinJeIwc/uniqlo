@@ -114,13 +114,13 @@ export class CategoriesService {
   async getNavCategories() {
     const navCats = await categoriesRepository.findNavCategories()
 
-    return navCats.map((cat) => ({
-      name: cat.name,
-      nameRu: cat.nameRu,
-      slug: cat.slug,
-      gender: cat.gender,
-      image: cat.imageNav,
-    }))
+	return navCats.map((cat) => ({
+		name: cat.name,
+		nameRu: cat.nameRu,
+		slug: cat.slug,
+		gender: cat.gender,
+		image: cat.image, // Flyout icons (no gray background)
+	}))
   }
 
   /**
