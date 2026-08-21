@@ -109,14 +109,56 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
         try:
             page.goto(url, timeout=PAGE_TIMEOUT, wait_until="domcontentloaded")
             page.wait_for_selector("body", timeout=10000)
+            
+            # DEBUG: What does parser actually receive?
+            if i == 0:  # Only first page to avoid spam
+                html = page.content()
+                title = page.title()
+                print(f"\n🔍 DEBUG first page ({gender}/{slug}):", flush=True)
+                print(f"  Title: {title}", flush=True)
+                print(f"  HTML size: {len(html)} bytes", flush=True)
+                print(f"  HTML preview (first 1000 chars):", flush=True)
+                print(f"  {html[:1000]}", flush=True)
+                print(f"  Contains '/products/E': {'/products/E' in html}", flush=True)
+                print("", flush=True)
 
             # Scroll to load ALL products via infinite scroll
-            # Wait longer for network requests and check for loader/end marker
+            # Enhanced for large catalogs (500+ items) with verification
+            
+            # Check for pagination/button before scroll
+            has_pagination = page.evaluate("""() => {
+                const hasButton = [...document.querySelectorAll('button, a')]
+                    .some(el => el.textContent?.includes('もっと見る'));
+                const hasPagination = !!document.querySelector('[class*="paginat"], nav[aria-label*="page"]');
+                return {hasButton, hasPagination};
+            }""")
+            
+            # Extract advertised count if available
+            advertised_count = None
+            try:
+                advertised_count = page.evaluate(r"""() => {
+                    // Look for "商品数 123" or "123 items" or similar
+                    const text = document.body.textContent;
+                    const patterns = [
+                        /商品数[:\s]*(\d+)/,
+                        /(\d+)\s*items?/i,
+                        /(\d+)\s*products?/i,
+                        /全\s*(\d+)\s*件/
+                    ];
+                    for (const pattern of patterns) {
+                        const match = text.match(pattern);
+                        if (match) return parseInt(match[1]);
+                    }
+                    return null;
+                }""")
+            except:
+                pass
+            
             prev = 0
             no_change_count = 0
-            for scroll_iter in range(80):  # Increased for large catalogs (305+ items)
+            for scroll_iter in range(80):  # Up to 80 iterations for large catalogs
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                time.sleep(1.0)  # Longer wait for network + render
+                time.sleep(1.5)  # Longer wait for network + render (was 1.0)
                 
                 try:
                     cur = page.evaluate(
@@ -124,15 +166,20 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
                 except Exception:
                     break  # page navigated away
                 
+                # Log progress every 5 iterations
+                if scroll_iter % 5 == 0 and scroll_iter > 0:
+                    delta = cur - prev if scroll_iter > 0 else cur
+                    print(f"    Scroll {scroll_iter}: {cur} products (+{delta})", flush=True)
+                
                 if cur == prev:
                     no_change_count += 1
-                    # Wait 2 more iterations to confirm end (loader might be slow)
-                    if no_change_count >= 3:
+                    # Wait 5 iterations to confirm end (was 3, increased for slow networks)
+                    if no_change_count >= 5:
+                        print(f"    Scroll complete at iteration {scroll_iter}: {cur} products", flush=True)
                         break
                 else:
                     no_change_count = 0
                     prev = cur
-
             # Collect all unique product links from this page
             new_links = page.evaluate("""() => {
                 const links = [];
@@ -148,7 +195,13 @@ def parse_products(browser: Browser, db_path: str, max_products: int = 0) -> int
                 }
                 return links;
             }""")
-
+            # Verify collected count vs advertised count
+            if advertised_count and len(new_links) < advertised_count * 0.95:
+                missing = advertised_count - len(new_links)
+                print(f"  ⚠️  WARNING: {gender}/{slug} collected {len(new_links)}/{advertised_count} products (missing {missing})", flush=True)
+            elif advertised_count:
+                print(f"  ✓ {gender}/{slug}: collected {len(new_links)}/{advertised_count} products", flush=True)
+            
             for prod in new_links:
                 pid = prod["productId"]
                 if pid not in existing and pid not in seen_pids:
