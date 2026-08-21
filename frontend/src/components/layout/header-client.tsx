@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import type { CategoryNavItem } from "@/components/home/types"
+import { mapCategoryToNavItem } from "@/lib/mappers/categories"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import type { NavItem } from "@/lib/api/categories"
 import { useSidebarStore } from "@/store/sidebar"
@@ -21,14 +21,7 @@ function getActiveTab(pathname: string): TabId | null {
   return null
 }
 
-function toCategoryNavItems(items: NavItem[]): CategoryNavItem[] {
-  return items.map((item) => ({
-    text: item.nameRu || item.name,
-    href: `/${item.gender}/${item.slug}`,
-    slug: item.slug,
-    image: item.image ?? "",
-  }))
-}
+// Use shared mapper instead of inline mapping
 
 export function HeaderClient({
   navItems,
@@ -39,7 +32,7 @@ export function HeaderClient({
 }) {
   const pathname = usePathname()
   const activeTab = getActiveTab(pathname)
-  const items = toCategoryNavItems(navItems[activeTab ?? "women"] ?? [])
+  const items = (navItems[activeTab ?? "women"] ?? []).map(mapCategoryToNavItem)
   const { open, openSidebar, closeSidebar } = useSidebarStore()
 
   return (

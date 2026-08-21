@@ -113,16 +113,15 @@ export class CategoriesService {
    */
   async getNavCategories() {
     const navCats = await categoriesRepository.findNavCategories()
-
+    // Return NavItem shape for header-client to map
     return navCats.map((cat) => ({
       name: cat.name,
       nameRu: cat.nameRu,
       slug: cat.slug,
       gender: cat.gender,
-      image: cat.image, // Flyout icons (no gray background)
+      image: cat.image, // Transparent PNG navi icons
     }))
   }
-
   /**
    * Get single category by ID.
    * @throws {NotFoundError} if category not found

@@ -2,6 +2,7 @@ import { and, asc, eq, isNull } from "drizzle-orm"
 import type { CategoryNavItem } from "@/components/home/types"
 import { db } from "@/db"
 import { categories } from "@/db/schema"
+import { mapCategoryToNavItem } from "@/lib/mappers/categories"
 import { categoriesService } from "@/services/categories.service"
 
 /** Nav item with optional Russian name. */
@@ -19,6 +20,9 @@ export type NavItem = {
 export async function getAllNavCategories(): Promise<NavItem[]> {
   return categoriesService.getNavCategories()
 }
+
+// Re-export shared mapper (defined in mappers/ to avoid DB imports in client)
+export { mapCategoryToNavItem } from "@/lib/mappers/categories"
 
 /**
  * Get home page nav categories (curated subset with homeNav=1).
@@ -44,11 +48,12 @@ export async function getHomeNavCategories(gender: string): Promise<CategoryNavI
     .orderBy(asc(categories.navOrder))
     .all()
 
-  // Map to CategoryNavItem shape
-  return rows.map((row) => ({
-    text: row.nameRu || row.name, // Russian fallback
-    href: row.href,
-    slug: row.slug,
-    image: row.image ?? "", // Coalesce null to empty string
-  }))
+	// Map using shared mapper
+	return rows.map((row) => mapCategoryToNavItem({
+		name: row.name,
+		nameRu: row.nameRu,
+		slug: row.slug,
+		gender: row.href.split('/')[1] || 'women', // Extract from href
+		image: row.image,
+	}))
 }
